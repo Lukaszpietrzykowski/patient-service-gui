@@ -21,11 +21,11 @@ var uglify = require('gulp-uglify'); // Minifies JS files
 var paths = {
     styles: {
         src: './src/scss/**/*.scss',
-        dest: './dist/css'
+        dest: './public/dist/css'
     },
     scripts: {
         src: './src/js/**/*.js',
-        dest: './dist/js'
+        dest: './public/dist/js'
     }
 };
 
