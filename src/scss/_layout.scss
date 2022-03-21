@@ -1,0 +1,35 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+    max-width: 350px;
+    width: 100%;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #c43d48!important;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(196, 61, 72, 0.24) !important;
+}
+
+.btn-red {
+    background: #c43d48;
+    color: #fff;
+}
+
+.btn-black {
+    background: #000;
+    color: #fff;
+    transition: 0.4s ease-in;
+}
+
+.btn-black {
+    &:hover {
+        background: #fff;
+        color: #000;
+        transition: 0.4s ease-in;
+    }
+}
