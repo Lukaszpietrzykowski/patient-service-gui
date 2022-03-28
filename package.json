@@ -15,9 +15,9 @@
     "dependencies": {
         "core-js": "^3.8.3",
         "express": "^4.17.3",
+        "sass": "^1.44.0",
         "serve-static": "^1.14.2",
-        "vue": "^3.2.13",
-        "sass": "^1.44.0"
+        "vue": "^3.2.13"
     },
     "devDependencies": {
         "@babel/core": "^7.16.0",
@@ -27,7 +27,8 @@
         "@vue/cli-plugin-eslint": "~5.0.0",
         "@vue/cli-service": "~5.0.0",
         "eslint": "^7.32.0",
-        "eslint-plugin-vue": "^8.0.3"
+        "eslint-plugin-vue": "^8.0.3",
+        "gulp": "^4.0.2"
     },
     "eslintConfig": {
         "root": true,
