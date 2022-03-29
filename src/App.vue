@@ -1,17 +1,17 @@
 <template>
 
-  <LoginPanel />
+  <MainMenu />
 </template>
 
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import LoginPanel from './components/LoginPanel.vue'
+import MainMenu from './components/MainMenu.vue'
 
 export default {
   name: 'App',
   components: {
-    LoginPanel
+    MainMenu
   }
 }
 </script>
