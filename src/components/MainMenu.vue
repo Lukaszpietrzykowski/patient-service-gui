@@ -16,21 +16,10 @@
 
         
             
-                <section class="d-flex justify-content-center align-items-center flex-column w-50 mt-1 mb-2" style="background-color: #D4D9DB;padding:3%; border-radius: 1pc 1pc 1pc 1pc; box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);">
-                    <div class="" style="color: black;font-weight:bold; padding-bottom:1rem;">Nazwa szpitala</div>
-                    <div class="" style="color: black;padding-bottom:2rem;">-</div> 
-                    <div class="" style="color: black;font-weight:bold;padding-bottom:1rem;"> Miejscowość </div> 
-                    <div class="" style="color: black;padding-bottom:2rem;float:left;"> - </div> 
-                    <div class="" style="color: black;font-weight:bold;float:left;padding-bottom:1rem;"> Adres </div> 
-                    <div class="" style="color: black;padding-bottom:2rem;float:left;"> - </div> 
-                    <div class="" style="color: black;float:left; font-weight:bold;padding-bottom:1rem;"> Oddziały </div>
-                    <div class="" style="width:30%;color: black;float:left;">
+                <div class="d-flex justify-content-center align-items-center flex-column w-50 mt-1 mb-2" style="background-color: #D4D9DB;padding:3%; border-radius: 1pc 1pc 1pc 1pc; box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);">
+<svg width="15px" style="margin-left:50px" fill="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/></svg>
 
-                        <div class="" style="float:left; width:50%;">-</div>
-                        <div class="" style="float:left; width:50%;"><svg width="15px" style="margin-left:50px" fill="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/></svg>
-                        </div>
-                    </div>
-                </section>
+                </div>
             
       
         
