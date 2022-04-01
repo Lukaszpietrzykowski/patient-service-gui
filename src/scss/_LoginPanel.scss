@@ -1,0 +1,54 @@
+.mw-sm-450{
+    max-width: 450px;
+}
+.login
+{
+    text-align: left;
+    margin: 0 auto;
+    width: 75%;
+    padding: 5%;
+    border-radius: 15px;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 
+    0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 
+    0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 
+    0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
+}
+input[type=text],
+input[type=password]
+{
+    width: 100%;
+    background-color: #efefef;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 2%;
+    box-sizing: border-box;
+    outline: none; /* wyłączenie czarnej obwódki */
+    margin-top: 2%;
+}
+
+input[type=text]:focus,
+input[type=password]:focus
+{
+    border: 2px solid #077262;
+}
+input[type=submit]
+{
+    width: 100%;
+    background-color: #05a081;
+    color: white;
+    padding: 2%;
+    margin-top: 3%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 3%;
+    outline: none;
+}
+input[type=submit]:hover
+{
+    background-color: #039060;
+}
+input::-webkit-input-placeholder
+{
+    color:#999;
+}
