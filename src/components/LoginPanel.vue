@@ -2,7 +2,7 @@
 
 <section class="d-flex flex-column flex-lg-row vh-100">
     <div class="left h-100 w-100 d-flex justify-content-center align-items-center bg-for-menu">
-        <img class="img-fluid p-lg-5 mw-sm-450" src="../assets/hospital_logo_v.3(blue).svg">
+        <img class="img-fluid p-lg-5 mw-sm-450" src="../assets/hospital_red.svg">
     </div>
     <div class="right h-100 w-100 d-flex justify-content-center align-items-center bg-login">
         <div class="login bg-white">
