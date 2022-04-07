@@ -1,15 +1,16 @@
 <template>
-  
+  <LoginPanel />
 </template>
 
 <script>
 // @ is an alias to /src
-import LoginPane from '@/components/LoginPanel.vue'
+import LoginPanel from '@/components/LoginPanel.vue'
+import "../scss/style.scss"
 
 export default {
-  name: 'menu',
+  name: 'LoginPanel',
   components: {
-    MainMenu
+    LoginPanel
   }
 }
 </script>

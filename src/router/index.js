@@ -1,25 +1,26 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import Vue from 'vue'
+// import HomeView from '../views/HomeView.vue'
 import LoginPanel from '../components/LoginPanel.vue'
-import style from '../scss/style.scss'
 import MainMenu from '../components/MainMenu.vue'
+// import '../'
 
-const routes = [{
-        path: '/login',
-        name: 'loginpage',
-        component: LoginPanel,
-        style
-    },
+
+const routes = [
+    // {
+    //     path: '/login',
+    //     name: 'loginpage',
+    //     component: LoginPanel
+    // },
     {
-        path: '/hospitalsview',
-        name: 'menu',
-        component: MainMenu,
-        style
+        path: '/hospitals',
+        name: 'MainMenu',
+        component: MainMenu
     },
     {
         path: '/',
-        name: 'home',
-        component: HomeView
+        name: 'LoginPanel',
+        component: LoginPanel
     },
     {
         path: '/about',
@@ -36,5 +37,7 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes
 })
+
+
 
 export default router

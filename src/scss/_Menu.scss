@@ -33,8 +33,11 @@
     width: 100% !important;
 }
 
-.input-search:focus {
+.input-search:focus,
+.input-search:focus-visible {
     opacity: 0.85 !important;
+    border: 0!important;
+    outline: none!important;
 }
 
 .btn-search {
