@@ -18,7 +18,7 @@
 
         
             
-        <div class="d-flex p-3 mt-2 w-75 justify-content-center flex-column flex-lg-row" style="background-color: #00000008; border-radius: 1pc 1pc 1pc 1pc; box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);">
+        <div class="d-flex p-3 mt-2 w-75 justify-content-center flex-column flex-lg-row menu-hospital-box">
                 
                     <div class="w-100 p-3">
                         <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center" style="gap:0.75rem">
