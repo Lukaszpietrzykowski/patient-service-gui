@@ -16,7 +16,6 @@
             </form>
         </header>
 
-        
             
         <div class="d-flex p-3 mt-2 w-100 w-lg-75 justify-content-center flex-column flex-md-row menu-hospital-box">
                 
@@ -80,6 +79,72 @@
         </section>
     </section>
        
+       <!-- <ul v-if="hospitals.length">
+            <li v-for="hospital_one of hospitals" v-bind:key="hospital_one.name">
+                <p><strong>{{hospital_one.name}}</strong></p>
+                <p>{{hospital_one.body}}</p>
+            </li>
+            </ul> -->
+
+            {{hospitals}}
 
 </template>
 
+<script>
+// 
+
+// export default {
+//   data() {
+//     return {
+//       hospitals: [],
+//       errors: []
+//     }
+//   },
+
+//   // Fetches posts when the component is created.
+//   created() {
+//     axios.get(`hospital
+// `)
+//     .then(response => {
+//       // JSON responses are automatically parsed.
+//       this.hospitals = response.data
+//       console.log(this.hospitals)
+//     })
+//     .catch(e => {
+//       this.errors.push(e)
+//     })
+//   }
+// }
+
+// import { HTTP } from './http-common';
+import axios from 'axios';
+// import cors from 'cors';
+// import app from 'vue';
+export default {
+  data() {
+    return {
+      hospitals: [],
+      errors: []
+    }
+  },
+
+  mounted() {
+  // if you want to call it on component mounted
+  axios.get('hospital')
+    .then(response => {
+    //   this.hospitals.append(response.data)
+    this.hospitals.push(response)
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+},
+  
+
+
+ 
+}
+// app.use(cors());
+
+
+</script>
