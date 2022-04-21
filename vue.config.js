@@ -4,16 +4,16 @@ module.exports = defineConfig({
 })
 
 // vue.config.js
-module.exports = {
-    // options...
-    devServer: {
+// module.exports = {
+//     // options...
+//     devServer: {
 
-        proxy: {
-            "^/api": {
-                target: 'https://patient-service-api.herokuapp.com',
-                ws: true,
-                changeOrigin: true
-            }
-        }
-    }
-}
+//         proxy: {
+//             "^/api": {
+//                 target: 'https://patient-service-api.herokuapp.com',
+//                 ws: true,
+//                 changeOrigin: true
+//             }
+//         }
+//     }
+// }
