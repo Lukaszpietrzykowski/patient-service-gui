@@ -26,8 +26,8 @@
             </li>
             </ul> -->
 
-        <div  v-if="hospitals.length">
-            <div  v-for="hospital_one of hospitals" v-bind:key="hospital_one.name" class="d-flex p-3 mt-2 w-100 w-lg-75 justify-content-center flex-column flex-md-row menu-hospital-box">
+        <div class="mb-5" v-if="hospitals.length">
+            <div  v-for="hospital_one of hospitals" v-bind:key="hospital_one.name" class="d-flex p-3 my-3 w-100 w-lg-75 justify-content-center flex-column flex-md-row menu-hospital-box">
                 
                     <div class="w-100 py-1 p-lg-3">
                         <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center" style="gap:0.75rem">
