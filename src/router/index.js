@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import LoginPanel from '../components/LoginPanel.vue'
 import MainMenu from '../components/MainMenu.vue'
 import AddingPatient from '../components/AddingPatient.vue'
+import PatientSearching from '../components/PatientSearching.vue'
 // import '../'
 
 
@@ -22,6 +23,10 @@ const routes = [
         path: '/adding-patient',
         name: 'AddingPatient',
         component: AddingPatient
+    },{
+        path: '/patient-searching',
+        name: 'PatientSearching',
+        component: PatientSearching
     },
     {
         path: '/',
