@@ -2,6 +2,8 @@
     border-radius: 0 0 6rem 6rem;
     box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
     padding: 1%;
+    position: sticky;
+    top: 0;
 }
 
 .menu-fixed-bottom-inner {
@@ -15,17 +17,17 @@
     height: 25%;
 }
 
-.bolder { 
+.bolder {
     font-weight: bolder;
-    font-size:1.1rem;
+    font-size: 1.1rem;
 }
-
 
 .menu-hospital-box {
     background-color: #00000008;
     border-radius: 1pc 1pc 1pc 1pc;
     box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
 }
+
 .input-search {
     background-color: #fff !important;
     opacity: 0.75 !important;
@@ -36,6 +38,7 @@
     padding: 1% !important;
     box-sizing: none !important;
     width: 100% !important;
+    cursor: pointer !important;
 }
 
 .input-search:focus,
@@ -43,6 +46,13 @@
     opacity: 0.85 !important;
     border: 0!important;
     outline: none!important;
+}
+
+.input-search:hover {
+    opacity: 0.85 !important;
+    border: 0!important;
+    outline: none!important;
+    transition: 0.1s ease-in;
 }
 
 .btn-search {
