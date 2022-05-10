@@ -82,3 +82,31 @@
     opacity: 1;
     transition: 0.1s ease-in;
 }
+
+.menu-logout {
+    opacity: 0.95;
+    position: fixed;
+    top: 1%;
+    right: 5%;
+}
+
+.menu-logout:hover {
+    opacity: 1;
+    transition: 0.1s ease-in;
+}
+
+.logout-btn {
+    opacity: 0.95;
+    width: 40px;
+    height: 40px;
+    padding: 1%;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+    transition: 0.1s ease-in;
+}
+
+.border-round {
+    border-radius: 10pc 10pc 10pc 10pc;
+}
