@@ -103,7 +103,7 @@
                         </svg>
                     </a>
                     <h2 class="font-small color-white font-weight-normal text-center "
-                        style="font-size: 6px; letter-spacing: 0.5px">Dodaj szpital</h2>
+                        style="font-size: 0.75rem;">Dodaj szpital</h2>
                 </div>
 
                 <div class="d-flex flex-column justify-content-center">
@@ -116,7 +116,7 @@
                         </svg>
                     </a>
                     <h2 class="font-small color-white font-weight-normal text-center"
-                        style="font-size: 6px; letter-spacing: 0.5px">Dodaj pacjenta</h2>
+                        style="font-size: 0.75rem;">Dodaj pacjenta</h2>
                 </div>
             </div>
 
