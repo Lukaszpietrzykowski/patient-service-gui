@@ -23,8 +23,8 @@ const routes = [
         path: '/adding-patient',
         name: 'AddingPatient',
         component: AddingPatient
-    },{
-        path: '/patient-searching',
+    }, {
+        path: '/patients',
         name: 'PatientSearching',
         component: PatientSearching
     },

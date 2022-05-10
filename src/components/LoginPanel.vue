@@ -9,19 +9,59 @@
         <h1 class="font-medium">Dzień dobry.</h1>
         <p class="font-small mb-0 mt-2">Wprowadź login i hasło.</p>
         <form>
-            <input class="input-form" type="email" placeholder="login" onfocus="this.placeholder=''" onblur="this.placeholder='login'"><br/>
-            <input class="input-form" type="password" placeholder="hasło" onfocus="this.placeholder=''" onblur="this.placeholder='hasło'"><br/>
-                <router-link to="/hospitals">
-                    <button class="btn-form btn-form-green p-3 text-decoration-none mt-2" type="submit">Zaloguj się</button>
-                </router-link> 
+            <input class="input-form" type="email" placeholder="login"  name="email" v-model="email" required><br/>
+            <input class="input-form" type="password" placeholder="hasło"   name="password" v-model="password" required><br/>
+                    <button v-on:click="login" class="btn-form btn-form-green p-3 text-decoration-none mt-2">Zaloguj się</button>
         </form>
+        <p v-if="showError" id="error">Email albo hasło jest nieprawidłowe.</p>
         </div>
     </div>
 </section>
 </template>
 
 <script>
+
+import axios from 'axios';
+// import cors from 'cors';
+// import app from 'vue';
 export default {
-  name: 'LoginPanel'
+name: 'LoginPanel',
+  data() {
+    return {
+          email: "",
+          password: ""
+    }
+  },
+
+  methods:{
+      async login() {
+          axios.get(`https://patient-service-api.herokuapp.com/user`)
+        .then(response => {
+            // console.log(response.email)
+            
+            this.users = response.data
+            console.log(response.data)
+                if(response.status == 200 && response.data.length>0) {
+                        localStorage.setItem('user-info', JSON.stringify(response.data))
+                        this.$router.push({name: 'MainMenu'})
+                }
+                
+
+            
+
+
+    })
+  },
+      mounted() {
+          
+          let user = localStorage.getItem('user-info')
+          if(user) {
+              this.$router.push({name: "MainMenu"})
+          }
+      }
+  }
+
 }
+
+
 </script>
