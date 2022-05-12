@@ -30,9 +30,9 @@
 
 .input-search {
     background-color: #fff !important;
-    // opacity: 0.75 !important;
+    opacity: 0.75 !important;
     color: #000 !important;
-    border-radius: 1rem !important;
+    border-radius: 10pc 10pc 10pc 10pc !important;
     margin-bottom: 1% !important;
     border: 0 !important;
     padding: 1% !important;
@@ -108,5 +108,5 @@
 }
 
 .border-round {
-    border-radius: 10pc 10pc 10pc 10pc;
+    border-radius: 1pc 1pc 1pc 1pc;
 }

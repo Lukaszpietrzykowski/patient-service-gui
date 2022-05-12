@@ -1,0 +1,37 @@
+.menu-admin-form-button {
+    opacity: 0.95;
+    width: 40px;
+    height: 40px;
+    padding: 1%;
+}
+
+.menu-admin-form-button:hover {
+    opacity: 1;
+    transition: 0.1s ease-in;
+}
+
+.input-user {
+    width: 60%;
+    background-color: #efefef;
+    border: 2px solid #077262;
+    border-radius: 5px;
+    padding: 2%;
+    box-sizing: border-box;
+    outline: none;
+    /* wyłączenie czarnej obwódki */
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.btn-add-user {
+    width: 60%;
+    color: white;
+    // padding: 2%;
+    // margin-top: 3%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    // letter-spacing: 3%;
+    outline: none;
+    background-color: #05a081;
+}
