@@ -6,7 +6,7 @@
             <form class="d-flex justify-content-center w-100">
 
                 <div class="w-75 w-lg-50 d-flex flex-row justify-content-center">
-                    <input class="input-search h-100 p-0 m-0 outline-none border-0 " type="text" placeholder="Wyszukaj szpital" v-model="search">
+                    <input class="input-search h-100 p-0 m-0 outline-none border-0 " type="text" placeholder="Wyszukaj użytkownika" v-model="search">
                 </div> 
 
             </form>
@@ -21,7 +21,8 @@
                 </div>
 
 
-        <div class="d-flex p-3 mt-2 w-100 w-lg-75 justify-content-center flex-row flex-md-row menu-hospital-box">
+    <section class="my-5 w-75" >
+        <div class="d-flex p-3 mt-2 w-100 w-lg-75 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
                 <form class="d-flex-row">
                     <h1>Wprowadź dane użytkownika:</h1>
                     <div>
@@ -40,9 +41,10 @@
                         <div><input class="color:#626466 font-small" value="ratownik" type="radio" name="rola">Ratownik</div>
                         <div><input class="color:#626466 font-small" value="admin" type="radio" name="rola">Administrator</div>
                     </div>
-                    <button class="btn-add-user font-small p-3 text-decoration-none mt-2">Dodaj użytkownika</button>
+                    <button class="btn-add-user font-small mt-2 p-3 text-decoration-none mt-2">Dodaj użytkownika</button>
                 </form>        
         </div>
+        </section>
          
         
         <section class="fixed-bottom d-flex flex-row justify-content-center align-items-center w-100 p-1 bg-transparent">

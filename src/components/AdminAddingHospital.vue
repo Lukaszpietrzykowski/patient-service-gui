@@ -20,7 +20,8 @@
                     <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 9px; letter-spacing: 0.5px">Wyloguj</h2>
                 </div>
 
-        <div class="d-flex p-3 mt-2 w-100 w-lg-75 justify-content-center flex-row flex-md-row menu-hospital-box">
+    <section class="my-5 w-75" >
+        <div class="d-flex p-3 mt-2 w-100 w-lg-75 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
                 <form class="d-flex-row">
                     <h1>Wprowadź dane szpitala:</h1>
                     <div>
@@ -34,9 +35,10 @@
                     <div class="color:#626466 font-small" >Kod pocztowy</div>
                     <div><input class="input-user" type="text" name="hasło" placeholder="00-000"></div>
                     
-                    <button class="btn-add-user font-small p-3 text-decoration-none mt-2">Dodaj szpital</button>
+                    <button class="btn-add-user font-small mt-2 p-3 text-decoration-none mt-2">Dodaj szpital</button>
                 </form>        
         </div>
+        </section>
         
         <section class="fixed-bottom d-flex flex-row justify-content-center align-items-center w-100 p-1 bg-transparent">
             

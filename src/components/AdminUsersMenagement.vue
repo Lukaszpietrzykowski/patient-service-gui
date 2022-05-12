@@ -6,7 +6,7 @@
             <form class="d-flex justify-content-center w-100">
 
                 <div class="w-75 w-lg-50 d-flex flex-row justify-content-center">
-                    <input class="input-search h-100 p-0 m-0 outline-none border-0 " type="text" placeholder="Wyszukaj szpital" v-model="search">
+                    <input class="input-search h-100 p-0 m-0 outline-none border-0 " type="text" placeholder="Wyszukaj użytkownika" v-model="search">
                 </div> 
 
             </form>
