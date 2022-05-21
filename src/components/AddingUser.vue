@@ -26,20 +26,20 @@
                 <form class="d-flex-row">
                     <h1>Wprowadź dane użytkownika:</h1>
                     <div>
-                    <div class="color:#626466 font-small" >Imię</div>
+                    <div class="color-grey mt-2 font-small" >Imię</div>
                     <div><input class="input-user" type="text" name="imie" placeholder="Jan"></div>
                     </div>
-                    <div class="color:#626466 font-small" >Nazwisko</div>
+                    <div class="color-grey mt-2 font-small" >Nazwisko</div>
                     <div><input class="input-user" type="text" name="nazwisko" placeholder="Kowalski"></div>
-                    <div class="color:#626466 font-small" >Login</div>
+                    <div class="color-grey mt-2 font-small" >Login</div>
                     <div><input class="input-user" type="text" name="login" placeholder="jan.kowalski@poczta.com"></div>
-                    <div class="color:#626466 font-small" >Hasło</div>
+                    <div class="color-grey mt-2 font-small" >Hasło</div>
                     <div><input class="input-user" type="text" name="hasło" placeholder="hasło"></div>
-                    <div class="color:#626466 font-small" >Uprawnienia</div>
-                    <div class="d-flex flex-row justify-content-around m-1">
-                        <div><input class="color:#626466 font-small" value="dyspozytor" type="radio" name="rola">Dyspozytor</div>
-                        <div><input class="color:#626466 font-small" value="ratownik" type="radio" name="rola">Ratownik</div>
-                        <div><input class="color:#626466 font-small" value="admin" type="radio" name="rola">Administrator</div>
+                    <div class="color-grey mt-2 font-small" >Uprawnienia</div>
+                    <div class="d-flex flex-row justify-content-around mt-1">
+                        <div class="align-items-center font-small"><input class="input-user-radio" value="dyspozytor" type="radio" name="rola"> Dyspozytor</div>
+                        <div class="align-items-center font-small"><input class="input-user-radio" value="ratownik" type="radio" name="rola"> Ratownik</div>
+                        <div class="align-items-center font-small"><input class="input-user-radio" value="admin" type="radio" name="rola"> Administrator</div>
                     </div>
                     <button class="btn-add-user font-small mt-2 p-3 text-decoration-none mt-2">Dodaj użytkownika</button>
                 </form>        

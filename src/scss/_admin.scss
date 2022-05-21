@@ -19,8 +19,13 @@
     box-sizing: border-box;
     outline: none;
     /* wyłączenie czarnej obwódki */
-    margin-top: 1%;
+    //margin-top: 1%;
     margin-bottom: 1%;
+}
+
+.input-user-radio {
+    width: 17px;
+    height: 17px;
 }
 
 .btn-add-user {
