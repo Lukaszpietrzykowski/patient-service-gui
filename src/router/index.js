@@ -6,8 +6,8 @@ import MainMenu from '../components/MainMenu.vue'
 import AddingPatient from '../components/AddingPatient.vue'
 import PatientSearching from '../components/PatientSearching.vue'
 import AdminPanel from '../components/AdminPanel.vue'
-import AdminUsersMenagement from '../components/AdminUsersMenagement.vue'
-import AdminHospitalsMenagement from '../components/AdminHospitalsMenagement.vue'
+import AdminUsersManagement from '../components/AdminUsersManagement.vue'
+import AdminHospitalsManagement from '../components/AdminHospitalsManagement.vue'
 import AdminAddingHospital from '../components/AdminAddingHospital.vue'
 import AddingUser from '../components/AddingUser.vue'
 // import '../'
@@ -35,9 +35,9 @@ const routes = [
         component: AdminAddingHospital
     },
     {
-        path: '/hospitals-menagement',
-        name: 'AdminHospitalsMenagement',
-        component: AdminHospitalsMenagement
+        path: '/hospitals-management',
+        name: 'AdminHospitalsManagement',
+        component: AdminHospitalsManagement
     },
     {
         path: '/adding-user',
@@ -45,15 +45,16 @@ const routes = [
         component: AddingUser
     },
     {
-        path: '/users-menagement',
-        name: 'AdminUserMenagement',
-        component: AdminUsersMenagement
+        path: '/users-management',
+        name: 'AdminUserManagement',
+        component: AdminUsersManagement
     },
     {
         path: '/adding-patient',
         name: 'AddingPatient',
         component: AddingPatient
-    }, {
+    },
+    {
         path: '/patients',
         name: 'PatientSearching',
         component: PatientSearching
