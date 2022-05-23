@@ -10,7 +10,7 @@
     <section class="w-100" >
         <div class="d-flex p-1 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
                 <form class="pt-2 pb-2 p-2 d-flex-row">
-                    <h1>Wprowadź dane szpitala:</h1>
+                    <h1>Wprowadź zmiany danych:</h1>
                     <div>
                     <div class="color-grey mt-2 font-small" >Nazwa szpitala</div>
                     <div><input class="input-user" type="text" name="nazwa szpitala" placeholder="Szpital"></div>
@@ -22,7 +22,7 @@
                     <div class="color-grey mt-2 font-small" >Kod pocztowy</div>
                     <div><input class="input-user" type="text" name="kod pocztowy" placeholder="00-000"></div>
                     <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
-                        <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj szpital</button>
+                        <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Zapisz zmiany</button>
                         <button class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót</button>
                     </div>
                 </form>              

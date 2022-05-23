@@ -10,6 +10,9 @@ import AdminUsersManagement from '../components/AdminUsersManagement.vue'
 import AdminHospitalsManagement from '../components/AdminHospitalsManagement.vue'
 import AdminAddingHospital from '../components/AdminAddingHospital.vue'
 import AddingUser from '../components/AddingUser.vue'
+import AdminWardManagement from '../components/AdminWardManagement.vue'
+import UserEditing from '../components/UserEditing.vue'
+import AdminHospitalEditing from '../components/AdminHospitalEditing.vue'
 // import '../'
 
 
@@ -35,9 +38,24 @@ const routes = [
         component: AdminAddingHospital
     },
     {
+        path: '/edit-hospital',
+        name: 'AdminHospitalEditing',
+        component: AdminHospitalEditing
+    },
+    {
         path: '/hospitals-management',
         name: 'AdminHospitalsManagement',
         component: AdminHospitalsManagement
+    },
+    {
+        path: '/ward-management',
+        name: 'AdminWardManagement',
+        component: AdminWardManagement
+    },
+    {
+        path: '/users-management',
+        name: 'AdminUserManagement',
+        component: AdminUsersManagement
     },
     {
         path: '/adding-user',
@@ -45,9 +63,9 @@ const routes = [
         component: AddingUser
     },
     {
-        path: '/users-management',
-        name: 'AdminUserManagement',
-        component: AdminUsersManagement
+        path: '/user-editing',
+        name: 'UserEditing',
+        component: UserEditing
     },
     {
         path: '/adding-patient',

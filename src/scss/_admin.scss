@@ -28,9 +28,9 @@
     height: 17px;
 }
 
-.btn-add-user {
+.btn-add {
     width: 60%;
-    color: white;
+    color: #fff;
     // padding: 2%;
     // margin-top: 3%;
     border: none;
@@ -39,4 +39,28 @@
     // letter-spacing: 3%;
     outline: none;
     background-color: #05a081;
+}
+
+.btn-add:hover {
+    opacity: 0.95;
+    transition: 0.1s ease-in;
+}
+
+.btn-back {
+    width: 30%;
+    color: #626466;
+    // padding: 2%;
+    // margin-top: 3%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    // letter-spacing: 3%;
+    outline: none;
+    background-color: #0000000b;
+}
+
+.btn-back:hover {
+    background-color: #0000000f;
+    transition: 0.1s ease-in;
+    color: #000;
 }
