@@ -22,7 +22,7 @@
 
         <section class="my-5 w-100" >
             <div 
-                class="d-flex p-4 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
+                class="d-flex p-3 mt-3 w-100 mx-auto justify-content-center w-lg-75 flex-row flex-md-row menu-hospital-box">
                 <div class="w-100 py-1 p-lg-3">
                     <div class="w-100 d-flex flex-column flex-lg-row p-2 justify-content-center align-items-center">
                         <div class="w-100 my-2">
