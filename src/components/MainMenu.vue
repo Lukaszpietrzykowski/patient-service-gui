@@ -173,7 +173,7 @@ export default {
 
 
   mounted() {
-    axios.get('http://patient-service-api.herokuapp.com/hospital/all')
+    axios.get('https://patient-service-api.herokuapp.com/hospital/all')
         .then(response => {
 
           this.hospitals = response.data
