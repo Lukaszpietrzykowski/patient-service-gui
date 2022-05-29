@@ -41,7 +41,7 @@ name: 'LoginPanel',
             
             this.users = response.data
             console.log(response.data)
-                if(response.status == 200 && response.data.length>0) {
+                if(response.status === 200 && response.data.length>0) {
                         localStorage.setItem('user-info', JSON.stringify(response.data))
                         this.$router.push({name: 'MainMenu'})
                 }
