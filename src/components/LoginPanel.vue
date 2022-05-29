@@ -8,7 +8,7 @@
       <div class="login bg-white">
         <h1 class="font-medium">Dzień dobry</h1>
         <p class="font-small mb-0 mt-2">Wprowadź login i hasło</p>
-        <form @submit="login(email, password)">
+        <form v-on:submit.prevent="login(email, password)">
           <input class="input-form" type="text" placeholder="login" name="email" v-model="email" required><br/>
           <input class="input-form" type="password" placeholder="hasło" name="password" v-model="password"
                  required><br/>
