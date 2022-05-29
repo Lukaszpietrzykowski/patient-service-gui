@@ -49,7 +49,7 @@ export default {
           })
     },
 
-    async login(email, password) {
+    login(email, password) {
 
       const params = new URLSearchParams();
       params.append('username', email);
@@ -64,7 +64,7 @@ export default {
             console.log(response.status)
                 if (response.status === 200 && response.data.length > 0) {
                   // this.getUserData();
-                  this.$router.push({name: 'MainMenu'})
+                  this.router.push({name: 'MainMenu'})
                 }
               }
           )
