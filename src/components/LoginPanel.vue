@@ -62,7 +62,7 @@ export default {
       })
           .then(response => {
             console.log(response.status)
-                if (response.status === 200 && response.data.length > 0) {
+                if (response.status === 200) {
                   // this.getUserData();
                   this.router.push({name: 'MainMenu'})
                 }
