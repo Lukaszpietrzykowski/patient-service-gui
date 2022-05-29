@@ -143,7 +143,7 @@
         },
 
         mounted() {
-            axios.get('http://patient-service-api.herokuapp.com/patient')
+            axios.get('https://patient-service-api.herokuapp.com/patient')
                 .then(response => {
                     this.patients = response.data
                     // console.log(this.patients[0])

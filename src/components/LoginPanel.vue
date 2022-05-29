@@ -8,15 +8,15 @@
       <div class="login bg-white">
         <h1 class="font-medium">Dzień dobry</h1>
         <p class="font-small mb-0 mt-2">Wprowadź login i hasło</p>
-        <form>
+        <form v-on:submit.prevent="login(email, password)">
           <input class="input-form" type="text" placeholder="login" name="email" v-model="email" required><br/>
           <input class="input-form" type="password" placeholder="hasło" name="password" v-model="password"
                  required><br/>
-          <button v-on:click="login(email, password)" class="btn-form btn-form-green p-3 text-decoration-none mt-2">
+          <button type="submit" class="btn-form btn-form-green p-3 text-decoration-none mt-2">
             Zaloguj się
           </button>
         </form>
-        <p v-if="showError" id="error">Email albo hasło jest nieprawidłowe.</p>
+<!--        <p v-if="showError" id="error">Email albo hasło jest nieprawidłowe.</p>-->
       </div>
     </div>
   </section>
@@ -39,7 +39,7 @@ export default {
   methods: {
 
     getUserData() {
-      axios.get(`http://patient-service-api.herokuapp.com/user`)
+      axios.get(`https://patient-service-api.herokuapp.com/user`)
           .then(response => {
             this.users = response.data
             console.log(response.data)
@@ -49,22 +49,22 @@ export default {
           })
     },
 
-    async login(email, password) {
+    login(email, password) {
 
       const params = new URLSearchParams();
       params.append('username', email);
       params.append('password', password);
 
-      axios.post('http://patient-service-api.herokuapp.com/login', params, {
+      axios.post('https://patient-service-api.herokuapp.com/login', params, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         }
       })
           .then(response => {
-                if (response.status === 200 && response.data.length > 0) {
+            console.log(response.status)
+                if (response.status === 200) {
                   // this.getUserData();
-                  console.log("elo")
-                  this.$router.push({name: 'MainMenu'})
+                  this.$router.push({path: '/hospitals'})
                 }
               }
           )
