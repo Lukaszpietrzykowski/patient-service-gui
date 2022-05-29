@@ -39,7 +39,7 @@ export default {
   methods: {
 
     getUserData() {
-      axios.get(`https://patient-service-api.herokuapp.com/user`)
+      axios.get(`http://patient-service-api.herokuapp.com/user`)
           .then(response => {
             this.users = response.data
             console.log(response.data)
@@ -55,7 +55,7 @@ export default {
       params.append('username', email);
       params.append('password', password);
 
-      axios.post('https://patient-service-api.herokuapp.com/login', params, {
+      axios.post('http://patient-service-api.herokuapp.com/login', params, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         }
