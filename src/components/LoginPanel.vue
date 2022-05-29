@@ -64,7 +64,7 @@ export default {
             console.log(response.status)
                 if (response.status === 200) {
                   // this.getUserData();
-                  this.router.push({name: 'MainMenu'})
+                  this.$router.push({path: '/hospitals'})
                 }
               }
           )
