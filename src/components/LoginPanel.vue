@@ -8,15 +8,15 @@
       <div class="login bg-white">
         <h1 class="font-medium">Dzień dobry</h1>
         <p class="font-small mb-0 mt-2">Wprowadź login i hasło</p>
-        <form>
+        <form @submit="login(email, password)">
           <input class="input-form" type="text" placeholder="login" name="email" v-model="email" required><br/>
           <input class="input-form" type="password" placeholder="hasło" name="password" v-model="password"
                  required><br/>
-          <button v-on:click="login(email, password)" class="btn-form btn-form-green p-3 text-decoration-none mt-2">
+          <button type="submit" class="btn-form btn-form-green p-3 text-decoration-none mt-2">
             Zaloguj się
           </button>
         </form>
-        <p v-if="showError" id="error">Email albo hasło jest nieprawidłowe.</p>
+<!--        <p v-if="showError" id="error">Email albo hasło jest nieprawidłowe.</p>-->
       </div>
     </div>
   </section>
@@ -61,9 +61,9 @@ export default {
         }
       })
           .then(response => {
+            console.log(response.status)
                 if (response.status === 200 && response.data.length > 0) {
                   // this.getUserData();
-                  console.log("elo")
                   this.$router.push({name: 'MainMenu'})
                 }
               }
