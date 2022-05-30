@@ -30,7 +30,6 @@
 			
             <div class="color-grey mt-2 font-small">*Wiek</div>
             <div><input class="input-user" type="number" id="WIEK" min="0" max="130" required></div>
-            <span style="color: red" id="poleWiek"></span>
 			
             <div class="color-grey mt-2 font-small">*Płeć</div>
             <div class="d-flex flex-row justify-content-around mt-1">
@@ -78,7 +77,6 @@ export default {
         document.getElementById("poleImie").innerHTML = "";
         document.getElementById("poleNazwisko").innerHTML = "";
         document.getElementById("polePesel").innerHTML = "";
-        document.getElementById("poleWiek").innerHTML = "";
         document.getElementById("polePlec").innerHTML = "";
         document.getElementById("polePriorytet").innerHTML = "";
         },
@@ -107,7 +105,7 @@ export default {
 				this.ustawDateUrodzenia();
 				this.ustawPlec();
 			}
-            this.sprawdzDateUrodzenia();
+      this.sprawdzDateUrodzenia();
       },
       czyZnakiToCyfry: function(){
           const pesel = document.getElementById("PESEL").value;
@@ -151,13 +149,14 @@ export default {
 			this.ustawWiek(year, month, day);
       },
       ustawWiek: function(y,m,d){
-        let bday = new Date(y, m, d);
+      let bday = new Date(y, m, d);
 			let today = new Date();
-			today.setHours(0);
-			today.setMinutes(0);
-			today.setSeconds(0);
-			let age = Math.floor((today - bday)/31556952000);
-			if(age!= 122) document.getElementById("WIEK").value = age;
+      const ytoday = today.getFullYear();
+      const mtoday = today.getMonth()+1;
+      const dtoday = today.getDate();
+      let age = ytoday - y;
+      if(mtoday<m || (mtoday==m && dtoday<d)) age--;
+      if(bday) document.getElementById("WIEK").value = age;
       },
       ustawPlec: function(){
         const pesel = document.getElementById("PESEL").value;
@@ -170,13 +169,12 @@ export default {
 			else document.getElementById("mezczyzna").checked = true;
       }, 
       sprawdzDateUrodzenia: function(){
-          let date = document.getElementById("DATURO").value;
+      let date = document.getElementById("DATURO").value;
 			let year = date.slice(0,4);
 			let month = date.slice(5,7);
 			let day = date.slice(8,10);
-			this.ustawWiek(year, month, day);
-            this.sprawdzWiek();
-            this.sprawdzPlec();
+			if(date) this.ustawWiek(year, month, day);
+      this.sprawdzPlec();
       },
       sprawdzPlec: function(){
           const m = document.getElementById("mezczyzna").checked;
