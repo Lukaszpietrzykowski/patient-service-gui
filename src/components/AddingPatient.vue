@@ -34,20 +34,15 @@
 			
             <div class="color-grey mt-2 font-small">*Płeć</div>
             <div class="d-flex flex-row justify-content-around mt-1">
-            <input class="input-user-radio" type="radio" name="plec" id="kobieta" value="K">
-            <label for="kobieta">Kobieta</label>
-            <input class="input-user-radio" type="radio" name="plec" id="mezczyzna" value="M">
-            Mężczyzna</div>
+            <label for="kobieta"><input class="input-user-radio2" type="radio" name="plec" id="kobieta" value="K"> Kobieta</label>
+            <label for="mezczyzna"><input class="input-user-radio2" type="radio" name="plec" id="mezczyzna" value="M"> Mężczyzna</label></div>
             <span style="color: red" id="polePlec"></span>
 
 			<div class="color-grey mt-2 font-small">*Priorytet</div>
             <div class="d-flex flex-row justify-content-around mt-1">
-            <input class="input-user-radio" type="radio" name="priorytet" id="niski" value="1">
-            <label for="niski">Niski</label>
-            <input class="input-user-radio" type="radio" name="priorytet" id="sredni" value="2">
-            <label for="sredni">Średni</label>
-            <input class="input-user-radio" type="radio" name="priorytet" id="wysoki" value="3">
-            <label for="wysoki">Wysoki</label></div>
+            <label for="niski"> <input class="input-user-radio2" type="radio" name="priorytet" id="niski" value="1"> Niski</label>
+            <label for="sredni"><input class="input-user-radio2" type="radio" name="priorytet" id="sredni" value="2"> Średni</label>
+            <label for="wysoki"><input class="input-user-radio2" type="radio" name="priorytet" id="wysoki" value="3"> Wysoki</label></div>
             <span style="color: red" id="polePriorytet"></span>
             
             
