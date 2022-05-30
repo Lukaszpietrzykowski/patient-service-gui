@@ -13,11 +13,11 @@
             <form id="adding-patient" class="pt-2 pb-2 p-1 d-flex-row">
 			<h1>Wprowadź dane pacjenta:</h1>
 			
-            <div class="color-grey mt-2 font-small">*Imię</div>
+            <div class="color-grey mt-2 font-small">Imię</div>
             <div><input class="input-user" type="text" id="IMIE"></div>
 			<span style="color: red" id="poleImie"></span>
 			
-            <div class="color-grey mt-2 font-small">*Nazwisko</div>
+            <div class="color-grey mt-2 font-small">Nazwisko</div>
             <div><input class="input-user" type="text" id="NAZWISKO"></div>
             <span style="color: red" id="poleNazwisko"></span>
 			
@@ -29,7 +29,7 @@
             <div><input class="input-user" type="date" id="DATURO"></div>
 			
             <div class="color-grey mt-2 font-small">*Wiek</div>
-            <div><input class="input-user" type="number" id="WIEK" min="0" max="130"></div>
+            <div><input class="input-user" type="number" id="WIEK" min="0" max="130" required></div>
             <span style="color: red" id="poleWiek"></span>
 			
             <div class="color-grey mt-2 font-small">*Płeć</div>
@@ -49,7 +49,7 @@
             <div class="d-flex flex-row-reverse justify-content-around ">
                         <button class="btn-add font-small mt-2 p-2 text-decoration-none m-2">Zatwierdź</button>
                         <button @click="sprawdzImie" class="btn-add font-small m-2 p-2 text-decoration-none mt-2">Sprawdź</button>
-                        <button @click="wyczysc" class="btn-back font-small m-2 p-3 text-decoration-none mt-2">Kasuj</button>
+                        <button @click="wyczysc" class="btn-delete font-small m-2 p-3 text-decoration-none mt-2">Kasuj</button>
                     </div>
 			
 
@@ -84,13 +84,13 @@ export default {
         },
       sprawdzImie: function(){
         const imie=document.getElementById("IMIE").value;
-			if(imie=="") document.getElementById("poleImie").innerHTML="Pole imię nie może być puste";
+			if(imie=="") document.getElementById("poleImie").innerHTML="Nie wprowadzono imienia";
 			else document.getElementById("poleImie").innerHTML = "";
             this.sprawdzNazwisko();
       },
       sprawdzNazwisko: function(){
          const nazwisko = document.getElementById("NAZWISKO").value;
-			if(nazwisko=="") document.getElementById("poleNazwisko").innerHTML="Pole nazwisko nie może być puste";
+			if(nazwisko=="") document.getElementById("poleNazwisko").innerHTML="Nie wprowadzono nazwiska";
 			else document.getElementById("poleNazwisko").innerHTML = "";
             this.sprawdzPesel();
       },
@@ -176,12 +176,6 @@ export default {
 			let day = date.slice(8,10);
 			this.ustawWiek(year, month, day);
             this.sprawdzWiek();
-      },
-      sprawdzWiek: function(){
-          let wiek = document.getElementById("WIEK").value;
-			if(wiek=="") document.getElementById("poleWiek").innerHTML = "Pole wiek nie może być puste";
-			else if(wiek>121 || wiek<0) document.getElementById("poleWiek").innerHTML = "Wprowadź poprawny wiek";
-			else document.getElementById("poleWiek").innerHTML = "";
             this.sprawdzPlec();
       },
       sprawdzPlec: function(){
