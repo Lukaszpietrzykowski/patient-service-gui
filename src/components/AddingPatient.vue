@@ -47,8 +47,9 @@
             
             
             <div class="d-flex flex-row-reverse justify-content-around ">
-                        <button @click="sprawdzImie" class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Zatwierdź</button>
-                        <button @click="wyczysc" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Kasuj</button>
+                        <button class="btn-add font-small mt-2 p-2 text-decoration-none m-2">Zatwierdź</button>
+                        <button @click="sprawdzImie" class="btn-add font-small m-2 p-2 text-decoration-none mt-2">Sprawdź</button>
+                        <button @click="wyczysc" class="btn-back font-small m-2 p-3 text-decoration-none mt-2">Kasuj</button>
                     </div>
 			
 
