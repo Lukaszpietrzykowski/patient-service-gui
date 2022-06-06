@@ -18,7 +18,7 @@
                     <div class="color-grey mt-2 font-small" >Login</div>
                     <div><input class="input-user" type="text" v-model="login"  placeholder="Login"></div>
                     <div class="color-grey mt-2 font-small" >Hasło</div>
-                    <div><input class="input-user" type="text" v-model="password" placeholder="Hasło"></div>
+                    <div><input class="input-user" type="password" v-model="password" placeholder="Hasło"></div>
                     <div class="color-grey mt-2 font-small" >Uprawnienia</div>
                     <div class="d-flex flex-row justify-content-around mt-1">
                         <div class="align-items-center font-small"><input class="input-user-radio" value="ADMIN" type="radio" v-model="role"> Admin</div>
@@ -31,6 +31,8 @@
                         <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj użytkownika</button>
                         <router-link to="/admin-panel" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót</router-link>
                     </div>
+
+                    <div class="mt-4" style="color:#039060 " id="success"></div>
                 </form>        
         </div>
         </section>
@@ -85,6 +87,7 @@ export default
             axios.post('https://patient-service-api.herokuapp.com/user/add', user)
                 .then(function( response ){
                   console.log(response)
+                  document.getElementById('success').innerHTML = "Dodano użytkownika!"
                 }.bind(this));
         }
     }
