@@ -11,22 +11,22 @@
     <section class="w-100" >
         <div id="dodawaniePacjenta" class="d-flex p-2 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
             <form v-on:submit.prevent="addPatient()" id="adding-patient" class="pt-2 pb-2 p-1 d-flex-row">
-			<h1>Wprowadź dane pacjenta:</h1>
-            <div>Szpital</div>
-            <select @change="getHospitalById(selectedHospital)" v-model="selectedHospital">
+            <h1>Wprowadź dane pacjenta:</h1>
+            <div class="color-grey mt-2 font-small">*Szpital</div>
+            <select @change="getHospitalById(selectedHospital)" v-model="selectedHospital" class="input-user">
               <option :key="hospital.id" v-for="hospital in hospitals" :value="hospital.id" >
               {{hospital.name}}
               </option>
             </select>
-            <div>Oddział</div>
-            <select v-model="newPatient.departmentId">
+            <div class="color-grey mt-2 font-small">*Oddział</div>
+            <select v-model="newPatient.departmentId" class="input-user">
               <option :key="department.id" v-for="department in departments" :value="department.id" >
               {{department.name}}
               </option>
             </select>
             <div class="color-grey mt-2 font-small">Imię</div>
             <div><input v-model="newPatient.firstName" class="input-user" type="text" id="IMIE"></div>
-			<span style="color: red" id="poleImie"></span>
+            <span style="color: red" id="poleImie"></span>
 			
             <div class="color-grey mt-2 font-small">Nazwisko</div>
             <div><input v-model="newPatient.lastName" class="input-user" type="text" id="NAZWISKO"></div>
@@ -57,7 +57,7 @@
             
             <div class="d-flex flex-row-reverse justify-content-around ">
                         <button type="submit" class="btn-add font-small mt-2 p-2 text-decoration-none m-2">Zatwierdź</button>
-                        <button @click="sprawdzImie" v-on:click.prevent class="btn-add font-small m-2 p-2 text-decoration-none mt-2">Sprawdź</button>
+                        <button @click="sprawdz" v-on:click.prevent class="btn-add font-small m-2 p-2 text-decoration-none mt-2">Sprawdź</button>
                         <button @click="wyczysc" class="btn-delete font-small m-2 p-3 text-decoration-none mt-2">Kasuj</button>
                     </div>
 			
@@ -120,17 +120,23 @@ export default {
         document.getElementById("polePriorytet").innerHTML = "";
         this.newPatient = {};
         },
+        sprawdz: function(){
+          this.sprawdzImie();
+          this.sprawdzNazwisko();
+          this.sprawdzDateUrodzenia();
+          this.sprawdzPesel();
+          this.sprawdzPlec();
+          this.sprawdzPriorytet();
+        },
       sprawdzImie: function(){
         const imie=document.getElementById("IMIE").value;
         if(imie=="") document.getElementById("poleImie").innerHTML="Nie wprowadzono imienia";
         else document.getElementById("poleImie").innerHTML = "";
-        this.sprawdzNazwisko();
       },
       sprawdzNazwisko: function(){
         const nazwisko = document.getElementById("NAZWISKO").value;
         if(nazwisko=="") document.getElementById("poleNazwisko").innerHTML="Nie wprowadzono nazwiska";
         else document.getElementById("poleNazwisko").innerHTML = "";
-        this.sprawdzPesel();
       },
       sprawdzPesel: function(){
         const pesel = document.getElementById("PESEL").value;
@@ -148,7 +154,6 @@ export default {
         this.ustawDateUrodzenia();
         this.ustawPlec();
         }
-        this.sprawdzDateUrodzenia();
         return czyPeselPrawidlowy;
       },
       czyZnakiToCyfry: function(){
@@ -227,14 +232,12 @@ export default {
         let month = date.slice(5,7);
         let day = date.slice(8,10);
         if(date) this.ustawWiek(year, month, day);
-        this.sprawdzPlec();
       },
       sprawdzPlec: function(){
         const m = document.getElementById("mezczyzna").checked;
         const k = document.getElementById("kobieta").checked;
         if(!(m || k)) document.getElementById("polePlec").innerHTML = "Proszę wybrać płeć";
         else document.getElementById("polePlec").innerHTML = "";
-        this.sprawdzPriorytet();
       },
       sprawdzPriorytet: function(){
         const n = document.getElementById("niski").checked;
