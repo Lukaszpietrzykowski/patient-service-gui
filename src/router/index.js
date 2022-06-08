@@ -25,57 +25,91 @@ const routes = [
     {
         path: '/hospitals',
         name: 'MainMenu',
-        component: MainMenu
+        component: MainMenu,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/admin-panel',
         name: 'AdminPanel',
-        component: AdminPanel
+        component: AdminPanel,
+        meta: {
+            requiresAuth: true
+        }
+
     },
     {
         path: '/adding-hospital',
         name: 'AdminAddingHospital',
-        component: AdminAddingHospital
+        component: AdminAddingHospital,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/edit-hospital',
         name: 'AdminHospitalEditing',
-        component: AdminHospitalEditing
+        component: AdminHospitalEditing,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/hospitals-management',
         name: 'AdminHospitalsManagement',
-        component: AdminHospitalsManagement
+        component: AdminHospitalsManagement,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/ward-management',
         name: 'AdminWardManagement',
-        component: AdminWardManagement
+        component: AdminWardManagement,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/users-management',
         name: 'AdminUserManagement',
-        component: AdminUsersManagement
+        component: AdminUsersManagement,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/adding-user',
         name: 'AddingUser',
-        component: AddingUser
+        component: AddingUser,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/user-editing',
         name: 'UserEditing',
-        component: UserEditing
+        component: UserEditing,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/adding-patient',
         name: 'AddingPatient',
-        component: AddingPatient
+        component: AddingPatient,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/patients',
         name: 'PatientSearching',
-        component: PatientSearching
+        component: PatientSearching,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/',

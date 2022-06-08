@@ -177,6 +177,7 @@ export default {
           .then(response => {
             if (response.status === 200)
               localStorage.removeItem('userRole')
+              localStorage.removeItem('loggedIn')
               this.$router.push({path: '/'})
           })
     }
