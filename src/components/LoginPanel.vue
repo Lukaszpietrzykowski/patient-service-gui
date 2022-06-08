@@ -39,12 +39,12 @@ export default {
   methods: {
 
     getUserData() {
-      axios.get(`https://patient-service-api.herokuapp.com/user`)
+      axios.get(`https://patient-service-api.herokuapp.com/user/details/?login=${this.email}`)
           .then(response => {
             this.users = response.data
             console.log(response.data)
-            if (response.status === 200 && response.data.length > 0) {
-              localStorage.setItem('user-info', JSON.stringify(response.data))
+            if (response.status === 200) {
+              localStorage.setItem('userRole', response.data.role)
             }
           })
     },
@@ -59,22 +59,15 @@ export default {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         }
-      })
-          .then(response => {
+      }).then(response => {
             console.log(response.status)
                 if (response.status === 200) {
                   // this.getUserData();
                   this.$router.push({path: '/hospitals'})
+                  this.getUserData();
                 }
               }
           )
-    },
-    mounted() {
-
-      let user = localStorage.getItem('user-info')
-      if (user) {
-        this.$router.push({name: "MainMenu"})
-      }
     }
   }
 
