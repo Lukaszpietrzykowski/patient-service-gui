@@ -9,7 +9,7 @@
 
     <section class="w-100" >
         <div class="d-flex p-1 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
-                <form class="pt-2 pb-2 p-1 w-100 d-flex-row">
+                <form v-on:submit.prevent="" class="pt-2 pb-2 p-1 w-100 d-flex-row">
                     <div><h1>Wprowadź zmiany danych:</h1></div>
                     <div>
                     <div class="color-grey mt-2 font-small" >Imię</div>
@@ -17,6 +17,7 @@
                     </div>
                     <div class="color-grey mt-2 font-small" >Nazwisko</div>
                     <div><input class="input-user" type="text" name="nazwisko" placeholder="Kowalski"></div>
+                  <span>{{this.user.login}}</span>
                     <div class="color-grey mt-2 font-small" >Hasło</div>
                     <div><input class="input-user" type="text" name="hasło" placeholder="Hasło"></div>
                     <div class="color-grey mt-2 font-small" >Uprawnienia</div>
@@ -27,7 +28,10 @@
                     </div>
                     <div class="d-flex flex-row-reverse justify-content-around ">
                         <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Zapisz zmiany</button>
-                        <button class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót</button>
+                      <router-link class="btn-back font-small mt-2 p-3 text-decoration-none mt-2"
+                                   to="/users-management">
+                        Powrót
+                      </router-link>
                     </div>
                 </form>        
         </div>
@@ -40,3 +44,13 @@
        
 
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      user: {}
+    }
+  },
+}
+</script>
