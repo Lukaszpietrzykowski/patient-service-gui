@@ -1,37 +1,94 @@
 <template>
-<section class="d-flex flex-column flex-lg-row vh-100">
+  <section class="d-flex flex-column flex-lg-row vh-100">
     <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-main">
-        <img class="img-fluid p-lg-1 mw-sm-450" src="../assets/hospital_green.svg">
+      <img class="img-fluid p-lg-1 mw-sm-450" src="../assets/hospital_green.svg">
     </div>
 
     <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-white">
-    <section class="bg-white position-relative d-flex flex-column align-items-center justify-content-center h-100">
+      <section class="bg-white position-relative d-flex flex-column align-items-center justify-content-center h-100">
 
-    <section class="w-100" >
-        <div class="d-flex p-1 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
-                <form class="pt-2 pb-2 p-2 d-flex-row">
-                    <h1>Wprowadź dane szpitala:</h1>
-                    <div>
-                    <div class="color-grey mt-2 font-small" >Nazwa szpitala</div>
-                    <div><input class="input-user" type="text" name="nazwa szpitala" placeholder="Szpital"></div>
-                    </div>
-                    <div class="color-grey mt-2 font-small" >Miejscowość</div>
-                    <div><input class="input-user" type="text" name="miasto" placeholder="Warszawa"></div>
-                    <div class="color-grey mt-2 font-small" >Ulica</div>
-                    <div><input class="input-user" type="text" name="ulica" placeholder="kwiatowa"></div>
-                    <div class="color-grey mt-2 font-small" >Kod pocztowy</div>
-                    <div><input class="input-user" type="text" name="kod pocztowy" placeholder="00-000"></div>
-                    <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
-                        <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj szpital</button>
-                        <button class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót</button>
-                    </div>
-                </form>              
-        </div>
+        <section class="w-100">
+          <div class="d-flex p-1 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
+            <form class="pt-2 pb-2 p-2 d-flex-row" v-on:submit.prevent="submit">
+              <h1>Wprowadź dane szpitala:</h1>
+              <div>
+                <div class="color-grey mt-2 font-small">Nazwa szpitala</div>
+                <div><input class="input-user" type="text" name="nazwa szpitala" v-model="name" placeholder="Szpital">
+                </div>
+              </div>
+              <div class="color-grey mt-2 font-small">Miejscowość</div>
+              <div><input class="input-user" type="text" name="miasto" v-model="address.city" placeholder="Warszawa">
+              </div>
+              <div class="color-grey mt-2 font-small">Ulica</div>
+              <div><input class="input-user" type="text" name="ulica" v-model="address.street" placeholder="Kwiatowa">
+              </div>
+              <div class="color-grey mt-2 font-small">Numer budynku</div>
+              <div><input class="input-user" type="text" name="numer budynku" v-model="address.streetNumber"
+                          placeholder="12a"></div>
+              <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
+                <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj szpital</button>
+                <router-link to="/admin-panel" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót
+                </router-link>
+              </div>
+              <div class="mt-4" style="color:#039060 " id="success"></div>
+            </form>
+          </div>
         </section>
-         
-    </section>
+
+      </section>
     </div>
-</section>            
+  </section>
 
 </template>
 
+<script>
+import axios from 'axios';
+
+
+export default {
+  mounted() {
+    console.log('Component mounted.')
+    axios.get('https://patient-service-api.herokuapp.com/hospital/all')
+        .then(response => {
+
+          this.hospitals = response.data
+          console.log(this.hospitals)
+        })
+  },
+  data() {
+    return {
+      hospitals: [],
+      name: '',
+      address: {
+        city: '',
+        street: '',
+        streetNumber: ''
+      },
+    }
+  },
+//   created() {
+//   // Simple POST request with a JSON body using axios
+//   const user = { email: this.email, login: this.login, password: this.password, role: 'DOCTOR' };
+//   axios.post("https://patient-service-api.herokuapp.com/user/add", user)
+//     .then(response => this.login = response.data.login)
+//     .then(console.log(this.users))
+//     .then(console.log(this.login));
+// }
+
+  methods: {
+
+    submit() {
+      const hospital = {name: this.name, address: this.address};
+      axios.post('https://patient-service-api.herokuapp.com/hospital/add', hospital)
+          .then(function (response) {
+            console.log(response)
+            document.getElementById('success').innerHTML = "Dodano szpital!"
+          }.bind(this));
+    }
+  }
+
+
+}
+
+
+</script>
