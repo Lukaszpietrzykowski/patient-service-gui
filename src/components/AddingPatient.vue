@@ -12,35 +12,39 @@
         <div id="dodawaniePacjenta" class="d-flex p-2 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
             <form v-on:submit.prevent="addPatient()" id="adding-patient" class="pt-2 pb-2 p-1 d-flex-row">
             <h1>Wprowadź dane pacjenta:</h1>
+            
             <div class="color-grey mt-2 font-small">*Szpital</div>
-            <select @change="getHospitalById(selectedHospital)" v-model="selectedHospital" class="input-user">
+            <div><select @change="getHospitalById(selectedHospital)" v-model="selectedHospital" class="input-user" id="SZPITAL">
               <option :key="hospital.id" v-for="hospital in hospitals" :value="hospital.id" >
               {{hospital.name}}
               </option>
-            </select>
+            </select></div>
+            <span style="color: red" id="poleSzpital"></span>
+
             <div class="color-grey mt-2 font-small">*Oddział</div>
-            <select v-model="newPatient.departmentId" class="input-user">
+            <div><select v-model="newPatient.departmentId" class="input-user" id="ODDZIAL">
               <option :key="department.id" v-for="department in departments" :value="department.id" >
               {{department.name}}
               </option>
-            </select>
+            </select></div>
+            <span style="color: red" id="poleOddzial"></span>
+
             <div class="color-grey mt-2 font-small">Imię</div>
             <div><input v-model="newPatient.firstName" class="input-user" type="text" id="IMIE"></div>
-            <span style="color: red" id="poleImie"></span>
 			
             <div class="color-grey mt-2 font-small">Nazwisko</div>
             <div><input v-model="newPatient.lastName" class="input-user" type="text" id="NAZWISKO"></div>
-            <span style="color: red" id="poleNazwisko"></span>
 
             <div class="color-grey mt-2 font-small">Numer PESEL</div>
             <div><input v-model="newPatient.pesel" class="input-user" id="PESEL" type="text" size="11"></div>
-            <span style="color: red" id="polePesel"></span>
+            <span style="color: green" id="polePesel"></span>
 			
             <div class="color-grey mt-2 font-small">Data urodzenia</div>
             <div><input v-model="newPatient.birthDate" class="input-user" type="date" id="DATURO" max=""></div>
 			
             <div class="color-grey mt-2 font-small">*Wiek</div>
-            <div><input v-model="newPatient.age" class="input-user" type="number" id="WIEK" min="0" max="130" required></div>
+            <div><input v-model="newPatient.age" class="input-user" type="number" id="WIEK" min="0" max="130"></div>
+            <span style="color: red" id="poleWiek"></span>
 			
             <div class="color-grey mt-2 font-small">*Płeć</div>
             <div class="d-flex flex-row justify-content-around mt-1">
@@ -72,6 +76,8 @@
 </template>
 
 <script>
+//isDisabled do poprawienia
+//jak 
 import axios from 'axios';
 export default {
     el: '#dodawaniePacjenta',
@@ -82,6 +88,13 @@ export default {
         hospitals: [],
         selectedHospital: "",
         departments: [],
+        validation: {
+          isDepartmentIdOk: false, 
+          isAgeOk: false,
+          isPESELOk: false, //tutaj coś nie działa
+          isGenderOk: false,
+          isPriorityOk: false,
+        },
         newPatient: {
         firstName: "",
          lastName: "",
@@ -90,8 +103,8 @@ export default {
          age: "",
          gender: "",
          priority: "",
-         departmentId: "",
-},
+         departmentId: ""
+         },
       }
     },
     methods: {
@@ -105,11 +118,23 @@ export default {
     })
       },
       addPatient: function(){
+        //let validation = this.isValidationOk()
+        //if(validation)
+        //{
+        //}
         axios.post('https://patient-service-api.herokuapp.com/patient/add',this.newPatient)
         .then(response=>{
           if (response.status==200) this.$router.push({path: "/patients"}) 
           this.newPatient = {};
           })
+      },
+      isValidationOk: function(){
+        if(this.validation.isAgeOk == false) return false;
+        if(this.validation.isGenderOk == false) return false;
+        if(this.validation.isPESELOk == false) return false;
+        if(this.validation.isPriorityOk == false) return false;
+        if(this.validation.isDepartmentIdOk == false) return false;
+        return true;
       },
         wyczysc: function(){
         document.getElementById("adding-patient").reset();
@@ -119,42 +144,48 @@ export default {
         document.getElementById("polePlec").innerHTML = "";
         document.getElementById("polePriorytet").innerHTML = "";
         this.newPatient = {};
+        this.validation = {};
         },
         sprawdz: function(){
-          this.sprawdzImie();
-          this.sprawdzNazwisko();
           this.sprawdzDateUrodzenia();
           this.sprawdzPesel();
           this.sprawdzPlec();
           this.sprawdzPriorytet();
+          this.sprawdzWiek();
+          this.sprawdzSzpital();
+          this.sprawdzOddzial();
         },
-      sprawdzImie: function(){
-        const imie=document.getElementById("IMIE").value;
-        if(imie=="") document.getElementById("poleImie").innerHTML="Nie wprowadzono imienia";
-        else document.getElementById("poleImie").innerHTML = "";
-      },
-      sprawdzNazwisko: function(){
-        const nazwisko = document.getElementById("NAZWISKO").value;
-        if(nazwisko=="") document.getElementById("poleNazwisko").innerHTML="Nie wprowadzono nazwiska";
-        else document.getElementById("poleNazwisko").innerHTML = "";
-      },
       sprawdzPesel: function(){
         const pesel = document.getElementById("PESEL").value;
-        let czyPeselPrawidlowy = false;
         let czyZnakiToCyfry = this.czyZnakiToCyfry();
         let czySumaKontrolna = this.czySumaKontrolna();
-        if(pesel == "") document.getElementById("polePesel").innerHTML="Nie wprowadzono numeru PESEL";
+        if(pesel == "") 
+        {
+          this.validation.isPESELOk = true;
+          document.getElementById("polePesel").innerHTML="Nie wprowadzono numeru PESEL";
+        }
         else if(pesel.length != 11) 
-        document.getElementById("polePesel").innerHTML="Wprowadz 11 cyfr";
-        else if(!czyZnakiToCyfry) document.getElementById("polePesel").innerHTML="Wprowadzono znak inny niż cyfra";
-        else if(!czySumaKontrolna) document.getElementById("polePesel").innerHTML="Suma kontrolna jest nieprawidłowa";
-        else{
-        czyPeselPrawidlowy = true;
+        {
+          document.getElementById("polePesel").innerHTML="Wprowadz 11 cyfr";
+          this.validation.isPESELOk = false;
+        }
+        else if(!czyZnakiToCyfry) 
+        {
+          document.getElementById("polePesel").innerHTML="Wprowadzono znak inny niż cyfra";
+          this.validation.isPESELOk = false;
+        }
+        else if(!czySumaKontrolna) 
+        {
+          this.validation.isPESELOk = true;
+          document.getElementById("polePesel").innerHTML="Suma kontrolna jest nieprawidłowa";
+        }
+        else
+        {
+        this.validation.isPESELOk = true;
         document.getElementById("polePesel").innerHTML="";
         this.ustawDateUrodzenia();
         this.ustawPlec();
         }
-        return czyPeselPrawidlowy;
       },
       czyZnakiToCyfry: function(){
         const pesel = document.getElementById("PESEL").value;
@@ -233,17 +264,58 @@ export default {
         let day = date.slice(8,10);
         if(date) this.ustawWiek(year, month, day);
       },
+      sprawdzWiek: function(){
+        let age = document.getElementById("WIEK").value;
+        if(age>=0 && age<130) this.validation.isAgeOk = true;
+        else this.validation.isAgeOk = false;
+        if(!age) document.getElementById("poleWiek").innerHTML = "Proszę wprowadzić wiek";
+        else document.getElementById("poleWiek").innerHTML = "";
+      },
       sprawdzPlec: function(){
         const m = document.getElementById("mezczyzna").checked;
         const k = document.getElementById("kobieta").checked;
-        if(!(m || k)) document.getElementById("polePlec").innerHTML = "Proszę wybrać płeć";
-        else document.getElementById("polePlec").innerHTML = "";
+        if(!(m || k))
+        {
+          this.validation.isGenderOk = false;
+          document.getElementById("polePlec").innerHTML = "Proszę wybrać płeć";
+        }
+        else 
+        {
+          this.validation.isGenderOk = true;
+          document.getElementById("polePlec").innerHTML = "";
+        }
       },
       sprawdzPriorytet: function(){
         const n = document.getElementById("niski").checked;
         const w = document.getElementById("wysoki").checked;
-        if(!(n||w)) document.getElementById("polePriorytet").innerHTML = "Proszę wybrać priorytet";
-        else document.getElementById("polePriorytet").innerHTML = "";
+        if(!(n||w)) 
+        {
+          this.validation.isPriorityOk = false;
+          document.getElementById("polePriorytet").innerHTML = "Proszę wybrać priorytet";
+        }
+        else 
+        {
+          this.validation.isPriorityOk = true;
+          document.getElementById("polePriorytet").innerHTML = "";
+        }
+      },
+      sprawdzSzpital: function(){
+        let hospital = document.getElementById("SZPITAL").value;
+        if(!hospital) document.getElementById("poleSzpital").innerHTML = "Proszę wybrać szpital";
+        else document.getElementById("poleSzpital").innerHTML = "";
+      },
+      sprawdzOddzial: function(){
+        let department = document.getElementById("ODDZIAL").value;
+        if(!department) 
+        {
+          this.validation.isDepartmentIdOk = false;
+          document.getElementById("poleOddzial").innerHTML = "Proszę wybrać oddział";
+        }
+        else 
+        {
+          this.validation.isDepartmentIdOk = true;
+          document.getElementById("poleOddzial").innerHTML = "";
+        }
       }
     },
   mounted() {
