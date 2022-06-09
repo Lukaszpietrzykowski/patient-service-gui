@@ -14,6 +14,13 @@
             </form>
         </header>
 
+        <div class="d-flex flex-column justify-content-center menu-logout">
+                    <a href="" class="bg-white-transparent border-round mt-2">
+                        <svg class="logout-btn" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M160 48C160 21.49 181.5 0 208 0C234.5 0 256 21.49 256 48C256 74.51 234.5 96 208 96C181.5 96 160 74.51 160 48V48zM112.7 205.4C97.41 212.2 85.42 224.6 79.22 240.1L77.71 243.9C71.15 260.3 52.53 268.3 36.12 261.7C19.71 255.1 11.73 236.5 18.29 220.1L19.8 216.3C32.19 185.4 56.18 160.5 86.66 146.9L97.66 142C118.5 132.8 140.1 128 163.7 128C208.3 128 248.5 154.8 265.6 195.9L280.1 232.7L302.3 243.4C318.1 251.3 324.5 270.5 316.6 286.3C308.7 302.1 289.5 308.5 273.7 300.6L247 287.3C236.7 282.1 228.6 273.4 224.2 262.8L214.6 239.8L195.3 305.3L244.8 359.4C250.2 365.3 254.1 372.4 256 380.2L279 472.2C283.3 489.4 272.9 506.8 255.8 511C238.6 515.3 221.2 504.9 216.1 487.8L194.9 399.6L124.3 322.5C109.5 306.4 103.1 283.9 109.6 262.8L126.5 199.3C125.6 199.7 124.6 200.1 123.7 200.5L112.7 205.4zM100.7 344.2L141.4 388.6L126.9 424.8C124.5 430.9 120.9 436.4 116.3 440.9L54.63 502.6C42.13 515.1 21.87 515.1 9.372 502.6C-3.124 490.1-3.124 469.9 9.372 457.4L68.73 398L93.69 335.6C95.84 338.6 98.17 341.4 100.7 344.2H100.7zM630.6 233.4C643.1 245.9 643.1 266.1 630.6 278.6L550.6 358.6C538.1 371.1 517.9 371.1 505.4 358.6C492.9 346.1 492.9 325.9 505.4 313.4L530.7 288H384C366.3 288 352 273.7 352 256C352 238.3 366.3 224 384 224H530.7L505.4 198.6C492.9 186.1 492.9 165.9 505.4 153.4C517.9 140.9 538.1 140.9 550.6 153.4L630.6 233.4z"/></svg>
+                    </a>
+                    <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 9px; letter-spacing: 0.5px">Wyloguj</h2>
+        </div>
+
         <section class="my-5 w-75" v-if="patients?.length && patients">
             <div v-for="patient in filteredList" v-bind:key="patient.firstName"
                 class="d-flex p-4 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
@@ -30,7 +37,7 @@
 
 
                             </div>
-                            <div class="p-2 w-100 patient-name">{{patient.firstName}}</div>
+                            <div class="p-2 w-100 patient-name">{{convertFirstName(patient.firstName)}}</div>
                         </div>
 
 
@@ -43,7 +50,7 @@
                                 </svg>
                                 <p class="m-0" style="color:#626466">Nazwisko</p>
                             </div>
-                            <div class="p-2 w-100 patient-name">{{patient.lastName}}</div>
+                            <div class="p-2 w-100 patient-name">{{convertLastName(patient.lastName)}}</div>
 
                         </div>
                         <div class="w-100 my-2">
@@ -55,7 +62,7 @@
                                 </svg>
                                 <p class="m-0" style="color:#626466">Pesel</p>
                             </div>
-                            <div class="p-2 w-100 patient-name">{{patient.pesel}}</div>
+                            <div class="p-2 w-100 patient-name">{{convertPESEL(patient.pesel)}}</div>
 
                         </div>
                         <div class="w-100 my-2">
@@ -67,7 +74,7 @@
                                 </svg>
                                 <p class="m-0" style="color:#626466">Data urodzenia</p>
                             </div>
-                            <div class="p-2 w-100 patient-name">{{patient.birthDate}}</div>
+                            <div class="p-2 w-100 patient-name">{{convertDate(patient.birthDate)}}</div>
 
                         </div>
                         <div class="w-100 my-2">
@@ -79,17 +86,22 @@
                                 </svg>
                                 <p class="m-0" style="color:#626466">Płeć</p>
                             </div>
-                            <div class="p-2 w-100 patient-name">{{patient.gender}}</div>
+                            <div class="p-2 w-100 patient-name">{{convertGender(patient.gender)}}</div>
 
                         </div>
-                        <div class="w-10 my-2">
-                            <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
-                                style="gap:0.6rem">
-                               <span v-on:click="removePatient(patient.id)">
-                               <svg class="menu-admin-form-button" fill="#801212" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM616 200h-144C458.8 200 448 210.8 448 224s10.75 24 24 24h144C629.3 248 640 237.3 640 224S629.3 200 616 200z"/></svg>
-                               </span>
+                        <div class="d-flex flex-column p-1">
+                            <div v-on:click="updatePatient(patient.id)" class="d-flex flex-column justify-content-center action-button">
+                               <span class="bg-transparent mt-2">
+                                    <svg class="menu-admin-form-button" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M223.1 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 223.1 256zM274.7 304H173.3C77.61 304 0 381.7 0 477.4C0 496.5 15.52 512 34.66 512h286.4c-1.246-5.531-1.43-11.31-.2832-17.04l14.28-71.41c1.943-9.723 6.676-18.56 13.68-25.56l45.72-45.72C363.3 322.4 321.2 304 274.7 304zM371.4 420.6c-2.514 2.512-4.227 5.715-4.924 9.203l-14.28 71.41c-1.258 6.289 4.293 11.84 10.59 10.59l71.42-14.29c3.482-.6992 6.682-2.406 9.195-4.922l125.3-125.3l-72.01-72.01L371.4 420.6zM629.5 255.7l-21.1-21.11c-14.06-14.06-36.85-14.06-50.91 0l-38.13 38.14l72.01 72.01l38.13-38.13C643.5 292.5 643.5 269.7 629.5 255.7z"/></svg>
+                                </span>
+                              <h2 class="font-small color:#626466 font-weight-normal text-center" style="font-size: 0.75rem; letter-spacing: 0.5px">Edytuj użytkownika</h2>
                             </div>
-
+                            <div class="d-flex flex-column justify-content-center">
+                                <span v-on:click="removePatient(patient.id)" class="bg-transparent mt-2 action-button">
+                                    <svg class="menu-admin-form-button" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM616 200h-144C458.8 200 448 210.8 448 224s10.75 24 24 24h144C629.3 248 640 237.3 640 224S629.3 200 616 200z"/></svg>
+                                </span>
+                                <h2 class="font-small color:#626466 font-weight-normal text-center " style="font-size: 0.75rem; letter-spacing: 0.5px">Usuń użytkownika</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,6 +159,26 @@
         }
       },
       methods: {
+        convertFirstName(f){
+            if(f!="") return f
+            return  "brak danych"
+        },
+        convertLastName(l){
+            if(l!="") return l
+            return "brak danych"
+        },
+        convertPESEL(p){
+            if(p!="") return p
+            return "brak danych"
+        },
+        convertGender(g) {
+            if(g=="FEMALE") return "Kobieta";
+            return "Mężczyzna";
+        },
+        convertDate(fullDate){
+            if(fullDate != null) return fullDate.substring(0,10)
+            return "brak danych"
+        },
         getAllPatients() {
           axios.get('https://patient-service-api.herokuapp.com/patient')
               .then((response) => {

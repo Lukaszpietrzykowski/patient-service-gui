@@ -11,7 +11,7 @@
     <section class="w-100" >
         <div id="dodawaniePacjenta" class="d-flex p-2 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
             <form v-on:submit.prevent="addPatient()" id="adding-patient" class="pt-2 pb-2 p-1 d-flex-row">
-            <h1>Wprowadź dane pacjenta:</h1>
+            <h1>Edytuj dane pacjenta:</h1>
             
             <div class="color-grey mt-2 font-small">*Szpital</div>
             <div><select @change="getHospitalById(selectedHospital)" v-model="selectedHospital" class="input-user" id="SZPITAL">

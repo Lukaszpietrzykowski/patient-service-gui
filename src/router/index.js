@@ -13,7 +13,8 @@ import AddingUser from '../components/AddingUser.vue'
 import AdminWardManagement from '../components/AdminWardManagement.vue'
 import UserEditing from '../components/UserEditing.vue'
 import AdminHospitalEditing from '../components/AdminHospitalEditing.vue'
-// import '../'
+import EditingPatient from '../components/EditingPatient.vue'
+
 
 
 const routes = [
@@ -99,6 +100,14 @@ const routes = [
         path: '/adding-patient',
         name: 'AddingPatient',
         component: AddingPatient,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/editing-patient',
+        name: 'EditingPatient',
+        component: EditingPatient,
         meta: {
             requiresAuth: true
         }
