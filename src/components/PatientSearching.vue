@@ -137,50 +137,45 @@
 </template>
 
 <script>
-    // import {ref} from "vue";
-    // let search = document.getElementById('search')
 
     import axios from 'axios';
-    // import cors from 'cors';
-    // import app from 'vue';
     export default {
-        data() {
-            return {
-                patients: [],
-                search: "",
-            }
-        },
-        methods: {
-            getAllPatients(){
-                axios.get('https://patient-service-api.herokuapp.com/patient')
-                .then((response) => {
-                this.patients = response.data
-            })
-            },
-            removePatient(patientId){
-                axios.delete(`https://patient-service-api.herkouapp.com/patient/delete/${patientId}`)
-                .then(response => {
-                if (response.status == 200) 
-                {
-                    this.getAllPatients()
-                }
-            })
-    },
-},
-        mounted() {
-            axios.get('https://patient-service-api.herokuapp.com/patient')
-                .then(response => {
-                    this.patients = response.data
-                })
-                
-            },
-
-        computed: {
-            filteredList() {
-                return this.patients.filter(patient => {
-                    return patient.firstName.toLowerCase().includes(this.search.toLowerCase())
-                })
-            }
+      data() {
+        return {
+          patients: [],
+          search: "",
         }
+      },
+      methods: {
+        getAllPatients() {
+          axios.get('https://patient-service-api.herokuapp.com/patient')
+              .then((response) => {
+                this.patients = response.data
+              })
+        },
+        removePatient(patientId) {
+          axios.delete(`https://patient-service-api.herokuapp.com/patient/delete/${patientId}`)
+              .then(response => {
+                if (response.status == 200) {
+                  this.getAllPatients()
+                }
+              })
+        },
+      },
+      mounted() {
+        axios.get('https://patient-service-api.herokuapp.com/patient')
+            .then(response => {
+              this.patients = response.data
+            })
+
+      },
+
+      computed: {
+        filteredList() {
+          return this.patients.filter(patient => {
+            return patient.firstName.toLowerCase().includes(this.search.toLowerCase())
+          })
+        }
+      }
     }
 </script>
