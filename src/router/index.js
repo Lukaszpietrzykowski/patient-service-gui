@@ -105,7 +105,7 @@ const routes = [
         }
     },
     {
-        path: '/editing-patient',
+        path: '/editing-patient/:id',
         name: 'EditingPatient',
         component: EditingPatient,
         meta: {

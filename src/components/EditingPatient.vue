@@ -10,11 +10,11 @@
 
     <section class="w-100" >
         <div id="dodawaniePacjenta" class="d-flex p-2 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
-            <form v-on:submit.prevent="addPatient()" id="adding-patient" class="pt-2 pb-2 p-1 d-flex-row">
+            <form v-on:submit.prevent="updatePatient()" id="adding-patient" class="pt-2 pb-2 p-1 d-flex-row">
             <h1>Edytuj dane pacjenta:</h1>
             
             <div class="color-grey mt-2 font-small">*Szpital</div>
-            <div><select @change="getHospitalById(selectedHospital)" v-model="selectedHospital" class="input-user" id="SZPITAL">
+            <div><select @change="getHospitalById(oldPatient.hospitalId)" v-model="oldPatient.hospitalId" class="input-user" id="SZPITAL">
               <option :key="hospital.id" v-for="hospital in hospitals" :value="hospital.id" >
               {{hospital.name}}
               </option>
@@ -22,7 +22,7 @@
             <span style="color: red" id="poleSzpital"></span>
 
             <div class="color-grey mt-2 font-small">*Oddział</div>
-            <div><select v-model="newPatient.departmentId" class="input-user" id="ODDZIAL">
+            <div><select v-model="oldPatient.departmentId" class="input-user" id="ODDZIAL">
               <option :key="department.id" v-for="department in departments" :value="department.id" >
               {{department.name}}
               </option>
@@ -30,32 +30,32 @@
             <span style="color: red" id="poleOddzial"></span>
 
             <div class="color-grey mt-2 font-small">Imię</div>
-            <div><input v-model="newPatient.firstName" class="input-user" type="text" id="IMIE"></div>
+            <div><input v-model="oldPatient.firstName" class="input-user" type="text" id="IMIE"></div>
 			
             <div class="color-grey mt-2 font-small">Nazwisko</div>
-            <div><input v-model="newPatient.lastName" class="input-user" type="text" id="NAZWISKO"></div>
+            <div><input v-model="oldPatient.lastName" class="input-user" type="text" id="NAZWISKO"></div>
 
             <div class="color-grey mt-2 font-small">Numer PESEL</div>
-            <div><input v-model="newPatient.pesel" class="input-user" id="PESEL" type="text" size="11"></div>
+            <div><input v-model="oldPatient.pesel" class="input-user" id="PESEL" type="text" size="11"></div>
             <span style="color: green" id="polePesel"></span>
 			
             <div class="color-grey mt-2 font-small">Data urodzenia</div>
-            <div><input v-model="newPatient.birthDate" class="input-user" type="date" id="DATURO" max=""></div>
+            <div><input v-model="oldPatient.birthDate" class="input-user" type="date" id="DATURO" max=""></div>
 			
             <div class="color-grey mt-2 font-small">*Wiek</div>
-            <div><input v-model="newPatient.age" class="input-user" type="number" id="WIEK" min="0" max="130"></div>
+            <div><input v-model="oldPatient.age" class="input-user" type="number" id="WIEK" min="0" max="130"></div>
             <span style="color: red" id="poleWiek"></span>
 			
             <div class="color-grey mt-2 font-small">*Płeć</div>
             <div class="d-flex flex-row justify-content-around mt-1">
-            <label for="kobieta"><input v-model="newPatient.gender" v-bind:value="'FEMALE'" class="input-user-radio2" type="radio" name="plec" id="kobieta"> Kobieta</label>
-            <label for="mezczyzna"><input v-model="newPatient.gender" v-bind:value="'MALE'" class="input-user-radio2" type="radio" name="plec" id="mezczyzna"> Mężczyzna</label></div>
+            <label for="kobieta"><input v-model="oldPatient.gender" v-bind:value="'FEMALE'" class="input-user-radio2" type="radio" name="plec" id="kobieta"> Kobieta</label>
+            <label for="mezczyzna"><input v-model="oldPatient.gender" v-bind:value="'MALE'" class="input-user-radio2" type="radio" name="plec" id="mezczyzna"> Mężczyzna</label></div>
             <span style="color: red" id="polePlec"></span>
 
 			<div class="color-grey mt-2 font-small">*Priorytet</div>
             <div class="d-flex flex-row justify-content-around mt-1">
-            <label for="niski"> <input v-model="newPatient.priority" v-bind:value="'LOW'" class="input-user-radio2" type="radio" name="priorytet" id="niski"> Niski</label>
-            <label for="wysoki"><input v-model="newPatient.priority" v-bind:value="'HIGH'" class="input-user-radio2" type="radio" name="priorytet" id="wysoki"> Wysoki</label></div>
+            <label for="niski"> <input v-model="oldPatient.priority" v-bind:value="'LOW'" class="input-user-radio2" type="radio" name="priorytet" id="niski"> Niski</label>
+            <label for="wysoki"><input v-model="oldPatient.priority" v-bind:value="'HIGH'" class="input-user-radio2" type="radio" name="priorytet" id="wysoki"> Wysoki</label></div>
             <span style="color: red" id="polePriorytet"></span>
             
             
@@ -117,12 +117,13 @@ export default {
       this.errors.push(e)
     })
       },
-      addPatient: function(){
+      updatePatient: function(){
         this.sprawdz();
         let validation = this.isValidationOk();
         if(this.newPatient.birthDate.slice(10)!="T00:00:00" && this.newPatient.birthDate!="") this.newPatient.birthDate = this.newPatient.birthDate + "T00:00:00";
         if(validation)
         {
+          //axios.put(`https://patient-service-api.herokuapp.com/patient/update/${this.patientId}`, this.newPatient) jak dla mnie było dobrze, ale coś zepsułem i nie wyświetlają sie teraz pacjenci
           axios.post('https://patient-service-api.herokuapp.com/patient/add',this.newPatient)
           .then(response=>{
           if (response.status==200) this.$router.push({path: "/patients"}) 
@@ -318,20 +319,41 @@ export default {
           this.validation.isDepartmentIdOk = true;
           document.getElementById("poleOddzial").innerHTML = "";
         }
+      },
+      getHospitalData: function(){
+      axios.get('https://patient-service-api.herokuapp.com/hospital/all')
+      .then(response => {
+        this.hospitals = response.data
+      })
+      .catch(e => {
+      this.errors.push(e)
+      })
+      },
+      getPatientData: function(patientId){
+      axios.get(`https://patient-service-api.herokuapp.com/patient/${patientId}`)
+      .then(response => {
+      if(response.status === 200) {
+        this.oldPatient = response.data
+        this.oldPatient.birthDate = this.oldPatient.birthDate.split("T")[0]
+        
+        //this.newPatient.firstName = this.oldPatient.firstName;
+        //this.newPatient.lastName = this.oldPatient.lastName;
+        //this.newPatient.pesel = this.oldPatient.pesel;
+        //this.newPatient.birthDate = this.oldPatient.birthDate;
+        //this.newPatient.age = this.oldPatient.age;
+        //this.newPatient.gender = this.oldPatient.gender;
+        //this.newPatient.priority= this.oldPatient.priority;
+        //this.newPatient.departmentId = this.oldPatient.departmentId;
       }
+      })
+      },
     },
     created() {
     this.patientId = this.$route.params.id
   },
   mounted() {
-  axios.get('https://patient-service-api.herokuapp.com/hospital/all')
-    .then(response => {
-      this.hospitals = response.data
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
-    
+  this.getHospitalData()
+  this.getPatientData(this.patientId)
 },
 
 }
