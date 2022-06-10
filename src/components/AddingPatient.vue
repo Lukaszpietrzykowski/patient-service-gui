@@ -1,78 +1,91 @@
 <template>
-
-<section class="d-flex flex-column flex-lg-row vh-100">
+  <section class="d-flex flex-column flex-lg-row vh-100">
     <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-main">
-        <img class="img-fluid p-lg-1 mw-sm-450" src="../assets/adding-patient-form-graphic.svg">
+      <img class="img-fluid p-lg-1 mw-sm-450" src="../assets/adding-patient-form-graphic.svg">
     </div>
 
     <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-white">
-    <section class="bg-white position-relative d-flex flex-column align-items-center justify-content-center h-100">
-
-    <section class="w-100" >
-        <div id="dodawaniePacjenta" class="d-flex p-2 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
+      <section class="bg-white position-relative d-flex flex-column align-items-center justify-content-center h-100">
+        <section class="w-100" >
+          <div id="dodawaniePacjenta" class="d-flex p-1 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
             <form v-on:submit.prevent="addPatient()" id="adding-patient" class="pt-2 pb-2 p-1 d-flex-row">
-            <h1>Wprowadź dane pacjenta:</h1>
-            
-            <div class="color-grey mt-2 font-small">*Szpital</div>
-            <div><select @change="getHospitalById(selectedHospital)" v-model="selectedHospital" class="input-user" id="SZPITAL">
-              <option :key="hospital.id" v-for="hospital in hospitals" :value="hospital.id" >
-              {{hospital.name}}
-              </option>
-            </select></div>
-            <span style="color: red" id="poleSzpital"></span>
+              <h1>Wprowadź dane pacjenta:</h1>
+              <div class="color-grey mt-2 font-small">*Szpital</div>
+              <div>
+                <select @change="getHospitalById(selectedHospital)" v-model="selectedHospital" class="input-user" id="SZPITAL">
+                  <option :key="hospital.id" v-for="hospital in hospitals" :value="hospital.id" >{{hospital.name}}</option>
+                </select>
+              </div>
+              <span style="color: red" id="poleSzpital"></span>
 
-            <div class="color-grey mt-2 font-small">*Oddział</div>
-            <div><select v-model="newPatient.departmentId" class="input-user" id="ODDZIAL">
-              <option :key="department.id" v-for="department in departments" :value="department.id" >
-              {{department.name}}
-              </option>
-            </select></div>
-            <span style="color: red" id="poleOddzial"></span>
+              <div class="color-grey mt-2 font-small">*Oddział</div>
+              <div>
+                <select v-model="newPatient.departmentId" class="input-user" id="ODDZIAL">
+                  <option :key="department.id" v-for="department in departments" :value="department.id" >{{department.name}}</option>
+                </select>
+              </div>
+              <span style="color: red" id="poleOddzial"></span>
 
-            <div class="color-grey mt-2 font-small">Imię</div>
-            <div><input v-model="newPatient.firstName" class="input-user" type="text" id="IMIE"></div>
-			
-            <div class="color-grey mt-2 font-small">Nazwisko</div>
-            <div><input v-model="newPatient.lastName" class="input-user" type="text" id="NAZWISKO"></div>
+              <div class="color-grey mt-2 font-small">Imię</div>
+              <div>
+                <input v-model="newPatient.firstName" class="input-user" type="text" id="IMIE">
+              </div>
 
-            <div class="color-grey mt-2 font-small">Numer PESEL</div>
-            <div><input v-model="newPatient.pesel" class="input-user" id="PESEL" type="text" size="11"></div>
-            <span style="color: green" id="polePesel"></span>
-			
-            <div class="color-grey mt-2 font-small">Data urodzenia</div>
-            <div><input v-model="newPatient.birthDate" class="input-user" type="date" id="DATURO" max=""></div>
-			
-            <div class="color-grey mt-2 font-small">*Wiek</div>
-            <div><input v-model="newPatient.age" class="input-user" type="number" id="WIEK" min="0" max="130"></div>
-            <span style="color: red" id="poleWiek"></span>
-			
-            <div class="color-grey mt-2 font-small">*Płeć</div>
-            <div class="d-flex flex-row justify-content-around mt-1">
-            <label for="kobieta"><input v-model="newPatient.gender" v-bind:value="'FEMALE'" class="input-user-radio2" type="radio" name="plec" id="kobieta"> Kobieta</label>
-            <label for="mezczyzna"><input v-model="newPatient.gender" v-bind:value="'MALE'" class="input-user-radio2" type="radio" name="plec" id="mezczyzna"> Mężczyzna</label></div>
-            <span style="color: red" id="polePlec"></span>
+              <div class="color-grey mt-2 font-small">Nazwisko</div>
+              <div>
+                <input v-model="newPatient.lastName" class="input-user" type="text" id="NAZWISKO">
+              </div>
 
-			<div class="color-grey mt-2 font-small">*Priorytet</div>
-            <div class="d-flex flex-row justify-content-around mt-1">
-            <label for="niski"> <input v-model="newPatient.priority" v-bind:value="'LOW'" class="input-user-radio2" type="radio" name="priorytet" id="niski"> Niski</label>
-            <label for="wysoki"><input v-model="newPatient.priority" v-bind:value="'HIGH'" class="input-user-radio2" type="radio" name="priorytet" id="wysoki"> Wysoki</label></div>
-            <span style="color: red" id="polePriorytet"></span>
-            
-            
-            <div class="d-flex flex-row-reverse justify-content-around ">
-                        <button type="submit" class="btn-add font-small mt-2 p-2 text-decoration-none m-2">Zatwierdź</button>
-                        <button @click="sprawdz" v-on:click.prevent class="btn-add font-small m-2 p-2 text-decoration-none mt-2">Sprawdź</button>
-                        <button @click="wyczysc" class="btn-delete font-small m-2 p-3 text-decoration-none mt-2">Kasuj</button>
-                    </div>
-			
+              <div class="color-grey mt-2 font-small">Numer PESEL</div>
+              <div>
+                <input v-model="newPatient.pesel" class="input-user" id="PESEL" type="text" size="11">
+              </div>
+              <span style="color: green" id="polePesel"></span>
 
-		</form>        
-        </div>
+              <div class="color-grey mt-2 font-small">Data urodzenia</div>
+              <div>
+                <input v-model="newPatient.birthDate" class="input-user" type="date" id="DATURO" max="">
+              </div>
+
+              <div class="color-grey mt-2 font-small">*Wiek</div>
+              <div>
+                <input v-model="newPatient.age" class="input-user" type="number" id="WIEK" min="0" max="130">
+              </div>
+              <span style="color: red" id="poleWiek"></span>
+			
+              <div class="color-grey mt-2 font-small">*Płeć</div>
+              <div class="d-flex flex-row justify-content-around mt-1">
+                <label for="kobieta">
+                  <input v-model="newPatient.gender" v-bind:value="'FEMALE'" class="input-user-radio2" type="radio" name="plec" id="kobieta"> Kobieta
+                </label>
+                <label for="mezczyzna">
+                  <input v-model="newPatient.gender" v-bind:value="'MALE'" class="input-user-radio2" type="radio" name="plec" id="mezczyzna"> Mężczyzna
+                </label>
+              </div>
+              <span style="color: red" id="polePlec"></span>
+
+              <div class="color-grey mt-2 font-small">*Priorytet</div>
+              <div class="d-flex flex-row justify-content-around mt-1">
+                <label for="niski">
+                  <input v-model="newPatient.priority" v-bind:value="'LOW'" class="input-user-radio2" type="radio" name="priorytet" id="niski"> Niski
+                </label>
+                <label for="wysoki">
+                  <input v-model="newPatient.priority" v-bind:value="'HIGH'" class="input-user-radio2" type="radio" name="priorytet" id="wysoki"> Wysoki
+                </label>
+              </div>
+              <span style="color: red" id="polePriorytet"></span>
+
+              <div class="d-flex flex-row-reverse justify-content-around ">
+                <button type="submit" class="btn-add font-small mt-2 p-2 text-decoration-none m-2">Zatwierdź</button>
+                <button @click="sprawdz" v-on:click.prevent class="btn-add font-small m-2 p-2 text-decoration-none mt-2">Sprawdź</button>
+                <button @click="wyczysc" class="btn-delete font-small m-2 p-3 text-decoration-none mt-2">Kasuj</button>
+              </div>
+            </form>        
+          </div>
         </section>
-         
-    </section>
+      </section>
     </div>
-</section>
+  </section>
 </template>
 
 <script>
@@ -81,8 +94,8 @@ export default {
     el: '#dodawaniePacjenta',
     data() {
       return {
-        AddingPatient: [],
-        errors: [],
+        //AddingPatient: [],  chyba można usunąć  
+        //errors: [],   chyba można usunąć
         hospitals: [],
         selectedHospital: "",
         departments: [],
@@ -94,38 +107,34 @@ export default {
           isPriorityOk: false,
         },
         newPatient: {
-        firstName: "",
-         lastName: "",
-         pesel: "",
-         birthDate: "",
-         age: "",
-         gender: "",
-         priority: "",
-         departmentId: ""
-         },
+          firstName: "",
+          lastName: "",
+          pesel: "",
+          birthDate: "",
+          age: "",
+          gender: "",
+          priority: "",
+          departmentId: ""
+        },
       }
     },
     methods: {
       getHospitalById: function(selectedHospital){
-      axios.get(`https://patient-service-api.herokuapp.com/hospital/${selectedHospital}`)
-    .then(response => {
-      this.departments = response.data.departments
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+        axios.get(`https://patient-service-api.herokuapp.com/hospital/${selectedHospital}`)
+        .then(response => {
+        this.departments = response.data.departments})
+        .catch(e => {
+        this.errors.push(e)})
       },
       addPatient: function(){
-        this.sprawdz();
-        let validation = this.isValidationOk();
-        if(this.newPatient.birthDate.slice(10)!="T00:00:00" && this.newPatient.birthDate!="") this.newPatient.birthDate = this.newPatient.birthDate + "T00:00:00";
-        if(validation)
-        {
+        this.sprawdz()
+        let validation = this.isValidationOk()
+        if(this.newPatient.birthDate.slice(10)!="T00:00:00" && this.newPatient.birthDate!="") this.newPatient.birthDate = this.newPatient.birthDate + "T00:00:00"
+        if(validation){
           axios.post('https://patient-service-api.herokuapp.com/patient/add',this.newPatient)
           .then(response=>{
-          if (response.status==200) this.$router.push({path: "/patients"}) 
-          this.newPatient = {};
-          })
+            if (response.status==200) this.$router.push({path: "/patients"}) 
+            this.newPatient = {}})
         }
       },
       isValidationOk: function(){
@@ -136,7 +145,7 @@ export default {
         if(this.validation.isDepartmentIdOk == false) return false;
         return true;
       },
-        wyczysc: function(){
+      wyczysc: function(){
         document.getElementById("adding-patient").reset();
         document.getElementById("poleImie").innerHTML = "";
         document.getElementById("poleNazwisko").innerHTML = "";
@@ -145,42 +154,37 @@ export default {
         document.getElementById("polePriorytet").innerHTML = "";
         this.newPatient = {};
         this.validation = {};
-        },
-        sprawdz: function(){
-          this.sprawdzDateUrodzenia();
-          this.sprawdzPesel();
-          this.sprawdzPlec();
-          this.sprawdzPriorytet();
-          this.sprawdzWiek();
-          this.sprawdzSzpital();
-          this.sprawdzOddzial();
-        },
+      },
+      sprawdz: function(){
+        this.sprawdzDateUrodzenia();
+        this.sprawdzPesel();
+        this.sprawdzPlec();
+        this.sprawdzPriorytet();
+        this.sprawdzWiek();
+        this.sprawdzSzpital();
+        this.sprawdzOddzial();
+      },
       sprawdzPesel: function(){
         const pesel = document.getElementById("PESEL").value;
         let czyZnakiToCyfry = this.czyZnakiToCyfry();
         let czySumaKontrolna = this.czySumaKontrolna();
-        if(pesel == "") 
-        {
+        if(pesel == ""){
           this.validation.isPESELOk = true;
           document.getElementById("polePesel").innerHTML="Nie wprowadzono numeru PESEL";
         }
-        else if(pesel.length != 11) 
-        {
+        else if(pesel.length != 11){
           document.getElementById("polePesel").innerHTML="Wprowadz 11 cyfr";
           this.validation.isPESELOk = false;
         }
-        else if(!czyZnakiToCyfry) 
-        {
+        else if(!czyZnakiToCyfry){
           document.getElementById("polePesel").innerHTML="Wprowadzono znak inny niż cyfra";
           this.validation.isPESELOk = false;
         }
-        else if(!czySumaKontrolna) 
-        {
+        else if(!czySumaKontrolna){
           this.validation.isPESELOk = true;
           document.getElementById("polePesel").innerHTML="Suma kontrolna jest nieprawidłowa";
         }
-        else
-        {
+        else{
         this.validation.isPESELOk = true;
         document.getElementById("polePesel").innerHTML="";
         this.ustawDateUrodzenia();
@@ -191,13 +195,12 @@ export default {
         const pesel = document.getElementById("PESEL").value;
         let i = 0;
         let array = new Array();
-        for(i=0; i<11; i++)
-        {
+        for(i=0; i<11; i++){
         array[i] = parseInt(pesel.substring(i,i+1));
         if(isNaN(array[i])) return false;
         }
         return true;
-        },
+      },
       czySumaKontrolna: function(){
         const pesel = document.getElementById("PESEL").value;
         let wagi = [1,3,7,9,1,3,7,9,1,3,1];
@@ -251,8 +254,7 @@ export default {
           document.getElementById("kobieta").checked = true;
           this.newPatient.gender = "FEMALE";
         }
-        else 
-        {
+        else{
           document.getElementById("mezczyzna").checked = true;
           this.newPatient.gender = "MALE";
         }
@@ -274,13 +276,11 @@ export default {
       sprawdzPlec: function(){
         const m = document.getElementById("mezczyzna").checked;
         const k = document.getElementById("kobieta").checked;
-        if(!(m || k))
-        {
+        if(!(m || k)){
           this.validation.isGenderOk = false;
           document.getElementById("polePlec").innerHTML = "Proszę wybrać płeć";
         }
-        else 
-        {
+        else{
           this.validation.isGenderOk = true;
           document.getElementById("polePlec").innerHTML = "";
         }
@@ -288,13 +288,11 @@ export default {
       sprawdzPriorytet: function(){
         const n = document.getElementById("niski").checked;
         const w = document.getElementById("wysoki").checked;
-        if(!(n||w)) 
-        {
+        if(!(n||w)){
           this.validation.isPriorityOk = false;
           document.getElementById("polePriorytet").innerHTML = "Proszę wybrać priorytet";
         }
-        else 
-        {
+        else{
           this.validation.isPriorityOk = true;
           document.getElementById("polePriorytet").innerHTML = "";
         }
@@ -306,26 +304,23 @@ export default {
       },
       sprawdzOddzial: function(){
         let department = document.getElementById("ODDZIAL").value;
-        if(!department) 
-        {
+        if(!department){
           this.validation.isDepartmentIdOk = false;
           document.getElementById("poleOddzial").innerHTML = "Proszę wybrać oddział";
         }
-        else 
-        {
+        else{
           this.validation.isDepartmentIdOk = true;
           document.getElementById("poleOddzial").innerHTML = "";
         }
       }
     },
-  mounted() {
-  axios.get('https://patient-service-api.herokuapp.com/hospital/all')
-    .then(response => {
-      this.hospitals = response.data
-    })
-    .catch(e => {
+    mounted() {
+      axios.get('https://patient-service-api.herokuapp.com/hospital/all')
+      .then(response => {
+      this.hospitals = response.data})
+      .catch(e => {
       this.errors.push(e)
-    })
-},
+      })
+    },
 }
 </script>

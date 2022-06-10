@@ -159,6 +159,10 @@
         }
       },
       methods: {
+
+    updatePatient(id) {
+      this.$router.push({name: 'EditingPatient', params: { id: id }})
+    },
         convertFirstName(f){
             if(f!="") return f
             return  "brak danych"
@@ -193,7 +197,7 @@
                 }
               })
         },
-      },
+        },
       mounted() {
         axios.get('https://patient-service-api.herokuapp.com/patient')
             .then(response => {

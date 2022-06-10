@@ -83,6 +83,7 @@ export default {
       return {
         AddingPatient: [],
         errors: [],
+        patientId: '',
         hospitals: [],
         selectedHospital: "",
         departments: [],
@@ -103,6 +104,7 @@ export default {
          priority: "",
          departmentId: ""
          },
+         oldPatient: {},
       }
     },
     methods: {
@@ -318,6 +320,9 @@ export default {
         }
       }
     },
+    created() {
+    this.patientId = this.$route.params.id
+  },
   mounted() {
   axios.get('https://patient-service-api.herokuapp.com/hospital/all')
     .then(response => {
@@ -326,6 +331,8 @@ export default {
     .catch(e => {
       this.errors.push(e)
     })
+    
 },
+
 }
 </script>
