@@ -54,7 +54,7 @@
               <span style="color: red" id="poleWiek"></span>
 			
               <div class="color-grey mt-2 font-small">*Płeć</div>
-              <div class="d-flex flex-row justify-content-around mt-1">
+              <div class="d-flex flex-row justify-content-center gap-5 mt-1">
                 <label for="kobieta">
                   <input v-model="newPatient.gender" v-bind:value="'FEMALE'" class="input-user-radio2" type="radio" name="plec" id="kobieta"> Kobieta
                 </label>
@@ -65,7 +65,7 @@
               <span style="color: red" id="polePlec"></span>
 
               <div class="color-grey mt-2 font-small">*Priorytet</div>
-              <div class="d-flex flex-row justify-content-around mt-1">
+              <div class="d-flex flex-row justify-content-center gap-5 mt-1">
                 <label for="niski">
                   <input v-model="newPatient.priority" v-bind:value="'LOW'" class="input-user-radio2" type="radio" name="priorytet" id="niski"> Niski
                 </label>
