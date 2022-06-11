@@ -94,7 +94,7 @@ export default {
           isGenderOk: false,
           isPriorityOk: false,
         },
-        newPatient: {
+        oldPatient: {
         firstName: "",
          lastName: "",
          pesel: "",
@@ -104,7 +104,6 @@ export default {
          priority: "",
          departmentId: ""
          },
-         oldPatient: {},
       }
     },
     methods: {
@@ -120,14 +119,13 @@ export default {
       updatePatient: function(){
         this.sprawdz();
         let validation = this.isValidationOk();
-        if(this.newPatient.birthDate.slice(10)!="T00:00:00" && this.newPatient.birthDate!="") this.newPatient.birthDate = this.newPatient.birthDate + "T00:00:00";
+        if(this.oldPatient.birthDate.slice(10)!="T00:00:00" && this.oldPatient.birthDate!="") this.oldPatient.birthDate = this.oldPatient.birthDate + "T00:00:00";
         if(validation)
         {
-          //axios.put(`https://patient-service-api.herokuapp.com/patient/update/${this.patientId}`, this.newPatient) jak dla mnie było dobrze, ale coś zepsułem i nie wyświetlają sie teraz pacjenci
-          axios.post('https://patient-service-api.herokuapp.com/patient/add',this.newPatient)
+          axios.put(`https://patient-service-api.herokuapp.com/patient/update/${this.patientId}`, this.oldPatient)
           .then(response=>{
           if (response.status==200) this.$router.push({path: "/patients"}) 
-          this.newPatient = {};
+          this.oldPatient = {};
           })
         }
       },
@@ -146,7 +144,7 @@ export default {
         document.getElementById("polePesel").innerHTML = "";
         document.getElementById("polePlec").innerHTML = "";
         document.getElementById("polePriorytet").innerHTML = "";
-        this.newPatient = {};
+        this.oldPatient = {};
         this.validation = {};
         },
         sprawdz: function(){
@@ -228,7 +226,7 @@ export default {
         let day = array[4]*10+array[5];
         if(day<10) day = "0"+day;
         let date = year + "-" + month + "-" + day;
-        this.newPatient.birthDate = date;
+        this.oldPatient.birthDate = date;
         document.getElementById("DATURO").value = date;
         this.ustawWiek(year, month, day);
       },
@@ -241,7 +239,7 @@ export default {
         let age = ytoday - y;
         if(mtoday<m || (mtoday==m && dtoday<d)) age--;
         if(bday) document.getElementById("WIEK").value = age;
-        this.newPatient.age = age;
+        this.oldPatient.age = age;
       },
       ustawPlec: function(){
         const pesel = document.getElementById("PESEL").value;
@@ -252,12 +250,12 @@ export default {
         let plec = (array[9]%2==1)?"M":"K";
         if(plec=="K") {
           document.getElementById("kobieta").checked = true;
-          this.newPatient.gender = "FEMALE";
+          this.oldPatient.gender = "FEMALE";
         }
         else 
         {
           document.getElementById("mezczyzna").checked = true;
-          this.newPatient.gender = "MALE";
+          this.oldPatient.gender = "MALE";
         }
       }, 
       sprawdzDateUrodzenia: function(){
@@ -320,6 +318,9 @@ export default {
           document.getElementById("poleOddzial").innerHTML = "";
         }
       },
+      setDepartments: function(){
+        this.departments = this.hospitals.find(hospital=>hospital.id === this.oldPatient.hospitalId).departments
+      },
       getHospitalData: function(){
       axios.get('https://patient-service-api.herokuapp.com/hospital/all')
       .then(response => {
@@ -329,32 +330,21 @@ export default {
       this.errors.push(e)
       })
       },
-      getPatientData: function(patientId){
-      axios.get(`https://patient-service-api.herokuapp.com/patient/${patientId}`)
+      getPatientData: async function(patientId){
+      await axios.get(`https://patient-service-api.herokuapp.com/patient/${patientId}`)
       .then(response => {
       if(response.status === 200) {
         this.oldPatient = response.data
         this.oldPatient.birthDate = this.oldPatient.birthDate.split("T")[0]
-        
-        //this.newPatient.firstName = this.oldPatient.firstName;
-        //this.newPatient.lastName = this.oldPatient.lastName;
-        //this.newPatient.pesel = this.oldPatient.pesel;
-        //this.newPatient.birthDate = this.oldPatient.birthDate;
-        //this.newPatient.age = this.oldPatient.age;
-        //this.newPatient.gender = this.oldPatient.gender;
-        //this.newPatient.priority= this.oldPatient.priority;
-        //this.newPatient.departmentId = this.oldPatient.departmentId;
       }
       })
+      await this.setDepartments()
       },
     },
     created() {
     this.patientId = this.$route.params.id
+    this.getHospitalData()
+    this.getPatientData(this.patientId)
   },
-  mounted() {
-  this.getHospitalData()
-  this.getPatientData(this.patientId)
-},
-
 }
 </script>
