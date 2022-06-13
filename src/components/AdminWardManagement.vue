@@ -36,7 +36,7 @@
                               
         </div>
         
-        <div class="d-flex p-2 mt-2 w-75 mx-auto justify-content-center flex-column  menu-hospital-box">
+        <div class="d-flex p-2 mt-5 w-75 mx-auto justify-content-center flex-column  menu-hospital-box">
             <form class="pt-2 pb-2 p-2 d-flex-row">
                     <h1>Wprowadź dane nowego oddziału:</h1>
                     <div>

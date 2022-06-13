@@ -15,7 +15,7 @@
     background-color: #efefef;
     border: 2px solid #077262;
     border-radius: 5px;
-    padding: 2%;
+    // padding: 2%;
     box-sizing: border-box;
     outline: none;
     /* wyłączenie czarnej obwódki */
@@ -23,14 +23,20 @@
     margin-bottom: 1%;
 }
 
+span {
+    font-size: 0.8rem;
+}
+
 .input-user-radio {
     width: 17px;
     height: 17px;
 }
+
 .input-user-radio2 {
     width: 15px;
     height: 15px;
 }
+
 .btn-add {
     width: 60%;
     color: #fff;
@@ -61,7 +67,8 @@
     outline: none;
     background-color: #0000000b;
 }
-.btn-delete{
+
+.btn-delete {
     width: 30%;
     color: #ffffff;
     border: none;

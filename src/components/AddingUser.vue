@@ -27,7 +27,7 @@
                                                 <div class="align-items-center font-small"><input class="input-user-radio" value="PARAMEDIC" type="radio" v-model="role"> Ratownik</div>
 
                     </div>
-                    <div class="d-flex flex-row-reverse justify-content-around ">
+                    <div class="d-flex flex-row-reverse justify-content-around mt-2">
                         <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj użytkownika</button>
                         <router-link to="/admin-panel" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót</router-link>
                     </div>
