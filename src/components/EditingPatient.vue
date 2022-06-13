@@ -318,33 +318,39 @@ export default {
           document.getElementById("poleOddzial").innerHTML = "";
         }
       },
-      setDepartments: function(){
-        this.departments = this.hospitals.find(hospital=>hospital.id === this.oldPatient.hospitalId).departments
-      },
       getHospitalData: function(){
       axios.get('https://patient-service-api.herokuapp.com/hospital/all')
       .then(response => {
-        this.hospitals = response.data
+        if (response.status === 200) {
+          this.hospitals = response.data
+        }
+      }).then(() => {
+        this.getPatientData(this.patientId)
       })
       .catch(e => {
       this.errors.push(e)
       })
       },
-      getPatientData: async function(patientId){
-      await axios.get(`https://patient-service-api.herokuapp.com/patient/${patientId}`)
+      getPatientData: function(patientId){
+        axios.get(`https://patient-service-api.herokuapp.com/patient/${patientId}`)
       .then(response => {
-      if(response.status === 200) {
-        this.oldPatient = response.data
-        this.oldPatient.birthDate = this.oldPatient.birthDate.split("T")[0]
-      }
-      })
-      await this.setDepartments()
+        if(response.status === 200) {
+          this.oldPatient = response.data
+          this.oldPatient.birthDate = this.oldPatient.birthDate.split("T")[0]
+        }
+      }).then(() => {
+          this.setDepartments()
+        })
+      },
+      setDepartments: function(){
+        console.log(this.hospitals)
+        console.log(this.oldPatient)
+        this.departments = this.hospitals.find(hospital => hospital.id === this.oldPatient.hospitalId).departments
       },
     },
     created() {
     this.patientId = this.$route.params.id
     this.getHospitalData()
-    this.getPatientData(this.patientId)
   },
 }
 </script>
