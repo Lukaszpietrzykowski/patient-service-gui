@@ -49,7 +49,7 @@ const routes = [
         }
     },
     {
-        path: '/edit-hospital',
+        path: '/edit-hospital/:id',
         name: 'AdminHospitalEditing',
         component: AdminHospitalEditing,
         meta: {
