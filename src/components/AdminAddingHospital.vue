@@ -13,19 +13,20 @@
               <h1>Wprowadź dane szpitala:</h1>
               <div>
                 <div class="color-grey mt-2 font-small">Nazwa szpitala</div>
-                <div><input class="input-user" type="text" name="nazwa szpitala" v-model="name" placeholder="Szpital">
+                <div><input class="input-user" type="text" name="nazwa szpitala" required pattern="[A-Za-z]+.[A-Za-z+]" v-model="name" placeholder="Szpital">
                 </div>
               </div>
               <div class="color-grey mt-2 font-small">Miejscowość</div>
-              <div><input class="input-user" type="text" name="miasto" v-model="address.city" placeholder="Warszawa">
+              <div><input class="input-user" type="text" name="miasto" required pattern="[A-Za-z]+.[A-Za-z+]" v-model="address.city" placeholder="Warszawa">
               </div>
               <div class="color-grey mt-2 font-small">Ulica</div>
-              <div><input class="input-user" type="text" name="ulica" v-model="address.street" placeholder="Kwiatowa">
+              <div><input class="input-user" type="text" name="ulica" required v-model="address.street" placeholder="Kwiatowa">
               </div>
               <div class="color-grey mt-2 font-small">Numer budynku</div>
-              <div><input class="input-user" type="text" name="numer budynku" v-model="address.streetNumber"
-                          placeholder="12a"></div>
-              <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
+              <div><input class="input-user" type="text" name="numer budynku" required v-model="address.streetNumber" placeholder="12a"></div>
+              <div class="color-grey mt-2 font-small">Kod pocztowy</div>
+              <div><input class="input-user" type="text" name="kod pocztowy" required v-model="address.postalCode" pattern="^\d{2}-\d{3}$" placeholder="00-000"></div>
+              <div class="d-flex flex-row-reverse justify-content-around mt-4 gap-3 ">
                 <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj szpital</button>
                 <router-link to="/hospitals-management" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">
                   Powrót
@@ -51,8 +52,12 @@ export default {
       address: {
         city: '',
         street: '',
-        streetNumber: ''
+        streetNumber: '',
+        postalCode: ''
       },
+      validation: {
+      isOK: false
+      }
     }
   },
 

@@ -27,8 +27,8 @@
         Wyloguj</h2>
     </div>
 
-    <div class="my-5 w-100">
-      <div v-for="hospital in hospitals" v-bind:key="hospital.id"
+    <section class="my-5 w-100" v-if="hospitals?.length && hospitals">
+      <div v-for="hospital in filteredList" v-bind:key="hospital.name"
            class="d-flex align-items-center p-3 my-3 w-100 w-lg-75 mx-auto justify-content-center flex-column flex-md-row menu-hospital-box">
 
         <div class="w-100 py-1 p-lg-3">
@@ -64,7 +64,8 @@
             </svg>
             <p style="margin: 0;">Adres</p>
           </div>
-          <div class="w-100 p-2 mt-1">ul. {{ hospital.address.street }}<br/> {{ hospital.address.streetNumber }}</div>
+          <div class="w-100 p-2 mt-1">ul. {{ hospital.address.street }} {{ hospital.address.streetNumber }} <br>
+          {{ hospital.address.postalCode }}</div>
         </div>
 
         <div class="w-100 py-1 p-lg-3">
@@ -119,7 +120,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
 
     <section class="fixed-bottom d-flex flex-row justify-content-center align-items-center w-100 p-1 bg-transparent">
@@ -162,7 +163,8 @@ export default {
   components: {MenuComponent},
   data() {
     return {
-      hospitals: []
+      hospitals: [],
+      search:''
     }
   },
 
@@ -195,7 +197,16 @@ export default {
 
   mounted() {
     this.getAllHospitals();
-  }
+  },
+  computed: {
+        filteredList() {
+          return this.hospitals.filter(hospital => {
+            let deps = '';
+            hospital.departments.forEach(value => {deps = deps+value.name})
+            return (hospital.address.streetNumber+hospital.name+hospital.address.street+hospital.address.city+hospital.address.postalCode+deps).toLowerCase().includes(this.search.toLowerCase())
+          })
+        }
+      }
 }
 
 </script>

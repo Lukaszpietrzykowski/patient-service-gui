@@ -28,6 +28,10 @@
               <div><input class="input-user" type="text" name="numer budynku"
                           v-model="hospitalData.address.streetNumber">
               </div>
+              <div class="color-grey mt-2 font-small">Kod pocztowy</div>
+              <div><input class="input-user" type="text" name="kod pocztowy"
+                         v-model="hospitalData.address.postalCode">
+              </div>
               <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
                 <button v-on:click="updateHospital()" class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">
                   Zapisz zmiany

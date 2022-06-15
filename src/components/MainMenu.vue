@@ -37,9 +37,10 @@
         </li>
         </ul> -->
 
-    <div class="mb-5" v-if="hospitals.length">
-      <div v-for="hospital_one of hospitals" v-bind:key="hospital_one.name"
-           class="d-flex p-3 my-3 w-100 w-lg-75 mx-auto justify-content-center flex-column flex-md-row menu-hospital-box">
+    <div class="mb-5 w-100" v-if="hospitals.length">
+      <div v-for="hospital_one in filteredList" v-bind:key="hospital_one.name"
+              class="d-flex align-items-center p-3 my-3 w-100 w-lg-75 mx-auto justify-content-center flex-column flex-md-row menu-hospital-box">
+
 
         <div class="w-100 py-1 p-lg-3">
           <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center" style="gap:0.75rem">
@@ -141,7 +142,7 @@ export default {
   data() {
     return {
       hospitals: [],
-      search: ""
+      search: ''
       //   errors: []
     }
   },
@@ -167,13 +168,15 @@ export default {
         })
   },
 
-  computed: {
-    filteredHospitals() {
-      return this.hospitals.filter(hospital => {
-        return hospital.name.toLowerCase().includes(this.search.toLowerCase())
-      })
-    }
-  }
+ computed: {
+        filteredList() {
+          return this.hospitals.filter(hospital => {
+            let deps = '';
+            hospital.departments.forEach(value => {deps = deps+value.name})
+            return (hospital.address.streetNumber+hospital.name+hospital.address.street+hospital.address.city+hospital.address.postalCode+deps).toLowerCase().includes(this.search.toLowerCase())
+          })
+        }
+      }
 }
 
 </script>
