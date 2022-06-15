@@ -27,18 +27,17 @@
                           placeholder="12a"></div>
               <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
                 <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj szpital</button>
-                <router-link to="/admin-panel" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót
+                <router-link to="/hospitals-management" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">
+                  Powrót
                 </router-link>
               </div>
               <div class="mt-4" style="color:#039060 " id="success"></div>
             </form>
           </div>
         </section>
-
       </section>
     </div>
   </section>
-
 </template>
 
 <script>
@@ -46,18 +45,8 @@ import axios from 'axios';
 
 
 export default {
-  mounted() {
-    console.log('Component mounted.')
-    axios.get('https://patient-service-api.herokuapp.com/hospital/all')
-        .then(response => {
-
-          this.hospitals = response.data
-          console.log(this.hospitals)
-        })
-  },
   data() {
     return {
-      hospitals: [],
       name: '',
       address: {
         city: '',
@@ -66,14 +55,6 @@ export default {
       },
     }
   },
-//   created() {
-//   // Simple POST request with a JSON body using axios
-//   const user = { email: this.email, login: this.login, password: this.password, role: 'DOCTOR' };
-//   axios.post("https://patient-service-api.herokuapp.com/user/add", user)
-//     .then(response => this.login = response.data.login)
-//     .then(console.log(this.users))
-//     .then(console.log(this.login));
-// }
 
   methods: {
 
@@ -86,9 +67,5 @@ export default {
           }.bind(this));
     }
   }
-
-
 }
-
-
 </script>

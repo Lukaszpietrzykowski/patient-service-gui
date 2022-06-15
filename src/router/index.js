@@ -66,7 +66,7 @@ const routes = [
         }
     },
     {
-        path: '/ward-management',
+        path: '/ward-management/:id',
         name: 'AdminWardManagement',
         component: AdminWardManagement,
         meta: {

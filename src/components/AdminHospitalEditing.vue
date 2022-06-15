@@ -13,26 +13,26 @@
               <div><h1>Wprowadź zmiany danych:</h1></div>
               <div>
                 <div class="color-grey mt-2 font-small">Nazwa szpitala</div>
-                <div><input class="input-user" type="text" name="nazwa szpitala" v-model="hospitalData.name"></div>
+                <div><input class="input-user" type="text" name="nazwa szpitala"
+                            v-model="hospitalData.name"></div>
               </div>
               <div class="color-grey mt-2 font-small">Miejscowość</div>
-              <div><input class="input-user" type="text" name="miasto" v-model="hospitalData.address.city">
+              <div><input class="input-user" type="text" name="miasto"
+                          v-model="hospitalData.address.city">
               </div>
               <div class="color-grey mt-2 font-small">Ulica</div>
-              <div><input class="input-user" type="text" name="ulica" v-model="hospitalData.address.street">
+              <div><input class="input-user" type="text" name="ulica"
+                          v-model="hospitalData.address.street">
               </div>
               <div class="color-grey mt-2 font-small">Numer budynku</div>
-              <div><input class="input-user" type="text" name="numer budynku" v-model="hospitalData.address.streetNumber">
-              </div>
-              <div class="color-grey mt-2 font-small">Kod pocztowy</div>
-              <div><input class="input-user" type="text" name="kod pocztowy" v-model="hospitalData.address.postalCode">
+              <div><input class="input-user" type="text" name="numer budynku"
+                          v-model="hospitalData.address.streetNumber">
               </div>
               <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
                 <button v-on:click="updateHospital()" class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">
                   Zapisz zmiany
                 </button>
-                <router-link class="btn-back font-small mt-2 p-3 text-decoration-none mt-2"
-                             to="/hospitals-management">
+                <router-link class="btn-back font-small mt-2 p-3 text-decoration-none mt-2" to="/hospitals-management">
                   Powrót
                 </router-link>
               </div>
@@ -53,12 +53,12 @@ export default {
     return {
       hospitalId: '',
       hospitalData: {
-        name:'',
-        address : {
-          city:'',
-          street:'',
-          streetNumber:'',
-          postalCode:'',
+        name: '',
+        address: {
+          city: '',
+          street: '',
+          streetNumber: '',
+          postalCode: '',
         }
       }
     }
