@@ -103,7 +103,7 @@
                                 <h2 class="font-small color:#626466 font-weight-normal text-center " style="font-size: 0.75rem; letter-spacing: 0.5px">Usuń pacjenta</h2>
                             </div>
                           <div class="d-flex flex-column justify-content-center action-button">
-                            <router-link :to="{ path: '/patient-details', params: { id: patient.id }}" style="text-decoration: none; color: inherit;">
+                            <router-link :to="{ name: 'PatientDetails', params: { id: patient.id }}" style="text-decoration: none; color: inherit;">
                                <span class="bg-transparent mt-2">
                                  <svg class="menu-admin-form-button" fill="#05a081" xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
