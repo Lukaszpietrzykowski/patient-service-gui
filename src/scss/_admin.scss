@@ -15,12 +15,16 @@
     background-color: #efefef;
     border: 2px solid #077262;
     border-radius: 5px;
-    padding: 2%;
+    // padding: 2%;
     box-sizing: border-box;
     outline: none;
     /* wyłączenie czarnej obwódki */
     //margin-top: 1%;
     margin-bottom: 1%;
+}
+
+span {
+    font-size: 0.8rem;
 }
 
 .input-user-radio {
