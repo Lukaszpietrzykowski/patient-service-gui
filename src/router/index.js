@@ -14,6 +14,7 @@ import AdminWardManagement from '../components/AdminWardManagement.vue'
 import UserEditing from '../components/UserEditing.vue'
 import AdminHospitalEditing from '../components/AdminHospitalEditing.vue'
 import EditingPatient from '../components/EditingPatient.vue'
+import PatientDetails from '../components/PatientDetails.vue'
 
 
 
@@ -116,6 +117,14 @@ const routes = [
         path: '/patients',
         name: 'PatientSearching',
         component: PatientSearching,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/patient-details/:id',
+        name: 'PatientDetails',
+        component: PatientDetails,
         meta: {
             requiresAuth: true
         }
