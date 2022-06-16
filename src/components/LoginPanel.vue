@@ -7,7 +7,7 @@
     <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-login p-4">
       <div class="login bg-white">
         <h1 class="font-medium">Dzień dobry</h1>
-        <p v-if="showError" id="error" class="mb-0 mt-2" style="color: red">Email albo hasło jest nieprawidłowe.</p>
+        <p v-if="showError" id="error" class="mb-0 mt-2" style="color: red">Niepoprawny login lub hasło</p>
         <p v-else class="font-small mb-0 mt-2">Wprowadź login i hasło</p>
         <form v-on:submit.prevent="login(email, password)">
           <input class="input-form" type="text" placeholder="login" name="email" v-model="email" required><br/>
