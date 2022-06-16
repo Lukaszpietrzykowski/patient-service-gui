@@ -40,7 +40,7 @@
         <div class="m-2">
           <div class="d-flex flex-row justify-content-around gap-3 w-100">
             <router-link style="text-decoration: none; color: inherit;" class="btn-back-add font-small p-2 w-100" to="/patients">Powrót</router-link>
-            <button @click="updatePatientDetails" type="submit" class="btn-add font-small text-decoration-none p-2 w-100">Zapisz</button>
+            <button v-on:click.prevent="updatePatientDetails()" type="submit" class="btn-add font-small text-decoration-none p-2 w-100">Zapisz</button>
           </div>
         </div>
       </div>
@@ -128,9 +128,10 @@ export default {
       })
       },
     updatePatientDetails: function(){
-      axios.put(`https://patient-service-api.herokuapp.com/patient/update/medical-history/${this.patientId}`, this.PatientData.medicalHistory)
+      const config = { headers: {'Content-Type': 'text/plain'} };
+      axios.put(`https://patient-service-api.herokuapp.com/patient/update/medical-history/${this.patientId}`,  this.PatientData.medicalHistory, config)
             .then(response => {
-              if (response.status == 200) this.$router.push({
+              if (response.status === 200) this.$router.push({
                 path: "/patients"
               })
             })
