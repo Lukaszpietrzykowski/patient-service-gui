@@ -197,7 +197,8 @@
       computed: {
         filteredList() {
           return this.patients.filter(patient => {
-            return patient.firstName.toLowerCase().includes(this.search.toLowerCase())
+            if(patient.firstName!=null) return patient.firstName.toLowerCase().includes(this.search.toLowerCase())
+            else return patient
           })
         }
       }

@@ -1,7 +1,7 @@
 <template>
   <section class="d-flex flex-column flex-lg-row vh-100">
     <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-main">
-      <img class="img-fluid p-lg-1 mw-sm-450" src="../assets/adding-patient-form-graphic.svg">
+      <img class="img-fluid p-lg-1 mw-sm-450" src="../assets/adding-patient-form-graphic.png">
     </div>
 
     <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-white">
@@ -89,21 +89,6 @@
                   </div>
                   <span style="color: red" id="polePlec"></span>
                 </div>
-
-                <div>
-                  <div class="color-grey mt-2 font-small">*Priorytet</div>
-                  <div class="d-flex flex-row justify-content-center align-items-center gap-3 mt-1">
-                    <label class="cursor-pointer" for="niski">
-                      <input v-model="newPatient.priority" v-bind:value="'LOW'" class="input-user-radio2" type="radio"
-                        name="priorytet" id="niski"> Niski
-                    </label>
-                    <label class="cursor-pointer" for="wysoki">
-                      <input v-model="newPatient.priority" v-bind:value="'HIGH'" class="input-user-radio2" type="radio"
-                        name="priorytet" id="wysoki"> Wysoki
-                    </label>
-                  </div>
-                  <span style="color: red" id="polePriorytet"></span>
-                </div>
               </div>
 
 
@@ -111,9 +96,12 @@
 
               <div class="d-flex flex-row-reverse justify-content-around mt-4 gap-3">
                 <button type="submit" class="btn-add font-small text-decoration-none p-2">Zatwierdź</button>
-                <button @click="sprawdz" v-on:click.prevent
+                <button v-on:click.prevent="sprawdz"
                   class="btn-add font-small text-decoration-none p-2">Sprawdź</button>
-                <button @click="wyczysc" class="btn-delete font-small text-decoration-none p-2">Kasuj</button>
+                <button v-on:click.prevent="wyczysc()" class="btn-delete font-small text-decoration-none p-2">Kasuj</button>
+                <router-link style="text-decoration: none; color: inherit;" class="btn-back-add font-small p-2" to="/patients">
+                  Powrót
+                </router-link>
               </div>
             </form>
           </div>
@@ -139,7 +127,6 @@
           isAgeOk: false,
           isPESELOk: false,
           isGenderOk: false,
-          isPriorityOk: false,
         },
         newPatient: {
           firstName: "",
@@ -148,7 +135,6 @@
           birthDate: "",
           age: "",
           gender: "",
-          priority: "",
           departmentId: ""
         },
       }
@@ -182,25 +168,22 @@
         if (this.validation.isAgeOk == false) return false;
         if (this.validation.isGenderOk == false) return false;
         if (this.validation.isPESELOk == false) return false;
-        if (this.validation.isPriorityOk == false) return false;
         if (this.validation.isDepartmentIdOk == false) return false;
         return true;
       },
       wyczysc: function () {
         document.getElementById("adding-patient").reset();
-        document.getElementById("poleImie").innerHTML = "";
-        document.getElementById("poleNazwisko").innerHTML = "";
         document.getElementById("polePesel").innerHTML = "";
         document.getElementById("polePlec").innerHTML = "";
-        document.getElementById("polePriorytet").innerHTML = "";
+        document.getElementById("poleOddzial").innerHTML = "";
         this.newPatient = {};
+        this.selectedHospital = "";
         this.validation = {};
       },
       sprawdz: function () {
         this.sprawdzDateUrodzenia();
         this.sprawdzPesel();
         this.sprawdzPlec();
-        this.sprawdzPriorytet();
         this.sprawdzWiek();
         this.sprawdzSzpital();
         this.sprawdzOddzial();
@@ -318,17 +301,6 @@
         } else {
           this.validation.isGenderOk = true;
           document.getElementById("polePlec").innerHTML = "";
-        }
-      },
-      sprawdzPriorytet: function () {
-        const n = document.getElementById("niski").checked;
-        const w = document.getElementById("wysoki").checked;
-        if (!(n || w)) {
-          this.validation.isPriorityOk = false;
-          document.getElementById("polePriorytet").innerHTML = "Proszę wybrać priorytet";
-        } else {
-          this.validation.isPriorityOk = true;
-          document.getElementById("polePriorytet").innerHTML = "";
         }
       },
       sprawdzSzpital: function () {
