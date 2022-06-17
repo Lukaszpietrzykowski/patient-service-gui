@@ -1,6 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-// import Vue from 'vue'
-// import HomeView from '../views/HomeView.vue'
 import LoginPanel from '../components/LoginPanel.vue'
 import MainMenu from '../components/MainMenu.vue'
 import AddingPatient from '../components/AddingPatient.vue'
@@ -15,6 +13,7 @@ import UserEditing from '../components/UserEditing.vue'
 import AdminHospitalEditing from '../components/AdminHospitalEditing.vue'
 import EditingPatient from '../components/EditingPatient.vue'
 import PatientDetails from '../components/PatientDetails.vue'
+import ArchivedPatients from "@/components/ArchivedPatients";
 
 
 
@@ -125,6 +124,14 @@ const routes = [
         path: '/patient-details/:id',
         name: 'PatientDetails',
         component: PatientDetails,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/archived-patients/',
+        name: 'ArchivedPatients',
+        component: ArchivedPatients,
         meta: {
             requiresAuth: true
         }
