@@ -84,7 +84,7 @@
 
 
         <section class="fixed-bottom d-flex flex-row justify-content-center align-items-center w-100 p-1 bg-transparent">
-            <div class="bg-for-menu bg-main justify-content-center align-items-center d-flex flex-row menu-fixed-bottom-inner px-4 w-max-content">
+            <div class="bg-for-menu bg-main justify-content-center align-items-center d-flex flex-row gap-0 gap-md-2 gap-lg-3 menu-fixed-bottom-inner px-4 w-max-content">
               <MenuComponent/>
                 <div class="d-flex flex-column justify-content-center">
                     <router-link to="/adding-user" class="bg-transparent mt-2">

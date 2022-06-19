@@ -72,9 +72,13 @@
 }
 
 .menu-fixed-button {
+    width: 35px;
+    height: 35px;
     opacity: 0.95;
-    width: 45px;
-    height: 45px;
+    @media (min-width: 768px) {
+        width: 45px;
+        height: 45px;
+    }
     padding: 1%;
 }
 
