@@ -22,8 +22,8 @@
 
                     <div class="color-grey mt-2 font-small" >Uprawnienia</div>
                     <div class="d-flex flex-row justify-content-around mt-1">
-                        <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'DISPATCHER'" class="input-user-radio"  type="radio" name="rola"> Lekarz</div>
-                        <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'DOCTOR'" class="input-user-radio" type="radio" name="rola"> Dyspozytor</div>
+                        <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'DISPATCHER'" class="input-user-radio"  type="radio" name="rola"> Dyspozytor</div>
+                        <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'DOCTOR'" class="input-user-radio" type="radio" name="rola">Lekarz</div>
                         <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'PARAMEDIC'" class="input-user-radio"  type="radio" name="rola"> Ratownik</div>
                         <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'ADMIN'" class="input-user-radio" type="radio" name="rola"> Administrator</div>
                     </div>

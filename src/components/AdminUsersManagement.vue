@@ -20,8 +20,8 @@
                     <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 9px; letter-spacing: 0.5px">Wyloguj</h2>
         </div>
 
-        <section class="my-5 w-100" >
-            <div v-for="user in users" v-bind:key="user.id"
+        <section class="my-5 w-100" v-if="users?.length && users" >
+            <div v-for="user in filteredList" v-bind:key="user.id"
                 class="d-flex p-3 mt-3 w-100 mx-auto justify-content-center w-lg-75 flex-row flex-md-row menu-hospital-box">
                 <div class="w-100 py-1 p-lg-3">
                     <div class="w-100 d-flex flex-column flex-lg-row p-2 justify-content-center align-items-center">
@@ -59,7 +59,7 @@
                                 </svg>
                                 <p class="m-0" style="color:#626466">Uprawnienia</p>
                             </div>
-                            <div class="p-2 w-100 patient-name">{{user.role}}</div>
+                            <div class="p-2 w-100 patient-name">{{convertRole(user.role)}}</div>
 
                         </div>
 
@@ -84,40 +84,15 @@
 
 
         <section class="fixed-bottom d-flex flex-row justify-content-center align-items-center w-100 p-1 bg-transparent">
-        <section class="box-hamburger d-lg-none">
-            <button class="btn btn-form-green btn-menu" v-on:click="openMenu()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                    <path
-                        d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
-                </svg>
-            </button>
-        </section>
-        <section class="h-100 w-100 menu-box fixed-bottom" id="menu" v-on:click="turnOffMenu()">
-
-            <section class="d-flex flex-column flex-md-row justify-content-end justify-content-md-center align-items-center w-100 p-1 bg-transparent">
-                            <button class="btn btn-form-green btn-cross" v-on:click="turnOffMenu()">
-                <svg fill="#fff" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                    <path
-                        d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
-                    </svg>
-
-            </button>
-                <div
-                    class="bg-for-menu bg-main justify-content-center align-items-center d-flex flex-column gap-0 flex-md-row menu-fixed-bottom-inner gap-0 gap-md-2 gap-lg-3 px-4 w-max-content">
-                    <MenuComponent />
-                                    <div class="d-flex flex-column justify-content-center">
+            <div class="bg-for-menu bg-main justify-content-center align-items-center d-flex flex-row menu-fixed-bottom-inner px-4 w-max-content">
+              <MenuComponent/>
+                <div class="d-flex flex-column justify-content-center">
                     <router-link to="/adding-user" class="bg-transparent mt-2">
                         <svg class="menu-fixed-button" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"/></svg>
                     </router-link>
                     <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 0.75rem; letter-spacing: 0.5px">Dodaj użytkownika</h2>
                 </div>
-                </div>
-            </section>
-        </section>
-
-
+            </div>
         </section>
     </section>
 
@@ -132,11 +107,25 @@ export default {
   components: {MenuComponent},
   data() {
     return {
-      users: []
+      users: [],
+      search: ''
     }
   },
 
   methods: {
+
+    convertRole(userRole){
+      if (userRole === "ADMIN") {
+        return "Administrator"
+      } else if (userRole === "DOCTOR") {
+        return "Doktor"
+      } else if (userRole === "PARAMEDIC") {
+        return "Ratownik"
+      } else  {
+        return "Dyspozytor"
+      }
+    },
+
     getAllUsers() {
       axios.get('https://patient-service-api.herokuapp.com/user/all')
           .then(response => {
@@ -156,24 +145,22 @@ export default {
 
     updateUser(id) {
       this.$router.push({name: 'UserEditing', params: { id: id }})
-    },
-                openMenu() {
-                const menu = document.querySelector('#menu')
-
-                menu.style.bottom = "0rem"
-
-
-            },
-            turnOffMenu() {
-                const menu = document.querySelector('#menu')
-
-                menu.style.bottom = "-100vh"
-            }
+    }
   },
 
   mounted() {
     this.getAllUsers();
+  },
+
+  computed: {
+    filteredList() {
+      return this.users.filter(user => {
+        return (user.name + user.login + user.email + this.convertRole(user.role)).toLowerCase().includes(this.search.toLowerCase())
+      })
+
+    }
   }
+
 }
 
 </script>

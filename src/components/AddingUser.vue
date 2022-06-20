@@ -22,7 +22,7 @@
               <div class="color-grey mt-2 font-small">Uprawnienia</div>
               <div class="d-flex flex-row justify-content-around mt-1">
                 <div class="align-items-center font-small"><input class="input-user-radio" value="ADMIN" type="radio"
-                                                                  v-model="user.role"> Admin
+                                                                  v-model="user.role"> Administrator
                 </div>
                 <div class="align-items-center font-small"><input class="input-user-radio" value="DOCTOR" type="radio"
                                                                   v-model="user.role"> Doktor
@@ -37,7 +37,7 @@
               </div>
               <div class="d-flex flex-row-reverse justify-content-around mt-2">
                 <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj użytkownika</button>
-                <router-link to="/users-management" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót
+                <router-link to="/admin-panel" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót
                 </router-link>
               </div>
 

@@ -9,31 +9,42 @@
 
         <section class="w-100">
           <div class="d-flex p-1 mt-2 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
-            <form v-on:submit.prevent="" class="pt-2 pb-2 p-2 d-flex-row">
+            <form v-on:submit.prevent="updateHospital" class="pt-2 pb-2 p-2 d-flex-row">
               <div><h1>Wprowadź zmiany danych:</h1></div>
               <div>
                 <div class="color-grey mt-2 font-small">Nazwa szpitala</div>
                 <div><input class="input-user" type="text" name="nazwa szpitala"
-                            v-model="hospitalData.name"></div>
+                            required pattern="[A-Za-z]+.[A-Za-z+]"
+                            v-model="hospitalData.name"
+                            placeholder="Szpital"
+                ></div>
               </div>
               <div class="color-grey mt-2 font-small">Miejscowość</div>
               <div><input class="input-user" type="text" name="miasto"
-                          v-model="hospitalData.address.city">
+                          required pattern="[A-Za-z]+.[A-Za-z+]"
+                          v-model="hospitalData.address.city"
+                          placeholder="Miejscowość">
               </div>
               <div class="color-grey mt-2 font-small">Ulica</div>
               <div><input class="input-user" type="text" name="ulica"
-                          v-model="hospitalData.address.street">
+                          required
+                          v-model="hospitalData.address.street"
+                          placeholder="Ulica">
               </div>
               <div class="color-grey mt-2 font-small">Numer budynku</div>
               <div><input class="input-user" type="text" name="numer budynku"
-                          v-model="hospitalData.address.streetNumber">
+                          required
+                          v-model="hospitalData.address.streetNumber"
+                          placeholder="Numer budynku">
               </div>
               <div class="color-grey mt-2 font-small">Kod pocztowy</div>
               <div><input class="input-user" type="text" name="kod pocztowy"
-                         v-model="hospitalData.address.postalCode">
+                          required pattern="^\d{2}-\d{3}$"
+                         v-model="hospitalData.address.postalCode"
+                          placeholder="Kod pocztowy">
               </div>
               <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
-                <button v-on:click="updateHospital()" class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">
+                <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">
                   Zapisz zmiany
                 </button>
                 <router-link class="btn-back font-small mt-2 p-3 text-decoration-none mt-2" to="/hospitals-management">

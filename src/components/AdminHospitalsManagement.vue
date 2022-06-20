@@ -65,7 +65,8 @@
             <p style="margin: 0;">Adres</p>
           </div>
           <div class="w-100 p-2 mt-1">ul. {{ hospital.address.street }} {{ hospital.address.streetNumber }} <br>
-          {{ hospital.address.postalCode }}</div>
+            {{ hospital.address.postalCode }}
+          </div>
         </div>
 
         <div class="w-100 py-1 p-lg-3">
@@ -123,46 +124,46 @@
     </section>
 
 
-<section class="box-hamburger d-lg-none">
-            <button class="btn btn-form-green btn-menu" v-on:click="openMenu()">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                    <path
-                        d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
-                </svg>
-            </button>
-        </section>
-        <section class="h-100 w-100 menu-box fixed-bottom" id="menu" v-on:click="turnOffMenu()">
+    <section class="box-hamburger d-lg-none">
+      <button class="btn btn-form-green btn-menu" v-on:click="openMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+              d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/>
+        </svg>
+      </button>
+    </section>
+    <section class="h-100 w-100 menu-box fixed-bottom" id="menu" v-on:click="turnOffMenu()">
 
-            <section class="d-flex flex-column flex-md-row justify-content-end justify-content-md-center align-items-center w-100 p-1 bg-transparent">
-                            <button class="btn btn-form-green btn-cross" v-on:click="turnOffMenu()">
-                <svg fill="#fff" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                    <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                    <path
-                        d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" />
-                    </svg>
+      <section
+          class="d-flex flex-column flex-md-row justify-content-end justify-content-md-center align-items-center w-100 p-1 bg-transparent">
+        <button class="btn btn-form-green btn-cross" v-on:click="turnOffMenu()">
+          <svg fill="#fff" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+                d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/>
+          </svg>
 
-            </button>
-                <div
-                    class="bg-for-menu bg-main justify-content-center align-items-center d-flex flex-column gap-0 flex-md-row menu-fixed-bottom-inner gap-0 gap-md-2 gap-lg-3 px-4 w-max-content">
-                    <MenuComponent />
-                              <div class="d-flex flex-column justify-content-center">
-          <a href="/#/adding-hospital" class="bg-transparent mt-2">
-            <svg class="menu-fixed-button" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-              <path
-                  d="M192 48C192 21.49 213.5 0 240 0H400C426.5 0 448 21.49 448 48V512H368V432C368 405.5 346.5 384 320 384C293.5 384 272 405.5 272 432V512H192V48zM312 64C303.2 64 296 71.16 296 80V104H272C263.2 104 256 111.2 256 120V136C256 144.8 263.2 152 272 152H296V176C296 184.8 303.2 192 312 192H328C336.8 192 344 184.8 344 176V152H368C376.8 152 384 144.8 384 136V120C384 111.2 376.8 104 368 104H344V80C344 71.16 336.8 64 328 64H312zM160 96V512H48C21.49 512 0 490.5 0 464V320H80C88.84 320 96 312.8 96 304C96 295.2 88.84 288 80 288H0V224H80C88.84 224 96 216.8 96 208C96 199.2 88.84 192 80 192H0V144C0 117.5 21.49 96 48 96H160zM592 96C618.5 96 640 117.5 640 144V192H560C551.2 192 544 199.2 544 208C544 216.8 551.2 224 560 224H640V288H560C551.2 288 544 295.2 544 304C544 312.8 551.2 320 560 320H640V464C640 490.5 618.5 512 592 512H480V96H592z"/>
-            </svg>
-          </a>
-          <h2 class="font-small color-white font-weight-normal text-center "
-              style="font-size: 0.75rem; letter-spacing: 0.5px">Dodaj szpital</h2>
+        </button>
+        <div
+            class="bg-for-menu bg-main justify-content-center align-items-center d-flex flex-column gap-0 flex-md-row menu-fixed-bottom-inner gap-0 gap-md-2 gap-lg-3 px-4 w-max-content">
+          <MenuComponent/>
+          <div class="d-flex flex-column justify-content-center">
+            <a href="/#/adding-hospital" class="bg-transparent mt-2">
+              <svg class="menu-fixed-button" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path
+                    d="M192 48C192 21.49 213.5 0 240 0H400C426.5 0 448 21.49 448 48V512H368V432C368 405.5 346.5 384 320 384C293.5 384 272 405.5 272 432V512H192V48zM312 64C303.2 64 296 71.16 296 80V104H272C263.2 104 256 111.2 256 120V136C256 144.8 263.2 152 272 152H296V176C296 184.8 303.2 192 312 192H328C336.8 192 344 184.8 344 176V152H368C376.8 152 384 144.8 384 136V120C384 111.2 376.8 104 368 104H344V80C344 71.16 336.8 64 328 64H312zM160 96V512H48C21.49 512 0 490.5 0 464V320H80C88.84 320 96 312.8 96 304C96 295.2 88.84 288 80 288H0V224H80C88.84 224 96 216.8 96 208C96 199.2 88.84 192 80 192H0V144C0 117.5 21.49 96 48 96H160zM592 96C618.5 96 640 117.5 640 144V192H560C551.2 192 544 199.2 544 208C544 216.8 551.2 224 560 224H640V288H560C551.2 288 544 295.2 544 304C544 312.8 551.2 320 560 320H640V464C640 490.5 618.5 512 592 512H480V96H592z"/>
+              </svg>
+            </a>
+            <h2 class="font-small color-white font-weight-normal text-center "
+                style="font-size: 0.75rem; letter-spacing: 0.5px">Dodaj szpital</h2>
+          </div>
         </div>
-                </div>
-            </section>
-        </section>
+      </section>
+    </section>
 
   </section>
-
 
 
 </template>
@@ -176,7 +177,7 @@ export default {
   data() {
     return {
       hospitals: [],
-      search:''
+      search: ''
     }
   },
 
@@ -205,32 +206,34 @@ export default {
     managementWards(id) {
       this.$router.push({name: 'AdminWardManagement', params: {id: id}})
     },
-                openMenu() {
-                const menu = document.querySelector('#menu')
+    openMenu() {
+      const menu = document.querySelector('#menu')
 
-                menu.style.bottom = "0rem"
+      menu.style.bottom = "0rem"
 
 
-            },
-            turnOffMenu() {
-                const menu = document.querySelector('#menu')
+    },
+    turnOffMenu() {
+      const menu = document.querySelector('#menu')
 
-                menu.style.bottom = "-100vh"
-            }
+      menu.style.bottom = "-100vh"
+    }
   },
 
   mounted() {
     this.getAllHospitals();
   },
   computed: {
-        filteredList() {
-          return this.hospitals.filter(hospital => {
-            let deps = '';
-            hospital.departments.forEach(value => {deps = deps+value.name})
-            return (hospital.address.streetNumber+hospital.name+hospital.address.street+hospital.address.city+hospital.address.postalCode+deps).toLowerCase().includes(this.search.toLowerCase())
-          })
-        }
-      }
+    filteredList() {
+      return this.hospitals.filter(hospital => {
+        let deps = '';
+        hospital.departments.forEach(value => {
+          deps = deps + value.name + " "
+        })
+        return (hospital.name + " " + hospital.address.city + " " + hospital.address.street + " " + hospital.address.streetNumber + " " + hospital.address.postalCode + " " + deps).toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
+  }
 }
 
 </script>

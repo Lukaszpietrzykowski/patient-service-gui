@@ -68,11 +68,11 @@
               <h1>Wprowadź dane nowego oddziału:</h1>
               <div>
                 <div class="color-grey mt-2 font-small">Nazwa odziału</div>
-                <div><input class="input-user" type="text" name="odzdział" v-model="newDepartment.name"
+                <div><input class="input-user" type="text" name="odzdział" v-model="newDepartment.name" required pattern="[A-Za-z]+.[A-Za-z+]"
                             placeholder="Kardiologia"></div>
               </div>
               <div class="color-grey mt-2 font-small">ilość łóżek</div>
-              <div><input class="input-user" type="text" name="miasto" v-model="newDepartment.availableBeds"
+              <div><input class="input-user" type="text" name="miasto" v-model="newDepartment.availableBeds" required pattern="[0-9]+"
                           placeholder="0"></div>
               <div class="d-flex flex-row-reverse justify-content-around">
                 <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj oddział</button>

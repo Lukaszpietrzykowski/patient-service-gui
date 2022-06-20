@@ -54,9 +54,6 @@ export default {
         street: '',
         streetNumber: '',
         postalCode: ''
-      },
-      validation: {
-      isOK: false
       }
     }
   },
