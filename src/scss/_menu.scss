@@ -1,0 +1,122 @@
+.menu-header {
+    border-radius: 0;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
+    padding: 1%;
+    position: sticky;
+    top: 0;
+    z-index: 4;
+}
+
+.menu-fixed-bottom-inner {
+    gap: 4rem;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
+    border-radius: 60px 60px 60px 60px;
+    margin-right: auto;
+    margin-left: auto;
+    // margin-bottom: 1rem;
+    width: 75%;
+    height: 25%;
+}
+
+.bolder {
+    font-weight: bolder;
+    font-size: 1.1rem;
+}
+
+.menu-hospital-box {
+    background-color: #00000008;
+    border-radius: 1pc 1pc 1pc 1pc;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
+}
+
+.input-search {
+    background-color: #fff !important;
+    opacity: 0.75 !important;
+    color: #000 !important;
+    border-radius: 10pc 10pc 10pc 10pc !important;
+    margin-bottom: 1% !important;
+    border: 0 !important;
+    padding: 1% !important;
+    box-sizing: none !important;
+    width: 100% !important;
+    cursor: pointer !important;
+}
+
+.input-search:focus,
+.input-search:focus-visible {
+    opacity: 0.85 !important;
+    border: 0!important;
+    outline: none!important;
+}
+
+.input-search:hover {
+    opacity: 0.85 !important;
+    border: 0!important;
+    outline: none!important;
+    transition: 0.1s ease-in;
+}
+
+.btn-search {
+    background: #fff;
+    border-radius: 10pc 0 0 10pc;
+    width: 50px;
+    opacity: 0.75;
+    border: 0;
+    margin-bottom: 1%;
+    margin-top: 2%;
+    padding: 1%;
+}
+
+.btn-search:hover {
+    opacity: 0.85;
+    transition: 0.1s ease-in;
+}
+
+.menu-fixed-button {
+    width: 35px;
+    height: 35px;
+    opacity: 0.95;
+    @media (min-width: 768px) {
+        width: 45px;
+        height: 45px;
+    }
+    padding: 1%;
+}
+
+.menu-fixed-button:hover {
+    opacity: 1;
+    transition: 0.1s ease-in;
+}
+
+.menu-logout {
+    opacity: 0.95;
+    position: fixed;
+    top: 0rem;
+    right: 0.5rem;
+    z-index: 5;
+    @media (min-width: 768px) {
+        top: 1%;
+        right: 5%;
+    }
+}
+
+.menu-logout:hover {
+    opacity: 1;
+    transition: 0.1s ease-in;
+}
+
+.logout-btn {
+    opacity: 0.95;
+    width: 40px;
+    height: 40px;
+    padding: 1%;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+    transition: 0.1s ease-in;
+}
+
+.border-round {
+    border-radius: 1pc 1pc 1pc 1pc;
+}

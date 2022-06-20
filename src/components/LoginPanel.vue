@@ -1,27 +1,82 @@
 <template>
 
-<section class="bg-white d-flex justify-content-center vh-100 w-100 align-items-center flex-column flex-md-row-reverse">
-
-    <div class="w-100 d-flex justify-content-center align-items-center h-100">
-        <img src="../assets/logo.png" class="img-fluid logo">
+  <section class="d-flex flex-column flex-lg-row vh-100">
+    <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-main">
+      <img class="img-fluid p-lg-5 mw-sm-450" src="../assets/hospital_green.svg">
     </div>
-    
-    <div class="w-100 d-flex justify-content-center align-items-center h-100 bg-dark-red flex-column">
-        <h1 class="font-medium color-white font-weight-bold text-center text-lg-start w-75 mb-1">Witamy!</h1>
-        <h2 class="font-small color-white font-weight-bold text-center text-lg-start w-75 mb-4">Zaloguj się.</h2>
-        <form class="d-flex justify-content-center align-items-center flex-column flex-lg-row w-75 w-lg-75" method="POST" action="">
-            
-            <div class="mr-2 w-100 h-100">
-                <input class="form-control mb-2" type="email" id="login" name="login" placeholder="Login" required>
-                
-                <input class="form-control mt-2" type="password" id="password" name="password" placeholder="Password" required>
-            </div>
-                
-                
-            <button class="btn btn-black mx-2 w-100 h-100 mt-3 mt-lg-0 w-lg-50" type="submit" name="submit">Log In</button>
-
+    <div class="h-100 w-100 d-flex justify-content-center align-items-center bg-login p-4">
+      <div class="login bg-white">
+        <h1 class="font-medium">Dzień dobry</h1>
+        <p v-if="showError" id="error" class="mb-0 mt-2" style="color: red">Niepoprawny login lub hasło</p>
+        <p v-else class="font-small mb-0 mt-2">Wprowadź login i hasło</p>
+        <form v-on:submit.prevent="login(email, password)">
+          <input class="input-form" type="text" placeholder="login" name="email" v-model="email" required><br/>
+          <input class="input-form" type="password" placeholder="hasło" name="password" v-model="password"
+                 required><br/>
+          <button type="submit" class="btn-form btn-form-green p-3 text-decoration-none mt-2">
+            Zaloguj się
+          </button>
         </form>
+      </div>
     </div>
-</section>
-
+  </section>
 </template>
+
+<script>
+
+import axios from 'axios';
+
+export default {
+  name: 'LoginPanel',
+  data() {
+    return {
+      email: "",
+      password: "",
+      showError: false
+    }
+  },
+
+  methods: {
+
+    getUserData() {
+      axios.get(`https://patient-service-api.herokuapp.com/user/details/?login=${this.email}`)
+          .then(response => {
+            this.users = response.data
+            console.log(response.data)
+            if (response.status === 200) {
+              localStorage.setItem('userRole', response.data.role)
+            }
+          })
+    },
+
+    login(email, password) {
+
+      const params = new URLSearchParams();
+      params.append('username', email);
+      params.append('password', password);
+
+      axios.post('https://patient-service-api.herokuapp.com/login', params, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        }
+      }).then(response => {
+            console.log(response.status)
+            if (response.status === 200) {
+              localStorage.setItem('loggedIn', 'true')
+              this.$router.push({path: '/hospitals'})
+              this.getUserData();
+            }
+          }
+      ).catch((error) => {
+        if (error.response.status === 401) {
+          this.showError = true;
+        }
+        if (error.response.status === 500) {
+          this.showError = true;
+        }
+      })
+    }
+  }
+
+}
+</script>

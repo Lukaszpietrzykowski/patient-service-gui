@@ -1,0 +1,94 @@
+.menu-admin-form-button {
+    opacity: 0.95;
+    width: 40px;
+    height: 40px;
+    padding: 1%;
+}
+
+.menu-admin-form-button:hover {
+    opacity: 1;
+    transition: 0.1s ease-in;
+}
+
+.input-user {
+    width: 60%;
+    background-color: #efefef;
+    border: 2px solid #077262;
+    border-radius: 5px;
+    // padding: 2%;
+    box-sizing: border-box;
+    outline: none;
+    /* wyłączenie czarnej obwódki */
+    //margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+span {
+    font-size: 0.8rem;
+}
+
+.input-user-radio {
+    width: 17px;
+    height: 17px;
+}
+
+.input-user-radio2 {
+    width: 15px;
+    height: 15px;
+}
+
+.btn-add {
+    width: 60%;
+    color: #fff;
+    // padding: 2%;
+    // margin-top: 3%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    // letter-spacing: 3%;
+    outline: none;
+    background-color: #05a081;
+}
+
+.btn-add:hover {
+    opacity: 0.95;
+    transition: 0.1s ease-in;
+}
+
+.btn-back {
+    width: 30%;
+    color: #626466;
+    // padding: 2%;
+    // margin-top: 3%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    // letter-spacing: 3%;
+    outline: none;
+    background-color: #0000000b;
+}
+.btn-back-add{
+    width: 30%;
+    color: #626466;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    background-color: #0000000b;
+}
+
+.btn-delete {
+    width: 30%;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    background-color: #801212;
+}
+
+.btn-back:hover {
+    background-color: #0000000f;
+    transition: 0.1s ease-in;
+    color: #000;
+}

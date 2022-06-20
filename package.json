@@ -1,46 +1,66 @@
 {
-    "name": "patient-service-gui",
-    "version": "0.1.0",
-    "engines": {
-        "node": "16.x"
+  "name": "patient-service-gui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "postinstall": "npm run build",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "core-js": "^3.8.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "sass": "^1.44.0",
+    "serve-static": "^1.14.2",
+    "vue": "^3.2.13",
+    "vue-filter": "^0.2.5",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.12.16",
+    "@babel/preset-env": "^7.16.4",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "gulp": "^3.9.1",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.6.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "private": true,
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint",
-        "postinstall": "npm run build",
-        "start": "node server.js"
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
     },
-    "dependencies": {
-        "core-js": "^3.8.3",
-        "express": "^4.17.3",
-        "serve-static": "^1.14.2",
-        "vue": "^3.2.13",
-        "sass": "^1.44.0"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.16.0",
-        "@babel/eslint-parser": "^7.12.16",
-        "@babel/preset-env": "^7.16.4",
-        "@vue/cli-plugin-babel": "~5.0.0",
-        "@vue/cli-plugin-eslint": "~5.0.0",
-        "@vue/cli-service": "~5.0.0",
-        "eslint": "^7.32.0",
-        "eslint-plugin-vue": "^8.0.3"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/vue3-essential",
-            "eslint:recommended"
-        ],
-        "parserOptions": {
-            "parser": "@babel/eslint-parser"
-        },
-        "rules": {}
-    }
+    "rules": {}
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lukaszpietrzykowski/patient-service-gui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lukaszpietrzykowski/patient-service-gui/issues"
+  },
+  "homepage": "https://github.com/Lukaszpietrzykowski/patient-service-gui#readme"
 }

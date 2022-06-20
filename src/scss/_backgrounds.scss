@@ -2,10 +2,23 @@
     background: #fff;
 }
 
+.bg-white-transparent {
+    background: #fff;
+    opacity: 0.95;
+}
+
 .bg-grey {
     background: #f4f4f4de;
 }
 
 .bg-dark-red {
     background: #7a000a;
+}
+
+.bg-main {
+    background: #05a081;
+}
+
+.bg-login {
+    background: #05a08129;
 }
