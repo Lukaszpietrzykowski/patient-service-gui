@@ -27,14 +27,11 @@
             <div>{{this.department.name}}</div>
             <div>{{this.hospital.name}}</div>
           </div>
-        </div>        
-        <div class="graphic">
-          <img class="img-fluid" src="../assets/patient-details-graphic.png">
         </div>
       </div>
       <div id="edit-patient-details">
         <div class="medical-history p-2">
-          <div>Historia choroby:</div>
+          <div class="my-3">Historia choroby:</div>
             <textarea v-model="PatientData.medicalHistory" cols="2" rows="7"></textarea>
           </div>
         <div class="m-2">
@@ -155,26 +152,44 @@ export default {
 .patient-details-box {
   display: flex;
   flex-direction: column;
+  
   justify-content: space-evenly;
   align-items: center;
   min-height: 80%;
   min-width: 80%;
-  margin: 5%;
+  margin: 1rem;
   border-radius: 1pc 1pc 1pc 1pc;
   box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
 }
+
+  @media (min-width:992px) {
+    .patient-details-box {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+
+    .patient-basic {
+    width: 90%;
+    margin-left: auto;
+    }
+  }
 .patient-graphic{
   display: flex;
+  flex-direction: column-reverse;
   width: 100%;
+  
+
 }
 .patient-basic{
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  flex-direction: row;
-  padding: 1%;
-  margin: 3%;
-  border-radius: 1pc 1pc 1pc 1pc;
+display: flex;
+    justify-content: center;
+    /* width: 100%; */
+    /* height: 100%; */
+    flex-direction: row;
+    padding: 1rem;
+    /* margin: 1rem; */
+    background-color: #fff;
+    border-radius: 1pc 0pc 0pc 1pc;
   box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
 }
 .patient-headers{
@@ -201,15 +216,27 @@ export default {
 }
 #edit-patient-details{
   width: 100%;
+  height: 100%;
 }
-.medical-history{
+.medical-history {
   display: flex;
   width: 100%;
   flex-direction: column;
+
 }
-.img-fluid {
+
+.medical-history textarea {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
+    border: 0;
+    height: 66vh;
+    border-radius: 1pc 1pc 1pc 1pc;
+  
+}
+/* .img-fluid {
     max-width: 40%;
-}
+} */
 @media screen and (max-width: 800px) {
   .graphic{
     display: none;
