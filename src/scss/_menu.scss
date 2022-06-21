@@ -15,7 +15,11 @@
     margin-left: auto;
     // margin-bottom: 1rem;
     width: 75%;
-    height: 25%;
+    // height: 25%;
+    @media (min-width: 768px) {
+        position: fixed;
+        bottom: 0;
+    }
 }
 
 .bolder {
