@@ -20,12 +20,12 @@
                     <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 9px; letter-spacing: 0.5px">Wyloguj</h2>
         </div>
 
-<div class="my-5 w-lg-75">
+<div class="my-5">
         <section class="my-5 w-100" v-if="users?.length && users" >
             <div v-for="user in filteredList" v-bind:key="user.id"
                 class="d-flex p-3 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
                 <div class="w-100 py-1 p-lg-3">
-                    <div class="w-100 d-flex flex-column flex-lg-row p-2 justify-content-center align-items-center">
+                    <div class="w-100 d-flex flex-column flex-lg-row p-2 gap-lg-5 justify-content-center align-items-center">
                         <div class="w-100 my-2">
                             <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
                                 style="gap:0.6rem">

@@ -26,11 +26,12 @@
         Wyloguj</h2>
     </div>
 
-    <section class="my-5 w-75 mb-7rem" v-if="patients?.length && patients">
+<div class="mt-5">
+    <section class="my-5 mb-7rem" v-if="patients?.length && patients">
       <div v-for="patient in filteredList" v-bind:key="patient.firstName"
            class="d-flex p-4 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
         <div class="w-100 py-1 p-lg-3">
-          <div class="w-100 d-flex flex-column flex-lg-row p-2 justify-content-center align-items-center">
+          <div class="w-100 d-flex flex-column flex-lg-row p-2 gap-lg-5 justify-content-center align-items-center">
             <div class="w-100 my-2">
               <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
                    style="gap:0.6rem">
@@ -113,6 +114,7 @@
       </div>
 
     </section>
+    </div>
 
     <section class="box-hamburger d-lg-none">
       <button class="btn btn-form-green btn-menu" v-on:click="openMenu()">

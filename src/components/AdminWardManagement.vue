@@ -13,7 +13,7 @@
             <h1>Lista oddziałów</h1>
           </div>
           <div v-for="department in departments" v-bind:key="department.id"
-               class="d-flex p-4 mt-2 w-100 mx-auto justify-content-center flex-column  menu-hospital-box">
+               class="d-flex p-4 mt-2 w-100 mx-auto justify-content-center flex-column menu-hospital-box">
 
 
             <div class="d-flex flex-row justify-content-center align-items-center">
