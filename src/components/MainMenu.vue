@@ -37,8 +37,8 @@
         </ul>
     </li>
     </ul> -->
-
-    <div class="w-100 mb-7rem" v-if="hospitals.length">
+<div class="my-5">
+    <div class="w-100 mb-7rem mt-5" v-if="hospitals.length">
       <div v-for="hospital_one in filteredList" v-bind:key="hospital_one.name"
            class="d-flex align-items-center p-3 my-3 w-100 w-lg-75 mx-auto justify-content-center flex-column flex-md-row menu-hospital-box">
 
@@ -113,6 +113,7 @@
         <!-- {{department.name}} -->
       </ul>
 
+    </div>
     </div>
     <section class="box-hamburger d-lg-none">
       <button class="btn btn-form-green btn-menu" v-on:click="openMenu()">

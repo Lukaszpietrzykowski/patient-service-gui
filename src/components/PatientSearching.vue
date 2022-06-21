@@ -25,8 +25,8 @@
       <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 9px; letter-spacing: 0.5px">
         Wyloguj</h2>
     </div>
-
-    <section class="my-5 w-75" v-if="patients?.length && patients">
+<div class="mt-5">
+    <section class="my-5" v-if="patients?.length && patients">
       <div v-for="patient in filteredList" v-bind:key="patient.firstName"
            class="d-flex p-4 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
         <div class="w-100 py-1 p-lg-3">
@@ -132,6 +132,7 @@
       </div>
 
     </section>
+    </div>
 
 <section class="box-hamburger d-lg-none">
       <button class="btn btn-form-green btn-menu" v-on:click="openMenu()">
