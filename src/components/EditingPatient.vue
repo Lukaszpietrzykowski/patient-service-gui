@@ -333,8 +333,6 @@
           })
       },
       setDepartments: function () {
-        console.log(this.hospitals)
-        console.log(this.oldPatient)
         this.departments = this.hospitals.find(hospital => hospital.id === this.oldPatient.hospitalId).departments
       },
     },
