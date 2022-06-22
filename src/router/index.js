@@ -3,7 +3,6 @@ import LoginPanel from '../components/LoginPanel.vue'
 import MainMenu from '../components/MainMenu.vue'
 import AddingPatient from '../components/AddingPatient.vue'
 import PatientSearching from '../components/PatientSearching.vue'
-import AdminPanel from '../components/AdminPanel.vue'
 import AdminUsersManagement from '../components/AdminUsersManagement.vue'
 import AdminHospitalsManagement from '../components/AdminHospitalsManagement.vue'
 import AdminAddingHospital from '../components/AdminAddingHospital.vue'
@@ -30,15 +29,6 @@ const routes = [
         meta: {
             requiresAuth: true
         }
-    },
-    {
-        path: '/admin-panel',
-        name: 'AdminPanel',
-        component: AdminPanel,
-        meta: {
-            requiresAuth: true
-        }
-
     },
     {
         path: '/adding-hospital',
