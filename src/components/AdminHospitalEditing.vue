@@ -14,7 +14,7 @@
               <div>
                 <div class="color-grey mt-2 font-small">Nazwa szpitala</div>
                 <div><input class="input-user" type="text" name="nazwa szpitala"
-                            required pattern="^[a-zA-Z\s]*$"
+                            required
                             v-model="hospitalData.name"
                             placeholder="Szpital"
                 ></div>
