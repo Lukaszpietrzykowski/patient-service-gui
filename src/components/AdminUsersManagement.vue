@@ -1,91 +1,104 @@
 <template>
 
-    <section class="bg-white position-relative d-flex flex-column align-items-center justify-content-center h-100">
+  <section class="bg-white position-relative d-flex flex-column align-items-center justify-content-center h-100">
 
-        <header class="d-flex flex-column justify-content-center w-100 bg-for-menu bg-main menu-header p-3 position-fixed top-0">
-            <form class="d-flex justify-content-center w-100">
+    <header
+        class="d-flex flex-column justify-content-center w-100 bg-for-menu bg-main menu-header p-3 position-fixed top-0">
+      <form class="d-flex justify-content-center w-100">
 
-                <div class="w-75 w-lg-50 d-flex flex-row justify-content-center">
-                    <input class="input-search h-100 p-0 m-0 outline-none border-0 " type="text" placeholder="Wyszukaj użytkownika" v-model="search">
-                </div>
-
-            </form>
-
-        </header>
-
-        <div class="d-flex flex-column justify-content-center menu-logout">
-                    <a href="" class="bg-white-transparent border-round mt-2">
-                        <svg class="logout-btn" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M160 48C160 21.49 181.5 0 208 0C234.5 0 256 21.49 256 48C256 74.51 234.5 96 208 96C181.5 96 160 74.51 160 48V48zM112.7 205.4C97.41 212.2 85.42 224.6 79.22 240.1L77.71 243.9C71.15 260.3 52.53 268.3 36.12 261.7C19.71 255.1 11.73 236.5 18.29 220.1L19.8 216.3C32.19 185.4 56.18 160.5 86.66 146.9L97.66 142C118.5 132.8 140.1 128 163.7 128C208.3 128 248.5 154.8 265.6 195.9L280.1 232.7L302.3 243.4C318.1 251.3 324.5 270.5 316.6 286.3C308.7 302.1 289.5 308.5 273.7 300.6L247 287.3C236.7 282.1 228.6 273.4 224.2 262.8L214.6 239.8L195.3 305.3L244.8 359.4C250.2 365.3 254.1 372.4 256 380.2L279 472.2C283.3 489.4 272.9 506.8 255.8 511C238.6 515.3 221.2 504.9 216.1 487.8L194.9 399.6L124.3 322.5C109.5 306.4 103.1 283.9 109.6 262.8L126.5 199.3C125.6 199.7 124.6 200.1 123.7 200.5L112.7 205.4zM100.7 344.2L141.4 388.6L126.9 424.8C124.5 430.9 120.9 436.4 116.3 440.9L54.63 502.6C42.13 515.1 21.87 515.1 9.372 502.6C-3.124 490.1-3.124 469.9 9.372 457.4L68.73 398L93.69 335.6C95.84 338.6 98.17 341.4 100.7 344.2H100.7zM630.6 233.4C643.1 245.9 643.1 266.1 630.6 278.6L550.6 358.6C538.1 371.1 517.9 371.1 505.4 358.6C492.9 346.1 492.9 325.9 505.4 313.4L530.7 288H384C366.3 288 352 273.7 352 256C352 238.3 366.3 224 384 224H530.7L505.4 198.6C492.9 186.1 492.9 165.9 505.4 153.4C517.9 140.9 538.1 140.9 550.6 153.4L630.6 233.4z"/></svg>
-                    </a>
-                    <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 9px; letter-spacing: 0.5px">Wyloguj</h2>
+        <div class="w-75 w-lg-50 d-flex flex-row justify-content-center">
+          <input class="input-search h-100 p-0 m-0 outline-none border-0 " type="text"
+                 placeholder="Wyszukaj użytkownika" v-model="search">
         </div>
 
-<div class="my-5">
-        <section class="my-5 w-100" v-if="users?.length && users" >
-            <div v-for="user in filteredList" v-bind:key="user.id"
-                class="d-flex p-3 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
-                <div class="w-100 py-1 p-lg-3">
-                    <div class="w-100 d-flex flex-column flex-lg-row p-2 gap-lg-5 justify-content-center align-items-center">
-                        <div class="w-100 my-2">
-                            <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
-                                style="gap:0.6rem">
-                                <svg width="30" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path
-                                        d="M292.7 342.3C289.7 345.3 288 349.4 288 353.7V416h62.34c4.264 0 8.35-1.703 11.35-4.727l156.9-158l-67.88-67.88L292.7 342.3zM568.5 167.4L536.6 135.5c-9.875-10-26-10-36 0l-27.25 27.25l67.88 67.88l27.25-27.25C578.5 193.4 578.5 177.3 568.5 167.4zM256 0v128h128L256 0zM256 448c-16.07-.2852-30.62-9.359-37.88-23.88c-2.875-5.875-8-6.5-10.12-6.5s-7.25 .625-10 6.125l-7.749 15.38C187.6 444.6 181.1 448 176 448H174.9c-6.5-.5-12-4.75-14-11L144 386.6L133.4 418.5C127.5 436.1 111 448 92.45 448H80C71.13 448 64 440.9 64 432S71.13 416 80 416h12.4c4.875 0 9.102-3.125 10.6-7.625l18.25-54.63C124.5 343.9 133.6 337.3 144 337.3s19.5 6.625 22.75 16.5l13.88 41.63c19.75-16.25 54.13-9.75 66 14.12C248.5 413.2 252.2 415.6 256 415.9V347c0-8.523 3.402-16.7 9.451-22.71L384 206.5V160H256c-17.67 0-32-14.33-32-32L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V448H256z" />
-                                </svg>
-                                <p class="m-0" style="color:#626466">email</p>
-                            </div>
-                            <div class="p-2 w-100 patient-name">{{user.email}}</div>
-                        </div>
+      </form>
+
+    </header>
+
+    <div class="d-flex flex-column justify-content-center menu-logout">
+      <a href="" class="bg-white-transparent border-round mt-2">
+        <svg class="logout-btn" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+          <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+              d="M160 48C160 21.49 181.5 0 208 0C234.5 0 256 21.49 256 48C256 74.51 234.5 96 208 96C181.5 96 160 74.51 160 48V48zM112.7 205.4C97.41 212.2 85.42 224.6 79.22 240.1L77.71 243.9C71.15 260.3 52.53 268.3 36.12 261.7C19.71 255.1 11.73 236.5 18.29 220.1L19.8 216.3C32.19 185.4 56.18 160.5 86.66 146.9L97.66 142C118.5 132.8 140.1 128 163.7 128C208.3 128 248.5 154.8 265.6 195.9L280.1 232.7L302.3 243.4C318.1 251.3 324.5 270.5 316.6 286.3C308.7 302.1 289.5 308.5 273.7 300.6L247 287.3C236.7 282.1 228.6 273.4 224.2 262.8L214.6 239.8L195.3 305.3L244.8 359.4C250.2 365.3 254.1 372.4 256 380.2L279 472.2C283.3 489.4 272.9 506.8 255.8 511C238.6 515.3 221.2 504.9 216.1 487.8L194.9 399.6L124.3 322.5C109.5 306.4 103.1 283.9 109.6 262.8L126.5 199.3C125.6 199.7 124.6 200.1 123.7 200.5L112.7 205.4zM100.7 344.2L141.4 388.6L126.9 424.8C124.5 430.9 120.9 436.4 116.3 440.9L54.63 502.6C42.13 515.1 21.87 515.1 9.372 502.6C-3.124 490.1-3.124 469.9 9.372 457.4L68.73 398L93.69 335.6C95.84 338.6 98.17 341.4 100.7 344.2H100.7zM630.6 233.4C643.1 245.9 643.1 266.1 630.6 278.6L550.6 358.6C538.1 371.1 517.9 371.1 505.4 358.6C492.9 346.1 492.9 325.9 505.4 313.4L530.7 288H384C366.3 288 352 273.7 352 256C352 238.3 366.3 224 384 224H530.7L505.4 198.6C492.9 186.1 492.9 165.9 505.4 153.4C517.9 140.9 538.1 140.9 550.6 153.4L630.6 233.4z"/>
+        </svg>
+      </a>
+      <h2 class="font-small color-white font-weight-normal text-center " style="font-size: 9px; letter-spacing: 0.5px">
+        Wyloguj</h2>
+    </div>
+
+    <div class="my-5">
+      <section class="my-5 w-100" v-if="users?.length && users">
+        <div v-for="user in filteredList" v-bind:key="user.id"
+             class="d-flex p-3 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
+          <div class="w-100 py-1 p-lg-3">
+            <div class="w-100 d-flex flex-column flex-lg-row p-2 gap-lg-5 justify-content-center align-items-center">
+              <div class="w-100 my-2">
+                <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
+                     style="gap:0.6rem">
+                  <svg width="30" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <path
+                        d="M292.7 342.3C289.7 345.3 288 349.4 288 353.7V416h62.34c4.264 0 8.35-1.703 11.35-4.727l156.9-158l-67.88-67.88L292.7 342.3zM568.5 167.4L536.6 135.5c-9.875-10-26-10-36 0l-27.25 27.25l67.88 67.88l27.25-27.25C578.5 193.4 578.5 177.3 568.5 167.4zM256 0v128h128L256 0zM256 448c-16.07-.2852-30.62-9.359-37.88-23.88c-2.875-5.875-8-6.5-10.12-6.5s-7.25 .625-10 6.125l-7.749 15.38C187.6 444.6 181.1 448 176 448H174.9c-6.5-.5-12-4.75-14-11L144 386.6L133.4 418.5C127.5 436.1 111 448 92.45 448H80C71.13 448 64 440.9 64 432S71.13 416 80 416h12.4c4.875 0 9.102-3.125 10.6-7.625l18.25-54.63C124.5 343.9 133.6 337.3 144 337.3s19.5 6.625 22.75 16.5l13.88 41.63c19.75-16.25 54.13-9.75 66 14.12C248.5 413.2 252.2 415.6 256 415.9V347c0-8.523 3.402-16.7 9.451-22.71L384 206.5V160H256c-17.67 0-32-14.33-32-32L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V448H256z"/>
+                  </svg>
+                  <p class="m-0" style="color:#626466">email</p>
+                </div>
+                <div class="p-2 w-100 patient-name">{{ user.email }}</div>
+              </div>
 
 
-                        <div class="w-100 my-2">
-                            <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
-                                style="gap:0.6rem">
-                                <svg width="30" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                    <path
-                                        d="M192 160C192 177.7 177.7 192 160 192C142.3 192 128 177.7 128 160V128C128 74.98 170.1 32 224 32C277 32 320 74.98 320 128V135.8C320 156.6 318.8 177.4 316.4 198.1L438.8 161.3C450.2 157.9 462.6 161.1 470.1 169.7C479.3 178.3 482.1 190.8 478.4 202.1L460.4 255.1H544C561.7 255.1 576 270.3 576 287.1C576 305.7 561.7 319.1 544 319.1H416C405.7 319.1 396.1 315.1 390 306.7C384 298.4 382.4 287.6 385.6 277.9L398.1 240.4L303.7 268.7C291.9 321.5 272.2 372.2 245.3 419.2L231.4 443.5C218.5 466.1 194.5 480 168.5 480C128.5 480 95.1 447.5 95.1 407.5V335.6C95.1 293.2 123.8 255.8 164.4 243.7L248.8 218.3C253.6 191.1 255.1 163.5 255.1 135.8V128C255.1 110.3 241.7 96 223.1 96C206.3 96 191.1 110.3 191.1 128L192 160zM160 335.6V407.5C160 412.2 163.8 416 168.5 416C171.5 416 174.4 414.4 175.9 411.7L189.8 387.4C207.3 356.6 221.4 324.1 231.8 290.3L182.8 304.1C169.3 309 160 321.5 160 335.6V335.6zM24 368H64V407.5C64 410.4 64.11 413.2 64.34 416H24C10.75 416 0 405.3 0 392C0 378.7 10.75 368 24 368zM616 416H283.5C291.7 400.3 299.2 384.3 305.9 368H616C629.3 368 640 378.7 640 392C640 405.3 629.3 416 616 416z" />
-                                </svg>
-                                <p class="m-0" style="color:#626466">login</p>
-                            </div>
-                            <div class="p-2 w-100 patient-name">{{user.login}}</div>
+              <div class="w-100 my-2">
+                <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
+                     style="gap:0.6rem">
+                  <svg width="30" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path
+                        d="M192 160C192 177.7 177.7 192 160 192C142.3 192 128 177.7 128 160V128C128 74.98 170.1 32 224 32C277 32 320 74.98 320 128V135.8C320 156.6 318.8 177.4 316.4 198.1L438.8 161.3C450.2 157.9 462.6 161.1 470.1 169.7C479.3 178.3 482.1 190.8 478.4 202.1L460.4 255.1H544C561.7 255.1 576 270.3 576 287.1C576 305.7 561.7 319.1 544 319.1H416C405.7 319.1 396.1 315.1 390 306.7C384 298.4 382.4 287.6 385.6 277.9L398.1 240.4L303.7 268.7C291.9 321.5 272.2 372.2 245.3 419.2L231.4 443.5C218.5 466.1 194.5 480 168.5 480C128.5 480 95.1 447.5 95.1 407.5V335.6C95.1 293.2 123.8 255.8 164.4 243.7L248.8 218.3C253.6 191.1 255.1 163.5 255.1 135.8V128C255.1 110.3 241.7 96 223.1 96C206.3 96 191.1 110.3 191.1 128L192 160zM160 335.6V407.5C160 412.2 163.8 416 168.5 416C171.5 416 174.4 414.4 175.9 411.7L189.8 387.4C207.3 356.6 221.4 324.1 231.8 290.3L182.8 304.1C169.3 309 160 321.5 160 335.6V335.6zM24 368H64V407.5C64 410.4 64.11 413.2 64.34 416H24C10.75 416 0 405.3 0 392C0 378.7 10.75 368 24 368zM616 416H283.5C291.7 400.3 299.2 384.3 305.9 368H616C629.3 368 640 378.7 640 392C640 405.3 629.3 416 616 416z"/>
+                  </svg>
+                  <p class="m-0" style="color:#626466">login</p>
+                </div>
+                <div class="p-2 w-100 patient-name">{{ user.login }}</div>
 
-                        </div>
-                        <div class="w-100 my-2">
-                            <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
-                                style="gap:0.6rem">
-                                <svg width="30" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                    <path
-                                        d="M528 32h-480C21.49 32 0 53.49 0 80V96h576V80C576 53.49 554.5 32 528 32zM0 432C0 458.5 21.49 480 48 480h480c26.51 0 48-21.49 48-48V128H0V432zM368 192h128C504.8 192 512 199.2 512 208S504.8 224 496 224h-128C359.2 224 352 216.8 352 208S359.2 192 368 192zM368 256h128C504.8 256 512 263.2 512 272S504.8 288 496 288h-128C359.2 288 352 280.8 352 272S359.2 256 368 256zM368 320h128c8.836 0 16 7.164 16 16S504.8 352 496 352h-128c-8.836 0-16-7.164-16-16S359.2 320 368 320zM176 192c35.35 0 64 28.66 64 64s-28.65 64-64 64s-64-28.66-64-64S140.7 192 176 192zM112 352h128c26.51 0 48 21.49 48 48c0 8.836-7.164 16-16 16h-192C71.16 416 64 408.8 64 400C64 373.5 85.49 352 112 352z" />
-                                </svg>
-                                <p class="m-0" style="color:#626466">Uprawnienia</p>
-                            </div>
-                            <div class="p-2 w-100 patient-name">{{convertRole(user.role)}}</div>
+              </div>
+              <div class="w-100 my-2">
+                <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center"
+                     style="gap:0.6rem">
+                  <svg width="30" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <path
+                        d="M528 32h-480C21.49 32 0 53.49 0 80V96h576V80C576 53.49 554.5 32 528 32zM0 432C0 458.5 21.49 480 48 480h480c26.51 0 48-21.49 48-48V128H0V432zM368 192h128C504.8 192 512 199.2 512 208S504.8 224 496 224h-128C359.2 224 352 216.8 352 208S359.2 192 368 192zM368 256h128C504.8 256 512 263.2 512 272S504.8 288 496 288h-128C359.2 288 352 280.8 352 272S359.2 256 368 256zM368 320h128c8.836 0 16 7.164 16 16S504.8 352 496 352h-128c-8.836 0-16-7.164-16-16S359.2 320 368 320zM176 192c35.35 0 64 28.66 64 64s-28.65 64-64 64s-64-28.66-64-64S140.7 192 176 192zM112 352h128c26.51 0 48 21.49 48 48c0 8.836-7.164 16-16 16h-192C71.16 416 64 408.8 64 400C64 373.5 85.49 352 112 352z"/>
+                  </svg>
+                  <p class="m-0" style="color:#626466">Uprawnienia</p>
+                </div>
+                <div class="p-2 w-100 patient-name">{{ convertRole(user.role) }}</div>
 
-                        </div>
+              </div>
 
-                        <div class="d-flex flex-column p-1">
-                            <div v-on:click="updateUser(user.id)" class="d-flex flex-column justify-content-center action-button">
+              <div class="d-flex flex-column p-1">
+                <div v-on:click="updateUser(user.id)" class="d-flex flex-column justify-content-center action-button">
                                <span class="bg-transparent mt-2">
-                                    <svg class="menu-admin-form-button" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M223.1 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 223.1 256zM274.7 304H173.3C77.61 304 0 381.7 0 477.4C0 496.5 15.52 512 34.66 512h286.4c-1.246-5.531-1.43-11.31-.2832-17.04l14.28-71.41c1.943-9.723 6.676-18.56 13.68-25.56l45.72-45.72C363.3 322.4 321.2 304 274.7 304zM371.4 420.6c-2.514 2.512-4.227 5.715-4.924 9.203l-14.28 71.41c-1.258 6.289 4.293 11.84 10.59 10.59l71.42-14.29c3.482-.6992 6.682-2.406 9.195-4.922l125.3-125.3l-72.01-72.01L371.4 420.6zM629.5 255.7l-21.1-21.11c-14.06-14.06-36.85-14.06-50.91 0l-38.13 38.14l72.01 72.01l38.13-38.13C643.5 292.5 643.5 269.7 629.5 255.7z"/></svg>
+                                    <svg class="menu-admin-form-button" fill="#05a081"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
+                                        d="M223.1 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 223.1 256zM274.7 304H173.3C77.61 304 0 381.7 0 477.4C0 496.5 15.52 512 34.66 512h286.4c-1.246-5.531-1.43-11.31-.2832-17.04l14.28-71.41c1.943-9.723 6.676-18.56 13.68-25.56l45.72-45.72C363.3 322.4 321.2 304 274.7 304zM371.4 420.6c-2.514 2.512-4.227 5.715-4.924 9.203l-14.28 71.41c-1.258 6.289 4.293 11.84 10.59 10.59l71.42-14.29c3.482-.6992 6.682-2.406 9.195-4.922l125.3-125.3l-72.01-72.01L371.4 420.6zM629.5 255.7l-21.1-21.11c-14.06-14.06-36.85-14.06-50.91 0l-38.13 38.14l72.01 72.01l38.13-38.13C643.5 292.5 643.5 269.7 629.5 255.7z"/></svg>
                                 </span>
-                              <h2 class="font-small color:#626466 font-weight-normal text-center" style="font-size: 0.75rem; letter-spacing: 0.5px">Edytuj użytkownika</h2>
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                                <span v-on:click="removeUser(user.id)" class="bg-transparent mt-2 action-button">
-                                    <svg class="menu-admin-form-button" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM616 200h-144C458.8 200 448 210.8 448 224s10.75 24 24 24h144C629.3 248 640 237.3 640 224S629.3 200 616 200z"/></svg>
-                                </span>
-                                <h2 class="font-small color:#626466 font-weight-normal text-center " style="font-size: 0.75rem; letter-spacing: 0.5px">Usuń użytkownika</h2>
-                            </div>
-                        </div>
-                    </div>
+                  <h2 class="font-small color:#626466 font-weight-normal text-center"
+                      style="font-size: 0.75rem; letter-spacing: 0.5px">Edytuj użytkownika</h2>
                 </div>
+                <div class="d-flex flex-column justify-content-center">
+                                <span v-on:click="removeUser(user.id)" class="bg-transparent mt-2 action-button">
+                                    <svg class="menu-admin-form-button" fill="#05a081"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
+                                        d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM616 200h-144C458.8 200 448 210.8 448 224s10.75 24 24 24h144C629.3 248 640 237.3 640 224S629.3 200 616 200z"/></svg>
+                                </span>
+                  <h2 class="font-small color:#626466 font-weight-normal text-center "
+                      style="font-size: 0.75rem; letter-spacing: 0.5px">Usuń użytkownika</h2>
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
         </div>
+      </section>
+    </div>
 
 
-<section class="box-hamburger d-lg-none">
+    <section class="box-hamburger d-lg-none">
       <button class="btn btn-form-green btn-menu" v-on:click="openMenu()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -109,21 +122,21 @@
         <div
             class="bg-for-menu bg-main justify-content-center align-items-center d-flex flex-column gap-0 flex-md-row menu-fixed-bottom-inner gap-0 gap-md-2 gap-lg-3 px-4 w-max-content">
           <MenuComponent/>
-            <div class="d-flex flex-column justify-content-center">
+          <div class="d-flex flex-column justify-content-center">
             <router-link to="/adding-user" class="bg-transparent mt-2">
-            <svg class="menu-fixed-button" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <svg class="menu-fixed-button" fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                 <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                 <path
                     d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z"/>
-            </svg>
+              </svg>
             </router-link>
             <h2 class="font-small color-white font-weight-normal text-center "
                 style="font-size: 0.75rem; letter-spacing: 0.5px">Dodaj użytkownika</h2>
-        </div>
+          </div>
         </div>
       </section>
     </section>
-    </section>
+  </section>
 
 
 </template>
@@ -143,14 +156,14 @@ export default {
 
   methods: {
 
-    convertRole(userRole){
+    convertRole(userRole) {
       if (userRole === "ADMIN") {
         return "Administrator"
       } else if (userRole === "DOCTOR") {
         return "Doktor"
       } else if (userRole === "PARAMEDIC") {
         return "Ratownik"
-      } else  {
+      } else {
         return "Dyspozytor"
       }
     },
@@ -173,7 +186,7 @@ export default {
     },
 
     updateUser(id) {
-      this.$router.push({name: 'UserEditing', params: { id: id }})
+      this.$router.push({name: 'UserEditing', params: {id: id}})
     },
 
     openMenu() {
@@ -197,7 +210,7 @@ export default {
   computed: {
     filteredList() {
       return this.users.filter(user => {
-        return (user.name + user.login + user.email + this.convertRole(user.role)).toLowerCase().includes(this.search.toLowerCase())
+        return (user.name + " " + user.login + " " + user.email + " " + this.convertRole(user.role)).toLowerCase().includes(this.search.toLowerCase())
       })
 
     }
@@ -208,8 +221,8 @@ export default {
 </script>
 
 <style scoped>
- .action-button:hover {
-   cursor: pointer;
- }
+.action-button:hover {
+  cursor: pointer;
+}
 
 </style>

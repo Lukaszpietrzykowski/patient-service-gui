@@ -13,12 +13,12 @@
               <h1>Wprowadź dane użytkownika:</h1>
               <div>
                 <div class="color-grey mt-2 font-small">E-mail</div>
-                <div><input class="input-user" type="email" v-model="user.email" placeholder="E-mail"></div>
+                <div><input class="input-user" type="email" v-model="user.email" placeholder="E-mail" required></div>
               </div>
               <div class="color-grey mt-2 font-small">Login</div>
-              <div><input class="input-user" type="text" v-model="user.login" placeholder="Login"></div>
+              <div><input class="input-user" type="text" v-model="user.login" placeholder="Login" required></div>
               <div class="color-grey mt-2 font-small">Hasło</div>
-              <div><input class="input-user" type="text" v-model="user.password" placeholder="Hasło"></div>
+              <div><input class="input-user" type="text" v-model="user.password" placeholder="Hasło" required></div>
               <div class="color-grey mt-2 font-small">Uprawnienia</div>
               <div class="d-flex flex-row justify-content-around mt-1">
                 <div class="align-items-center font-small"><input class="input-user-radio" value="ADMIN" type="radio"
@@ -33,11 +33,11 @@
                 <div class="align-items-center font-small"><input class="input-user-radio" value="PARAMEDIC"
                                                                   type="radio" v-model="user.role"> Ratownik
                 </div>
-
               </div>
               <div class="d-flex flex-row-reverse justify-content-around mt-2">
                 <button class="btn-add font-small mt-2 p-3 text-decoration-none mt-2">Dodaj użytkownika</button>
-                <router-link to="/users-management" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">Powrót
+                <router-link to="/users-management" class="btn-back font-small mt-2 p-3 text-decoration-none mt-2">
+                  Powrót
                 </router-link>
               </div>
 
