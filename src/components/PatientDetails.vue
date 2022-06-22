@@ -129,6 +129,9 @@ export default {
       },
     updatePatientDetails: function(){
       const config = { headers: {'Content-Type': 'text/plain'} };
+      if (this.PatientData.medicalHistory == null) {
+        this.PatientData.medicalHistory = "";
+      }
       axios.put(`https://patient-service-api.herokuapp.com/patient/update/medical-history/${this.patientId}`,  this.PatientData.medicalHistory, config)
             .then(response => {
               if (response.status === 200) this.$router.push({
