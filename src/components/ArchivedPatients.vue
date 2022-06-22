@@ -208,7 +208,7 @@ export default {
   computed: {
     filteredList() {
       return this.patients.filter(patient => {
-        return (patient.firstName + " " + patient.lastName + " " + patient.pesel + " " + this.convertDate(patient.birthDate) + " " + this.convertGender(patient.gender)).toLowerCase().includes(this.search.toLowerCase())
+        return (this.convertFirstName(patient.firstName) + " " + this.convertLastName(patient.lastName) + " " + this.convertPESEL(patient.pesel) + " " + this.convertDate(patient.birthDate) + " " + this.convertGender(patient.gender)).toLowerCase().includes(this.search.toLowerCase())
       })
     }
   }
