@@ -13,11 +13,11 @@
               <h1>Wprowadź dane szpitala:</h1>
               <div>
                 <div class="color-grey mt-2 font-small">Nazwa szpitala</div>
-                <div><input class="input-user" type="text" name="nazwa szpitala" required pattern="[A-Za-z]+.[A-Za-z+]" v-model="name" placeholder="Szpital">
+                <div><input class="input-user" type="text" name="nazwa szpitala" required pattern="^[a-zA-Z\s]*$" v-model="name" placeholder="Szpital">
                 </div>
               </div>
               <div class="color-grey mt-2 font-small">Miejscowość</div>
-              <div><input class="input-user" type="text" name="miasto" required pattern="[A-Za-z]+.[A-Za-z+]" v-model="address.city" placeholder="Warszawa">
+              <div><input class="input-user" type="text" name="miasto" required pattern="^[a-zA-Z\s]*$" v-model="address.city" placeholder="Warszawa">
               </div>
               <div class="color-grey mt-2 font-small">Ulica</div>
               <div><input class="input-user" type="text" name="ulica" required v-model="address.street" placeholder="Kwiatowa">
