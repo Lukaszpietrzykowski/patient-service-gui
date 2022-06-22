@@ -46,7 +46,7 @@
                       <span class="font-small"> oddział</span>
                     </div>
                     <div class="w-100" style="font-weight: bold;  max-width: 100%;">
-                      <input class="input-departments" style="width: 75%" type="text" v-model="department.name">
+                      <input class="input-departments" style="width: 75%" type="text" v-model="department.name" required>
                     </div>
                   </div>
                 </div>
