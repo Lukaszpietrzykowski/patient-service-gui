@@ -208,6 +208,17 @@ export default {
   width: 100%;
   flex-direction: column;
 }
+.medical-history textarea {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+    box-shadow: 0 0.46875rem 2.1875rem rgb(90 97 105 / 10%), 0 0.9375rem 1.40625rem rgb(90 97 105 / 10%), 0 0.25rem 0.53125rem rgb(90 97 105 / 12%), 0 0.125rem 0.1875rem rgb(90 97 105 / 10%);
+    border: 0;
+    height: 100%;
+    border-radius: 1pc 1pc 1pc 1pc;
+    margin-left: 2%;
+    margin-right: 2%;
+  
+}
 .img-fluid {
     max-width: 100%;
 }
