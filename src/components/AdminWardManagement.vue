@@ -68,7 +68,7 @@
               <h1>Wprowadź dane nowego oddziału:</h1>
               <div>
                 <div class="color-grey mt-2 font-small">Nazwa odziału</div>
-                <div><input class="input-user" type="text" name="odzdział" v-model="newDepartment.name" required pattern="[A-Za-z]+.[A-Za-z+]"
+                <div><input class="input-user" type="text" name="odzdział" v-model="newDepartment.name" required
                             placeholder="Kardiologia"></div>
               </div>
               <div class="color-grey mt-2 font-small">ilość łóżek</div>
