@@ -198,6 +198,7 @@ export default {
   display:flex;
   align-items: center;
   justify-content: center;
+  margin: 3%;
 }
 #edit-patient-details{
   width: 100%;
@@ -208,7 +209,7 @@ export default {
   flex-direction: column;
 }
 .img-fluid {
-    max-width: 40%;
+    max-width: 100%;
 }
 @media screen and (max-width: 800px) {
   .graphic{
