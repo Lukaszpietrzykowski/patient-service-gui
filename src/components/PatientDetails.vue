@@ -27,7 +27,7 @@
             <div>{{this.department.name}}</div>
             <div>{{this.hospital.name}}</div>
           </div>
-        </div>        
+        </div>
         <div class="graphic">
           <img class="img-fluid" src="../assets/patient-details-graphic.png">
         </div>
@@ -107,6 +107,7 @@ export default {
       axios.get(`https://patient-service-api.herokuapp.com/hospital/${this.PatientData.hospitalId}`)
       .then(response => {
       if (response.status === 200) {
+        console.log("c")
         this.hospital = response.data
         }
       })
@@ -214,7 +215,7 @@ export default {
     border-radius: 1pc 1pc 1pc 1pc;
     margin-left: 2%;
     margin-right: 2%;
-  
+
 }
 .img-fluid {
     max-width: 100%;
