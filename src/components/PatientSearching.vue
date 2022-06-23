@@ -28,7 +28,7 @@
 <div class="mt-5">
     <section class="my-5" v-if="patients?.length && patients">
       <div v-for="patient in filteredList" v-bind:key="patient.firstName"
-           class="d-flex p-4 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
+           class="d-flex p-1 mt-3 w-100 mx-auto justify-content-center flex-row flex-md-row menu-hospital-box">
         <div class="w-100 py-1 p-lg-3">
           <div class="w-100 d-flex flex-column flex-lg-row p-2 justify-content-center align-items-center">
             <div class="w-100 my-2">
@@ -77,9 +77,9 @@
                   <path
                       d="M160 32V64H288V32C288 14.33 302.3 0 320 0C337.7 0 352 14.33 352 32V64H400C426.5 64 448 85.49 448 112V160H0V112C0 85.49 21.49 64 48 64H96V32C96 14.33 110.3 0 128 0C145.7 0 160 14.33 160 32zM0 192H448V464C448 490.5 426.5 512 400 512H48C21.49 512 0 490.5 0 464V192zM80 256C71.16 256 64 263.2 64 272V368C64 376.8 71.16 384 80 384H176C184.8 384 192 376.8 192 368V272C192 263.2 184.8 256 176 256H80z"/>
                 </svg>
-                <p class="m-0" style="color:#626466">Data urodzenia</p>
+                <p class="m-0" style="color:#626466">Wiek</p>
               </div>
-              <div class="p-2 w-100 patient-name">{{ convertDate(patient.birthDate) }}</div>
+              <div class="p-2 w-100 patient-name">{{patient.age}}</div>
 
             </div>
             <div class="w-100 my-2">
@@ -94,7 +94,7 @@
               <div class="p-2 w-100 patient-name">{{ convertGender(patient.gender) }}</div>
 
             </div>
-            <div class="d-flex flex-column p-1">
+            <div class="d-flex flex-row p-1">
               <div v-if="this.userRole === 'ADMIN'" v-on:click="updatePatient(patient.id)"
                    class="d-flex flex-column justify-content-center action-button">
                                <span class="bg-transparent mt-2">
@@ -102,7 +102,7 @@
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
                                         d="M223.1 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 223.1 256zM274.7 304H173.3C77.61 304 0 381.7 0 477.4C0 496.5 15.52 512 34.66 512h286.4c-1.246-5.531-1.43-11.31-.2832-17.04l14.28-71.41c1.943-9.723 6.676-18.56 13.68-25.56l45.72-45.72C363.3 322.4 321.2 304 274.7 304zM371.4 420.6c-2.514 2.512-4.227 5.715-4.924 9.203l-14.28 71.41c-1.258 6.289 4.293 11.84 10.59 10.59l71.42-14.29c3.482-.6992 6.682-2.406 9.195-4.922l125.3-125.3l-72.01-72.01L371.4 420.6zM629.5 255.7l-21.1-21.11c-14.06-14.06-36.85-14.06-50.91 0l-38.13 38.14l72.01 72.01l38.13-38.13C643.5 292.5 643.5 269.7 629.5 255.7z"/></svg>
                                 </span>
-                <h2 class="font-small color:#626466 font-weight-normal text-center"
+                <h2 class="font-small color:#626466 font-weight-normal text-center p-2"
                     style="font-size: 0.75rem; letter-spacing: 0.5px">Edytuj pacjenta</h2>
               </div>
               <div v-if="this.userRole === 'ADMIN'" class="d-flex flex-column justify-content-center">
@@ -111,10 +111,10 @@
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
                                         d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM616 200h-144C458.8 200 448 210.8 448 224s10.75 24 24 24h144C629.3 248 640 237.3 640 224S629.3 200 616 200z"/></svg>
                                 </span>
-                <h2 class="font-small color:#626466 font-weight-normal text-center "
+                <h2 class="font-small color:#626466 font-weight-normal text-center p-2"
                     style="font-size: 0.75rem; letter-spacing: 0.5px">Usuń pacjenta</h2>
               </div>
-              <div class="d-flex flex-column justify-content-center action-button">
+              <div class="d-flex flex-column justify-content-center action-button mt-2">
                 <router-link :to="{ name: 'PatientDetails', params: { id: patient.id }}"
                              style="text-decoration: none; color: inherit;">
                                <span class="bg-transparent mt-2">
@@ -123,7 +123,7 @@
                                      d="M528 32h-480C21.49 32 0 53.49 0 80V96h576V80C576 53.49 554.5 32 528 32zM0 432C0 458.5 21.49 480 48 480h480c26.51 0 48-21.49 48-48V128H0V432zM368 192h128C504.8 192 512 199.2 512 208S504.8 224 496 224h-128C359.2 224 352 216.8 352 208S359.2 192 368 192zM368 256h128C504.8 256 512 263.2 512 272S504.8 288 496 288h-128C359.2 288 352 280.8 352 272S359.2 256 368 256zM368 320h128c8.836 0 16 7.164 16 16S504.8 352 496 352h-128c-8.836 0-16-7.164-16-16S359.2 320 368 320zM176 192c35.35 0 64 28.66 64 64s-28.65 64-64 64s-64-28.66-64-64S140.7 192 176 192zM112 352h128c26.51 0 48 21.49 48 48c0 8.836-7.164 16-16 16h-192C71.16 416 64 408.8 64 400C64 373.5 85.49 352 112 352z"/></svg>
                                 </span>
                 </router-link>
-                <h2 class="font-small color:#626466 font-weight-normal text-center"
+                <h2 class="font-small color:#626466 font-weight-normal text-center p-2"
                     style="font-size: 0.75rem; letter-spacing: 0.5px">Szczegóły pacjenta</h2>
               </div>
             </div>

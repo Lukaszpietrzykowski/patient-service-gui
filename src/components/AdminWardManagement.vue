@@ -24,7 +24,7 @@
                 <button class="btn-add font-small mt-2 p-2 text-decoration-none mt-2">Dodaj oddział</button>
                 <router-link class="btn-back font-small mt-2 p-2 text-decoration-none mt-2" to="/hospitals-management">Powrót</router-link>
               </div>
-              <div class="mt-4" style="color:#039060 " id="success"></div>
+
             </form>
           </div>
       </section>
@@ -82,7 +82,7 @@
                     <h2 class="font-small color-wblack font-weight-normal text-center mt-3" style="font-size: 0.75rem; letter-spacing: 0.5px">Cofnij zmiany</h2>
                   </div>
 
-                  <div v-on:click.prevent="this.edit.isDataCorrect && submitEdit(department)" class="d-flex flex-row justify-content-center action-button" style="gap:0.75rem">
+                  <div id="czerwony" v-on:click.prevent="this.edit.isDataCorrect && submitEdit(department)" class="d-flex flex-row justify-content-center action-button" style="gap:0.75rem">
                     <a class="bg-transparent mt-3">
                       <svg class="menu-departments-form-button" fill="#05a081" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/></svg>
                     </a>
@@ -188,10 +188,10 @@ export default {
       if (department.occupiedBeds > department.availableBeds) {
         console.log( department.availableBeds)
         this.edit.isDataCorrect = false;
-        document.getElementById('arrow').classList.add('szary');
+        document.getElementById('arrow').classList.add('czerwony');
       } else {
         this.edit.isDataCorrect = true;
-        document.getElementById('arrow').classList.remove('szary');
+        document.getElementById('arrow').classList.remove('czerwony');
       }
     },
     submitEdit(department) {
@@ -261,7 +261,7 @@ export default {
   cursor: pointer;
 }
 
-.szary {
+.czerwony {
   fill: red;
 }
 
