@@ -100,8 +100,6 @@ export default {
       }})
       .then(() => {this.getHospitalData(this.patientId)
       })
-      .catch(e => {this.errors.push(e)
-      })
     },
     getHospitalData: function () {
       axios.get(`https://patient-service-api.herokuapp.com/hospital/${this.PatientData.hospitalId}`)
@@ -112,9 +110,6 @@ export default {
       })
       .then(() => {this.getDepartmentData(this.patientId)
       })
-      .catch(e => {
-      this.errors.push(e)
-      })
       },
     getDepartmentData: function () {
       axios.get(`https://patient-service-api.herokuapp.com/department/${this.PatientData.departmentId}`)
@@ -122,9 +117,6 @@ export default {
       if (response.status === 200) {
         this.department = response.data
         }
-      })
-      .catch(e => {
-      this.errors.push(e)
       })
       },
     updatePatientDetails: function(){
@@ -230,6 +222,4 @@ export default {
     display: none;
   }
 }
-
-
 </style>
