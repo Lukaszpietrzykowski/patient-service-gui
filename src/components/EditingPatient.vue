@@ -326,7 +326,9 @@
           .then(response => {
             if (response.status === 200) {
               this.oldPatient = response.data
-              this.oldPatient.birthDate = this.oldPatient.birthDate.split("T")[0]
+              if (this.oldPatient.birthDate != null) {
+                this.oldPatient.birthDate = this.oldPatient.birthDate.split("T")[0]
+              }
             }
           }).then(() => {
             this.setDepartments()

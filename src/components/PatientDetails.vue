@@ -96,7 +96,9 @@ export default {
       .then(response=>{
       if(response.status === 200){
         this.PatientData = response.data
-        this.PatientData.birthDate = this.PatientData.birthDate.split("T")[0]
+        if (this.PatientData.birthDate != null) {
+          this.PatientData.birthDate = this.PatientData.birthDate.split("T")[0]
+        }
       }})
       .then(() => {this.getHospitalData(this.patientId)
       })
