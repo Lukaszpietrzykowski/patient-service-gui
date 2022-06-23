@@ -42,7 +42,7 @@
                   </svg>
                   <p class="m-0" style="color:#626466">email</p>
                 </div>
-                <div class="p-2 w-100 patient-name">{{ user.email }}</div>
+                <div style="font-weight:600" class="p-2 w-100 patient-name">{{ user.email }}</div>
               </div>
 
 
@@ -55,7 +55,7 @@
                   </svg>
                   <p class="m-0" style="color:#626466">login</p>
                 </div>
-                <div class="p-2 w-100 patient-name">{{ user.login }}</div>
+                <div style="font-weight:600" class="p-2 w-100 patient-name">{{ user.login }}</div>
 
               </div>
               <div class="w-100 my-2">
@@ -67,7 +67,7 @@
                   </svg>
                   <p class="m-0" style="color:#626466">Uprawnienia</p>
                 </div>
-                <div class="p-2 w-100 patient-name">{{ convertRole(user.role) }}</div>
+                <div style="font-weight:600" class="p-2 w-100 patient-name">{{ convertRole(user.role) }}</div>
 
               </div>
 

@@ -35,12 +35,13 @@
       <div id="edit-patient-details">
         <div class="medical-history p-2">
           <div>Historia choroby:</div>
-            <textarea v-model="PatientData.medicalHistory" cols="2" rows="7"></textarea>
+            <textarea v-if="this.userRole === 'ADMIN' || this.userRole === 'DOCTOR'" v-model="PatientData.medicalHistory" cols="2" rows="7"></textarea>
+            <textarea v-else v-model="PatientData.medicalHistory" cols="2" rows="7" readonly></textarea>
           </div>
         <div class="m-2">
           <div class="d-flex flex-row justify-content-around gap-3 w-100">
             <router-link style="text-decoration: none; color: inherit;" class="btn-back-add font-small p-2 w-100" to="/patients">Powrót</router-link>
-            <button v-on:click.prevent="updatePatientDetails()" type="submit" class="btn-add font-small text-decoration-none p-2 w-100">Zapisz</button>
+              <button v-if="this.userRole === 'ADMIN' || this.userRole === 'DOCTOR'" v-on:click.prevent="updatePatientDetails()" type="submit" class="btn-add font-small text-decoration-none p-2 w-100">Zapisz</button>
           </div>
         </div>
       </div>
@@ -59,6 +60,7 @@ export default {
       hospitalId: "",
       departmentId: "",
       PatientData: {},
+      userRole: '',
     }
   },
   methods: {
@@ -138,6 +140,7 @@ export default {
   created(){
     this.patientId = this.$route.params.id
     this.getPatientData()
+    this.userRole = localStorage.getItem('userRole');
   },
 }
 </script>

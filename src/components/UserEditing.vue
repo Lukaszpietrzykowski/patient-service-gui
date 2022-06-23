@@ -18,7 +18,7 @@
               <div class="color-grey mt-2 font-small">login</div>
               <div><input class="input-user" type="text" name="login" v-model="userData.login" required></div>
               <div class="color-grey mt-2 font-small">hasło</div>
-              <div><input class="input-user" type="text" name="password" placeholder="hasło" v-model="userData.password"
+              <div><input class="input-user" type="password" name="password" placeholder="hasło" v-model="userData.password"
                           required></div>
 
               <div class="color-grey mt-2 font-small">Uprawnienia</div>

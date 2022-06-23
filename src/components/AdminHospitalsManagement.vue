@@ -41,7 +41,7 @@
             </svg>
             <p style="margin: 0;">Nazwa szpitala</p>
           </div>
-          <div class="w-100 p-2 mt-1">{{ hospital.name }}</div>
+          <div style="font-weight:600" class="w-100 p-2 mt-1">{{ hospital.name }}</div>
         </div>
 
         <div class="w-100 py-1 p-lg-3">
@@ -53,7 +53,7 @@
             </svg>
             <p style="margin: 0;">Miejscowość</p>
           </div>
-          <div class="w-100 p-2 mt-1">{{ hospital.address.city }}</div>
+          <div style="font-weight:600" class="w-100 p-2 mt-1">{{ hospital.address.city }}</div>
         </div>
 
         <div class="w-100 py-1 p-lg-3">
@@ -65,7 +65,7 @@
             </svg>
             <p style="margin: 0;">Adres</p>
           </div>
-          <div class="w-100 p-2 mt-1">ul. {{ hospital.address.street }} {{ hospital.address.streetNumber }} <br>
+          <div style="font-weight:600" class="w-100 p-2 mt-1">ul. {{ hospital.address.street }} {{ hospital.address.streetNumber }} <br>
             {{ hospital.address.postalCode }}
           </div>
         </div>
@@ -80,7 +80,7 @@
             <p style="margin: 0;">Oddziały</p>
           </div>
           <div v-for="department in hospital.departments" v-bind:key="department.id" class="">
-            <div class="w-100 d-flex flex-row mt-1 p-2 justify-content-center">
+            <div style="font-weight:600" class="w-100 d-flex flex-row mt-1 p-2 justify-content-center">
               {{ department.name }}
               <div class="ms-3">
                 <svg width="15px" fill="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

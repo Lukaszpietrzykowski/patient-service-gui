@@ -42,7 +42,7 @@
 
 
               </div>
-              <div class="p-2 w-100 patient-name">{{ convertFirstName(patient.firstName) }}</div>
+              <div style="font-weight:600" class="p-2 w-100 patient-name">{{ convertFirstName(patient.firstName) }}</div>
             </div>
 
 
@@ -55,7 +55,7 @@
                 </svg>
                 <p class="m-0" style="color:#626466">Nazwisko</p>
               </div>
-              <div class="p-2 w-100 patient-name">{{ convertLastName(patient.lastName) }}</div>
+              <div style="font-weight:600" class="p-2 w-100 patient-name">{{ convertLastName(patient.lastName) }}</div>
 
             </div>
             <div class="w-100 my-2">
@@ -67,7 +67,7 @@
                 </svg>
                 <p class="m-0" style="color:#626466">Pesel</p>
               </div>
-              <div class="p-2 w-100 patient-name">{{ convertPESEL(patient.pesel) }}</div>
+              <div style="font-weight:600" class="p-2 w-100 patient-name">{{ convertPESEL(patient.pesel) }}</div>
 
             </div>
             <div class="w-100 my-2">
@@ -79,7 +79,7 @@
                 </svg>
                 <p class="m-0" style="color:#626466">Wiek</p>
               </div>
-              <div class="p-2 w-100 patient-name">{{patient.age}}</div>
+              <div style="font-weight:600" class="p-2 w-100 patient-name">{{patient.age}}</div>
 
             </div>
             <div class="w-100 my-2">
@@ -91,11 +91,11 @@
                 </svg>
                 <p class="m-0" style="color:#626466">Płeć</p>
               </div>
-              <div class="p-2 w-100 patient-name">{{ convertGender(patient.gender) }}</div>
+              <div style="font-weight:600" class="p-2 w-100 patient-name">{{ convertGender(patient.gender) }}</div>
 
             </div>
             <div class="d-flex flex-row p-1">
-              <div v-if="this.userRole === 'ADMIN'" v-on:click="updatePatient(patient.id)"
+              <div v-if="this.userRole === 'ADMIN' || this.userRole === 'DOCTOR' || this.userRole === 'DISPATCHER' || this.userRole === 'PARAMEDIC'" v-on:click="updatePatient(patient.id)"
                    class="d-flex flex-column justify-content-center action-button">
                                <span class="bg-transparent mt-2">
                                     <svg class="menu-admin-form-button" fill="#05a081"
@@ -105,14 +105,14 @@
                 <h2 class="font-small color:#626466 font-weight-normal text-center p-2"
                     style="font-size: 0.75rem; letter-spacing: 0.5px">Edytuj pacjenta</h2>
               </div>
-              <div v-if="this.userRole === 'ADMIN'" class="d-flex flex-column justify-content-center">
+              <div v-if="this.userRole === 'ADMIN' || this.userRole === 'DOCTOR' || this.userRole === 'DISPATCHER'" class="d-flex flex-column justify-content-center">
                                 <span v-on:click="removePatient(patient.id)" class="bg-transparent mt-2 action-button">
                                     <svg class="menu-admin-form-button" fill="#05a081"
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
                                         d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM616 200h-144C458.8 200 448 210.8 448 224s10.75 24 24 24h144C629.3 248 640 237.3 640 224S629.3 200 616 200z"/></svg>
                                 </span>
                 <h2 class="font-small color:#626466 font-weight-normal text-center p-2"
-                    style="font-size: 0.75rem; letter-spacing: 0.5px">Usuń pacjenta</h2>
+                    style="font-size: 0.75rem; letter-spacing: 0.5px">Archiwizuj pacjenta</h2>
               </div>
               <div class="d-flex flex-column justify-content-center action-button mt-2">
                 <router-link :to="{ name: 'PatientDetails', params: { id: patient.id }}"
@@ -243,7 +243,7 @@ export default {
   computed: {
     filteredList() {
       return this.patients.filter(patient => {
-        return (this.convertFirstName(patient.firstName) + " " + this.convertLastName(patient.lastName) + " " + this.convertPESEL(patient.pesel) + " " + this.convertDate(patient.birthDate) + " " + this.convertGender(patient.gender)).toLowerCase().includes(this.search.toLowerCase())
+        return (this.convertFirstName(patient.firstName) + " " + this.convertLastName(patient.lastName) + " " + this.convertPESEL(patient.pesel) + " " + this.convertDate(patient.birthDate) + " " + this.convertGender(patient.gender)+ " " + patient.age).toLowerCase().includes(this.search.toLowerCase())
       })
     }
   }

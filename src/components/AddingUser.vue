@@ -18,7 +18,7 @@
               <div class="color-grey mt-2 font-small">Login</div>
               <div><input class="input-user" type="text" v-model="user.login" placeholder="Login" required></div>
               <div class="color-grey mt-2 font-small">Hasło</div>
-              <div><input class="input-user" type="text" v-model="user.password" placeholder="Hasło" required></div>
+              <div><input class="input-user" type="password" v-model="user.password" placeholder="Hasło" required></div>
               <div class="color-grey mt-2 font-small">Uprawnienia</div>
               <div class="d-flex flex-row justify-content-around mt-1">
                 <div class="align-items-center font-small"><input class="input-user-radio" value="ADMIN" type="radio"
