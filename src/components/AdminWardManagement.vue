@@ -30,13 +30,13 @@
       </section>
 
       <section class="d-flex justify-content-center">
-        <div class="justify-content-center w-80">
+        <div class="w-100 w-md-75 w-lg-90">
           <div class="d-flex justify-content-center">
             <h1>Lista oddziałów</h1>
           </div>
-          <div id="department-list-box" v-for="department in departments" v-bind:key="department.id" class="d-flex p-1 justify-content-center menu-hospital-box">
+          <div id="department-list-box" v-for="department in departments" v-bind:key="department.id" class="d-flex p-1 my-2 justify-content-center menu-hospital-box">
             <div v-if="(edit.editMode && edit.elementId === department.id)" class="d-flex flex-column justify-content-center align-items-center w-80">
-              <div class="d-flex flex-row">
+              <div class="d-flex flex-column flex-md-row">
                 <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center" style="gap:0.75rem">
                   <div id="departments-view">
                     <div>
@@ -93,7 +93,7 @@
               <div v-if="!this.edit.isDataCorrect" id="tooltip">Liczba pacjentów na oddziale jest większa od liczby wszystkich łózek</div>
             </div>
 
-            <div v-else class="d-flex flex-row justify-content-center align-items-center w-100">
+            <div v-else class="d-flex flex-column flex-md-row justify-content-center align-items-center w-100">
               <div class="w-100 d-flex flex-row p-2 justify-content-center align-items-center" style="gap:0.75rem">
                 <div id="departments-view">
                   <div>
