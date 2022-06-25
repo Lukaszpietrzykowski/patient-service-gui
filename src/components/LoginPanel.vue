@@ -25,6 +25,7 @@
 <script>
 
 import axios from 'axios';
+import {role, setRole} from "/src/role.js";
 
 export default {
   name: 'LoginPanel',
@@ -37,14 +38,15 @@ export default {
   },
 
   methods: {
-
     getUserData() {
       axios.get(`https://patient-service-api.herokuapp.com/user/details/?login=${this.email}`)
           .then(response => {
             this.users = response.data
             console.log(response.data)
             if (response.status === 200) {
+              setRole(response.data.role);
               localStorage.setItem('userRole', response.data.role)
+              console.log(role)
             }
           })
     },
