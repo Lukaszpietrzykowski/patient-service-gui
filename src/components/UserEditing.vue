@@ -18,7 +18,8 @@
               <div class="color-grey mt-2 font-small">login</div>
               <div><input class="input-user" type="text" name="login" v-model="userData.login" required></div>
               <div class="color-grey mt-2 font-small">hasło</div>
-              <div><input class="input-user" type="password" name="password" placeholder="hasło" v-model="userData.password"
+              <div><input class="input-user" type="password" name="password" placeholder="hasło"
+                          v-model="userData.password"
                           required></div>
 
               <div class="color-grey mt-2 font-small">Uprawnienia</div>
@@ -28,7 +29,8 @@
                   Dyspozytor
                 </div>
                 <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'DOCTOR'"
-                                                                  class="input-user-radio" type="radio" name="rola">Lekarz
+                                                                  class="input-user-radio" type="radio" name="rola">
+                  Doktor
                 </div>
                 <div class="align-items-center font-small"><input v-model="userData.role" v-bind:value="'PARAMEDIC'"
                                                                   class="input-user-radio" type="radio" name="rola">
