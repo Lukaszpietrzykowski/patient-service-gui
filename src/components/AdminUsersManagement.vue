@@ -150,11 +150,17 @@ export default {
   data() {
     return {
       users: [],
-      search: ''
+      search: '',
+      userRole: ''
     }
   },
 
   methods: {
+    checkRole() {
+      if (this.userRole !== 'ADMIN') {
+        this.$router.push({path: '/hospitals'})
+      }
+    },
 
     convertRole(userRole) {
       if (userRole === "ADMIN") {
@@ -204,6 +210,8 @@ export default {
   },
 
   mounted() {
+    this.userRole = localStorage.getItem('userRole');
+    this.checkRole();
     this.getAllUsers();
   },
 

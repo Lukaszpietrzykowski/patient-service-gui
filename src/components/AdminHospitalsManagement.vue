@@ -179,11 +179,18 @@ export default {
   data() {
     return {
       hospitals: [],
-      search: ''
+      search: '',
+      userRole: ''
     }
   },
 
   methods: {
+    checkRole() {
+      if (this.userRole !== 'ADMIN') {
+        this.$router.push({path: '/hospitals'})
+      }
+    },
+
     getAllHospitals() {
       axios.get('https://patient-service-api.herokuapp.com/hospital/all/details')
           .then(response => {
@@ -223,8 +230,11 @@ export default {
   },
 
   mounted() {
+    this.userRole = localStorage.getItem('userRole');
+    this.checkRole();
     this.getAllHospitals();
   },
+
   computed: {
     filteredList() {
       return this.hospitals.filter(hospital => {

@@ -60,15 +60,22 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      userRole: '',
       user: {
         email: '',
         login: '',
         password: '',
         role: ''
-      },
+      }
     }
   },
   methods: {
+    checkRole() {
+      if (this.userRole !== 'ADMIN') {
+        this.$router.push({path: '/hospitals'})
+      }
+    },
+
     addUser() {
       axios.post('https://patient-service-api.herokuapp.com/user/add', this.user)
           .then(function (response) {
@@ -79,10 +86,10 @@ export default {
             this.$router.push("/users-management")
           });
     }
+  },
+  mounted() {
+    this.userRole = localStorage.getItem('userRole');
+    this.checkRole();
   }
-
-
 }
-
-
 </script>

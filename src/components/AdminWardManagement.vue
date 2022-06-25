@@ -221,7 +221,8 @@ export default {
         name: '',
         availableBeds: '',
         remainingBeds: ''
-      }
+      },
+      userRole: ''
     }
   },
 
@@ -230,10 +231,17 @@ export default {
   },
 
   mounted() {
+    this.userRole = localStorage.getItem('userRole');
+    this.checkRole();
     this.getAllDepartments();
   },
 
   methods: {
+    checkRole() {
+      if (this.userRole !== 'ADMIN') {
+        this.$router.push({path: '/hospitals'})
+      }
+    },
 
     checkValue(department) {
       if (department.occupiedBeds > department.availableBeds) {

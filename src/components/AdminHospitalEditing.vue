@@ -40,7 +40,7 @@
               <div class="color-grey mt-2 font-small">Kod pocztowy</div>
               <div><input class="input-user" type="text" name="kod pocztowy"
                           required pattern="^\d{2}-\d{3}$"
-                         v-model="hospitalData.address.postalCode"
+                          v-model="hospitalData.address.postalCode"
                           placeholder="Kod pocztowy">
               </div>
               <div class="d-flex mt-2 flex-row-reverse justify-content-around ">
@@ -66,6 +66,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      userRole: '',
       hospitalId: '',
       hospitalData: {
         name: '',
@@ -84,6 +85,8 @@ export default {
   },
 
   mounted() {
+    this.userRole = localStorage.getItem('userRole');
+    this.checkRole();
     axios.get(`https://patient-service-api.herokuapp.com/hospital/${this.hospitalId}`)
         .then(response => {
           if (response.status === 200) {
@@ -94,6 +97,12 @@ export default {
 
 
   methods: {
+    checkRole() {
+      if (this.userRole !== 'ADMIN') {
+        this.$router.push({path: '/hospitals'})
+      }
+    },
+
     updateHospital() {
       axios.put(`https://patient-service-api.herokuapp.com/hospital/update/${this.hospitalId}`, this.hospitalData)
           .then(response => {

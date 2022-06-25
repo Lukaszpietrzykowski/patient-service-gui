@@ -68,7 +68,8 @@ export default {
   data() {
     return {
       userId: '',
-      userData: {}
+      userData: {},
+      userRole: ''
     }
   },
 
@@ -77,6 +78,8 @@ export default {
   },
 
   mounted() {
+    this.userRole = localStorage.getItem('userRole');
+    this.checkRole();
     axios.get(`https://patient-service-api.herokuapp.com/user/${this.userId}`)
         .then(response => {
           if (response.status === 200) {
@@ -87,6 +90,12 @@ export default {
 
 
   methods: {
+    checkRole() {
+      if (this.userRole !== 'ADMIN') {
+        this.$router.push({path: '/hospitals'})
+      }
+    },
+
     updateUser() {
       axios.put(`https://patient-service-api.herokuapp.com/user/update/${this.userId}`, this.userData)
           .then(response => {
