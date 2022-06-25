@@ -34,7 +34,7 @@
       </section>
 
       <section class="d-flex justify-content-center">
-        <div class="w-100 w-md-75 w-lg-90">
+        <div class="w-100 w-md-75 w-lg-90 scroll-box">
           <div class="d-flex justify-content-center">
             <h1>Lista oddziałów</h1>
           </div>
