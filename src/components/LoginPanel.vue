@@ -63,11 +63,14 @@ export default {
             console.log(response.status)
             if (response.status === 200) {
               localStorage.setItem('loggedIn', 'true')
-              this.$router.push({path: '/hospitals'})
-              this.getUserData();
+
             }
           }
-      ).catch((error) => {
+      ).then(() => {
+        this.getUserData();
+      }).then(() => {
+        this.$router.push({path: '/hospitals'})
+      }).catch((error) => {
         if (error.response.status === 401) {
           this.showError = true;
         }
