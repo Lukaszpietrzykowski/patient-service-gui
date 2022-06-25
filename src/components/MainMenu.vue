@@ -158,11 +158,9 @@
 </style>
 
 <script>
-// import { HTTP } from './http-common';
 import axios from 'axios';
 import MenuComponent from "@/components/MenuComponent";
-// import cors from 'cors';
-// import app from 'vue';
+
 export default {
   components: {
     MenuComponent
